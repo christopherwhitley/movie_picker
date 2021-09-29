@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @genre.name %>
+</p>
+
+<%= link_to 'Edit', edit_genre_path(@genre) %> |
+<%= link_to 'Back', genres_path %>
+
+<p>
+Films:
+</p>
+
+<ul>
+  <% @genre.films.each do |film| %>
+  <li><%= link_to film.title, film_path(film) %></li>
+  <% end %>
+</ul>
+
+<p>
+<%= link_to 'Add new film', new_film_path %>
+</p>

@@ -1,0 +1,44 @@
+<% require 'json' %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @film.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @film.description %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @film.genre_id %><br>
+  <%= link_to @film.genre.name, genre_path(@film.genre)%>
+</p>
+
+<% response = @response.parsed_response %>
+
+<% results = response["results"] %>
+
+<% if movie = results.find { |movie| movie['title'] == @filmname} %>
+  <h3>Title</h3>
+   <%= movie['title'] %> <br /><br />
+   <h3>Overview</h3>
+   <%= movie['overview'] %> <br /><br />
+   <h3>ID</h3>
+   <%= movie['id']  %><br /><br />
+<% else  %>
+<%= 'not found' %>
+<% end %>
+
+<%# film = results[0].to_h  %>
+<pre>
+<%#= JSON.pretty_generate(film) %>
+
+</pre>
+
+
+<%= link_to 'Edit', edit_film_path(@film) %> |
+<%= link_to 'Back', films_path %>

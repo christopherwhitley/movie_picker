@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @person.username %><br>
+
+
+
+<%#= @person.film_id %>
+
+
+<%#= @person.film_id.each do |match| %>
+  <%#= film.title %>
+<%# end %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

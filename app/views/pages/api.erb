@@ -1,0 +1,15 @@
+<% require 'json' %>
+
+<h1>Hello API</h1>
+
+<% response = @response.parsed_response %>
+
+<% results = response["results"] %>
+
+<% film = results[0].to_h  %>
+<pre>
+<%= JSON.pretty_generate(film) %>
+
+</pre>
+<%= film["id"] %> <br />
+<%= film["title"] %>

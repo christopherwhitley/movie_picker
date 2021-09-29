@@ -1,0 +1,5 @@
+<% @randomfilm = Film.order(Arel.sql('RANDOM()')).first %>
+
+<p>
+<%= @randomfilm.title %>
+</p>
