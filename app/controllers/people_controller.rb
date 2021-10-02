@@ -57,6 +57,10 @@ class PeopleController < ApplicationController
     end
   end
 
+  def add_film
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
@@ -65,6 +69,6 @@ class PeopleController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person).permit(:username, :password, :salt, :encrypted_password, :email)
+      params.require(:person).permit(:username, :password, :salt, :encrypted_password, :email, :film_id)
     end
 end

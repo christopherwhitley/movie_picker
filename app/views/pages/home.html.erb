@@ -1,6 +1,6 @@
 <h2>Film Picker</h2>
 
-
+<p><%= logged_in? ? 'You are logged in' : 'You are not logged in' %></p>
 <%= link_to 'Add New Film', new_film_path %>
 <br>
 <%= link_to 'Show Films', films_path %>

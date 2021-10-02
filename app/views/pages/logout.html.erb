@@ -1,0 +1,8 @@
+<h1>Successfully logged out.</h1>
+
+<form action="/pages/logout" method="POST">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<button type="submit">Submit</button>
+</form>
+
+<%= logged_in? %>

@@ -4,9 +4,19 @@
   <strong>Name:</strong>
   <%= @person.username %><br>
 
-<%= test %>
 
-<%#= @person.film_id %>
+
+<% add_new_film_id = @person.film_id << '1'%>
+<%= @person.film_id %>
+<%@person.update(film_id: add_new_film_id)  %>
+
+<%# if @person.film_id = nil %>
+<%# @person.update(film_id: [add_new_film_id]) %>
+<%#= "person updated with array" %>
+<%# elsif @person.film_id != nil%>
+<%#  @person.update(film_id: add_new_film_id)%>
+<%#= "person updated without array" %>
+<%# end %>
 
 
 <%#= @person.film_id.each do |match| %>

@@ -5,6 +5,10 @@ class PagesController < ApplicationController
   def home
   end
 
+  def index
+    p params
+  end
+
   def api
     @filmname = "joker"
 
@@ -27,6 +31,14 @@ class PagesController < ApplicationController
      flash.alert = 'Username or password incorrect!'
      redirect_to '/pages/login'
    end
+
  end
+
+ def logout
+   session.destroy(:user_id)
+   #session[:user_id] = nil
+   @current_user = nil
+ end
+
 end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_28_150228) do
+ActiveRecord::Schema.define(version: 2021_10_02_102256) do
 
   create_table "films", force: :cascade do |t|
     t.string "title"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_09_28_150228) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.text "film_id"
+    t.text "film_id", default: "--- []\n"
   end
 
   add_foreign_key "films", "genres"
