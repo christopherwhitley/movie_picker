@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized
-    #redirect_to '/home/login' unless logged_in?
+    redirect_to '/pages/login' unless logged_in?
   end
 end

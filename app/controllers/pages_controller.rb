@@ -2,6 +2,8 @@ require 'httparty'
 require 'json'
 
 class PagesController < ApplicationController
+skip_before_action :authorized, only: [:login, :logout, :home]
+
   def home
   end
 
@@ -35,8 +37,8 @@ class PagesController < ApplicationController
  end
 
  def logout
-   session.destroy(:user_id)
-   #session[:user_id] = nil
+   reset_session
+   redirect_to '/'
    @current_user = nil
  end
 

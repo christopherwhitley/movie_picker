@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'pages/logout'
   post 'pages/login'
   post 'pages/logout'
+  delete "logout", to: "pages#logout"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/api' => 'pages#api'

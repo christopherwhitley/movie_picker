@@ -1,8 +1,5 @@
-<h1>Successfully logged out.</h1>
+<h1>Logout Page</h1>
 
-<form action="/pages/logout" method="POST">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-<button type="submit">Submit</button>
-</form>
+<%= button_to "Logout", pages_logout_path, method: :delete %>
 
 <%= logged_in? %>
