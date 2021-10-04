@@ -6,22 +6,20 @@
 
 
 
-<% add_new_film_id = @person.film_id << '1'%>
-<%= @person.film_id %>
-<%@person.update(film_id: add_new_film_id)  %>
+<% add_new_film_id = @person.film_id << '4'%>
 
-<%# if @person.film_id = nil %>
-<%# @person.update(film_id: [add_new_film_id]) %>
-<%#= "person updated with array" %>
-<%# elsif @person.film_id != nil%>
-<%#  @person.update(film_id: add_new_film_id)%>
-<%#= "person updated without array" %>
-<%# end %>
+<% @person.film_id %>
+<% @person.update(film_id: add_new_film_id)  %>
+<%= list_of_person_ids = @person.film_id %>
 
 
-<%#= @person.film_id.each do |match| %>
-  <%#= film.title %>
-<%# end %>
+<% myfilms = Film.where(id: list_of_person_ids)%>
+
+
+<br></br>
+<%= myfilms.map(&:title).join("<br>").html_safe %>
+
+
 </p>
 
 
