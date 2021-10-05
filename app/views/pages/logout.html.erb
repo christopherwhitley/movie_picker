@@ -1,5 +1,5 @@
 <h1>Logout Page</h1>
 
-<%= button_to "Logout", pages_logout_path, method: :delete %>
-
+<%= link_to "Logout", pages_logout_path, method: :delete %>
+<br>
 <%= logged_in? %>

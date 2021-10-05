@@ -2,7 +2,7 @@ require 'httparty'
 require 'json'
 
 class PagesController < ApplicationController
-skip_before_action :authorized, only: [:login, :logout, :home]
+#skip_before_action :authorized, only: [:login, :home]
 
   def home
   end
@@ -22,6 +22,12 @@ skip_before_action :authorized, only: [:login, :logout, :home]
 
  end
 
+ def destroy
+   redirect_to '/'
+   reset_session
+   @current_user = nil
+ end
+
  def login
    if params['username']
      user = Person.find_by_username(params['username'])
@@ -36,11 +42,7 @@ skip_before_action :authorized, only: [:login, :logout, :home]
 
  end
 
- def logout
-   reset_session
-   redirect_to '/'
-   @current_user = nil
- end
+
 
 end
 end

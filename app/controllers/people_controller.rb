@@ -57,9 +57,26 @@ class PeopleController < ApplicationController
     end
   end
 
-  def add_film
-    
+  def add_film(id)
+
+
+
   end
+  helper_method :add_film
+
+  def add_film_to_person
+    respond_to do |format|
+      format.html { redirect_to '/'}
+
+      
+    if @person.film_id.exclude? params[:film_id]
+        @person.film_id << (id.to_s)
+        @person.save
+    else
+        print "Film already added."
+    end
+  end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,4 +88,4 @@ class PeopleController < ApplicationController
     def person_params
       params.require(:person).permit(:username, :password, :salt, :encrypted_password, :email, :film_id)
     end
-end
+  end

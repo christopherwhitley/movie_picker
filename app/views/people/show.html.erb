@@ -4,19 +4,22 @@
   <strong>Name:</strong>
   <%= @person.username %><br>
 
+  <%= form_with url: add_film_to_person_path, method: :post, model: @film do |form| %>
+    <%= form.select :film_id, Film.all.collect {|p| [p.title, p.id]},
+    include_blank: true %>
+    <%= form.submit %>
+  <% end %>
 
-
-<% add_new_film_id = @person.film_id << '4'%>
+<% add_film('1') %>
 
 <% @person.film_id %>
-<% @person.update(film_id: add_new_film_id)  %>
+<%# @person.update(film_id: add_film)  %>
 <%= list_of_person_ids = @person.film_id %>
 
 
 <% myfilms = Film.where(id: list_of_person_ids)%>
 
-
-<br></br>
+<h3>My films</h3>
 <%= myfilms.map(&:title).join("<br>").html_safe %>
 
 
