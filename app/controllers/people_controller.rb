@@ -27,6 +27,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.save
         format.html { redirect_to @person, notice: "Person was successfully created." }
+        flash.alert = "Person updated"
         format.json { render :show, status: :created, location: @person }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,15 +67,11 @@ class PeopleController < ApplicationController
 
   def add_film_to_person
     respond_to do |format|
-      format.html { redirect_to '/'}
+      format.html { redirect_to people_path}
+      p params[:film_id]
+      Person.add_film_id_to_person(params[:film_id], current_user)
 
-      
-    if @person.film_id.exclude? params[:film_id]
-        @person.film_id << (id.to_s)
-        @person.save
-    else
-        print "Film already added."
-    end
+
   end
 end
 
