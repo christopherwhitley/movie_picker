@@ -36,6 +36,18 @@ class PeopleController < ApplicationController
     end
   end
 
+  def add_film_to_person
+    respond_to do |format|
+      if logged_in?
+        format.html { redirect_to people_path }
+        p params[:film_id]
+        Person.add_film_id_to_person(params[:film_id], current_user)
+    else
+      format.html { redirect_to people_url, notice: "Need to login." }
+    end
+  end
+end
+
   # PATCH/PUT /people/1 or /people/1.json
   def update
     respond_to do |format|
@@ -65,15 +77,7 @@ class PeopleController < ApplicationController
   end
   helper_method :add_film
 
-  def add_film_to_person
-    respond_to do |format|
-      format.html { redirect_to people_path}
-      p params[:film_id]
-      Person.add_film_id_to_person(params[:film_id], current_user)
 
-
-  end
-end
 
   private
     # Use callbacks to share common setup or constraints between actions.
