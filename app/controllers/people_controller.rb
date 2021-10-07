@@ -40,8 +40,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if logged_in?
         format.html { redirect_to people_path }
-        p params[:film_id]
-        Person.add_film_id_to_person(params[:film_id], current_user)
+        current_user.add_film_id_to_person(params[:film_id])
     else
       format.html { redirect_to people_url, notice: "Need to login." }
     end

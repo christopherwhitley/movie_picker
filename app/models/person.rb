@@ -9,14 +9,17 @@ class Person < ApplicationRecord
   has_secure_password
   validates :username, :email, uniqueness: true
 
-#MUST BE LOGGED IN FOR BELOW TO FUNCTION
-  def self.add_film_id_to_person(id, person)
-    @person = person
-    if @person.film_id.exclude? id
+#Method of a Class
+  #def self.add_film_id_to_person(id, person)
+  #  @person = person
+    #if @person.film_id.exclude? id
+      #  @person[:film_id] << (id.to_s)
+      #  @person.save
 
-        @person[:film_id] << (id.to_s)
-
-        @person.save
+  def add_film_id_to_person(id)
+    if film_id.exclude? id
+        film_id << (id.to_s)
+        save
     else
         return
     end

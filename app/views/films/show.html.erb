@@ -20,7 +20,8 @@
 
 <% response = @response.parsed_response %>
 
-<% results = response["results"] %>
+<% results = response["results"]%>
+
 
 <% if movie = results.find { |movie| movie['title'] == @filmname} %>
   <h3>Title</h3>
@@ -29,6 +30,10 @@
    <%= movie['overview'] %> <br /><br />
    <h3>ID</h3>
    <%= movie['id']  %><br /><br />
+   <h3>Release Date (U.S.)</h3>
+   <%= movie['release_dates'] %>
+   <h3>Poster</h3>
+   <%= 'https://image.tmdb.org/t/p/w500 << (movie['poster_path'])' %>
 <% else  %>
 <%= 'not found' %>
 <% end %>
