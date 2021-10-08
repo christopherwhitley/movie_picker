@@ -13,9 +13,8 @@
 </p>
 
 <p>
-  <strong>Genre:</strong>
   <%= @film.genre_id %><br>
-  <%= link_to @film.genre.name, genre_path(@film.genre)%>
+
 </p>
 
 <% response = @response.parsed_response %>
@@ -24,25 +23,23 @@
 
 
 <% if movie = results.find { |movie| movie['title'] == @filmname} %>
-  <h3>Title</h3>
-   <%= movie['title'] %> <br /><br />
-   <h3>Overview</h3>
+
+   <%# Poster %>
+   <div>
+   <p class="poster"><%= image_tag 'https://image.tmdb.org/t/p/w300' << (movie['poster_path']) %></p></br>
+   <h3> <%= movie['title'] %></h3>
+   <h4>Overview</h4>
    <%= movie['overview'] %> <br /><br />
-   <h3>ID</h3>
+   <h4>ID</h4>
    <%= movie['id']  %><br /><br />
-   <h3>Release Date (U.S.)</h3>
-   <%= movie['release_dates'] %>
-   <h3>Poster</h3>
-   <%= 'https://image.tmdb.org/t/p/w500 << (movie['poster_path'])' %>
+   <h4>Release Date (U.S.)</h4>
+   <%= movie['release_date'] %>
+   <h4>Genre</h4>
+   <%= link_to @film.genre.name, genre_path(@film.genre)%>
+   </div></br>
 <% else  %>
-<%= 'not found' %>
+<% 'not found' %>
 <% end %>
-
-<%# film = results[0].to_h  %>
-<pre>
-<%#= JSON.pretty_generate(film) %>
-
-</pre>
 
 
 <%= link_to 'Edit', edit_film_path(@film) %> |
