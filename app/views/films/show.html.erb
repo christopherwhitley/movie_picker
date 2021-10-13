@@ -1,21 +1,5 @@
 <% require 'json' %>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @film.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @film.description %>
-</p>
-
-<p>
-  <%= @film.genre_id %><br>
-
-</p>
 
 <% response = @response.parsed_response %>
 
@@ -25,11 +9,11 @@
 <% if movie = results.find { |movie| movie['title'] == @filmname} %>
 
    <%# Poster %>
-   <div>
+   <div class="film_details">
    <p class="poster"><%= image_tag 'https://image.tmdb.org/t/p/w300' << (movie['poster_path']) %></p></br>
-   <h3> <%= movie['title'] %></h3>
-   <h4>Overview</h4>
-   <%= movie['overview'] %> <br /><br />
+   <h2> <%= movie['title'] %></h2>
+   <h4>Description</h4>
+   <%= movie['overview'] %> <br />
    <h4>ID</h4>
    <%= movie['id']  %><br /><br />
    <h4>Release Date (U.S.)</h4>
@@ -38,7 +22,7 @@
    <%= link_to @film.genre.name, genre_path(@film.genre)%>
    </div></br>
 <% else  %>
-<% 'not found' %>
+<% 'Film not found' %>
 <% end %>
 
 
