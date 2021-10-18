@@ -45,7 +45,7 @@ group :development do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'rack-mini-profiler', '~> 2.0'
-  
+
 
 end
 
@@ -58,6 +58,7 @@ group :test do
   gem 'rexml'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
