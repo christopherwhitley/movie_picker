@@ -71,9 +71,8 @@ end
 
   def add_film(id)
 
-
-
   end
+
   helper_method :add_film
 
 
