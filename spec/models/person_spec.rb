@@ -2,13 +2,18 @@ require 'person.rb'
 require 'rails_helper'
 
 describe Person do
-  it 'test' do
+  it 'check film id added to film_id array' do
     #Arrange
     person = Person.new
-    #Act
+    film_id = 789
 
+    #Act
+    person.add_film_id_to_person(film_id)
+    
     #Assert
-    expect(person.name)
+    expect(person.film_id).to include(film_id.to_s)
+
   end
+
 
 end
