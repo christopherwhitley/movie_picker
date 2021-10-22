@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Username:</strong>
   <%= @person.username %><br>
 <h2>Add Films</h2>
   <%= form_with url: add_film_to_person_path, method: :post, model: @film do |form| %>
