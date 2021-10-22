@@ -1,3 +1,3 @@
 class Genre < ApplicationRecord
-  has_many :films
+  has_many :films, dependent: :nullify
 end
