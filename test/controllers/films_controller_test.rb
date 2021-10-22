@@ -1,5 +1,6 @@
 require "test_helper"
 
+
 class FilmsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @film = films(:one)
@@ -17,7 +18,7 @@ class FilmsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create film" do
     assert_difference('Film.count') do
-      post films_url, params: { film: { description: @film.description, genre_id: @film.genre_id, title: @film.title } }
+      post films_path, params: { film: { description: "test6", genre_id: '298486374', title: "Halloween 2" } }
     end
 
     assert_redirected_to film_url(Film.last)
@@ -34,7 +35,7 @@ class FilmsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update film" do
-    patch film_url(@film), params: { film: { description: @film.description, genre_id: @film.genre_id, title: @film.title } }
+    patch film_url(@film), params: { film: { description: "new description", genre_id: '298486374', title: 'New title' } }
     assert_redirected_to film_url(@film)
   end
 
