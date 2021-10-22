@@ -12,3 +12,12 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   parallelize(workers: 2)
 end
+
+class ActionDispatch::IntegrationTest
+  def create_person
+    post people_path, params: { person: {username: "cw", email: "c.w@gmail.com", password: 'secret'} }
+  end
+  def get_bill
+    @person = people(:bill)
+  end
+end
