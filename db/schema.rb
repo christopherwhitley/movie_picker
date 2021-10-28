@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_10_02_102256) do
   create_table "films", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.integer "genre_id", null: true
+    t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["genre_id"], name: "index_films_on_genre_id"
