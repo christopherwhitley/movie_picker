@@ -5,7 +5,7 @@ bill:
   email: test1@gmail.com
   password_digest: <%= BCrypt::Password.create('Test123')
 
-two:
+paula:
   name: Paula
   email: test2@gmail.com
   password_digest: <%= BCrypt::Password.create('Test456')
