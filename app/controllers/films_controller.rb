@@ -67,6 +67,14 @@ class FilmsController < ApplicationController
     end
   end
 
+  def multiple_film_results
+    #Process film form results
+    respond_to do |format|
+      @film_results = params[:title]
+      format.html { redirect_to '/films/confirmation', notice: "Multiple films match"}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_film
