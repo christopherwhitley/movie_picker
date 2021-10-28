@@ -1,5 +1,5 @@
 class FilmsController < ApplicationController
-  before_action :set_film, only: %i[ show edit update destroy ]
+  before_action :set_film, only: %i[ show edit update destroy]
 
   def rand
     @randomfilm
@@ -68,10 +68,17 @@ class FilmsController < ApplicationController
   end
 
   def multiple_film_results
-    #Process film form results
+    #Add logic to process film form results
+
+
     respond_to do |format|
-      @film_results = params[:title]
-      format.html { redirect_to '/films/confirmation', notice: "Multiple films match"}
+      @film_results = params[:film][:title]
+      query = {"query" => @film_results}
+      @response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US",
+        :query => query,
+        format: :json)
+      format.html { render 'confirmation.html' }
+
     end
   end
 
