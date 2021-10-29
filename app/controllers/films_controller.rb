@@ -29,7 +29,6 @@ class FilmsController < ApplicationController
   end
 
 
-
   # POST /films or /films.json
   def create
     @film = Film.new(film_params)
@@ -72,8 +71,10 @@ class FilmsController < ApplicationController
 
 
     respond_to do |format|
-      @film_results = params[:film][:title]
-      query = {"query" => @film_results}
+      @film_title = params[:film][:title]
+      @film_description = params[:film][:description]
+      @film_genre_id = params[:film][:genre_id]
+      query = {"query" => @film_title}
       @response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US",
         :query => query,
         format: :json)

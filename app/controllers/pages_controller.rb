@@ -2,7 +2,7 @@ require 'httparty'
 require 'json'
 
 class PagesController < ApplicationController
-#skip_before_action :authorized, only: [:login, :home]
+skip_before_action :authorized, only: [:login, :home]
 
   def home
   end
