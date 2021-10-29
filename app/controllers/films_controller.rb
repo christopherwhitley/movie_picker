@@ -1,5 +1,5 @@
 class FilmsController < ApplicationController
-  before_action :set_film, only: %i[ show edit update destroy ]
+  before_action :set_film, only: %i[ show edit update destroy]
 
   def rand
     @randomfilm
@@ -27,7 +27,6 @@ class FilmsController < ApplicationController
   # GET /films/1/edit
   def edit
   end
-
 
 
   # POST /films or /films.json
@@ -64,6 +63,23 @@ class FilmsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to films_url, notice: "Film was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def multiple_film_results
+    #Add logic to process film form results
+
+
+    respond_to do |format|
+      @film_title = params[:film][:title]
+      @film_description = params[:film][:description]
+      @film_genre_id = params[:film][:genre_id]
+      query = {"query" => @film_title}
+      @response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US",
+        :query => query,
+        format: :json)
+      format.html { render 'confirmation.html' }
+
     end
   end
 
