@@ -2,10 +2,14 @@ Rails.application.routes.draw do
   resources :people
   root to: 'pages#home'
   get '/randomfilm' => 'films#randomfilm'
-  resources :films
+
+  resources :films, except: :create
+  post "/films" => "films#multiple_film_results", :as => 'filmsubmission'
+
   resources :genres
   get 'pages/login'
   get 'pages/logout'
+  get 'films/confirmation'
   post 'pages/login'
   post 'pages/logout'
   delete 'pages/logout' => 'pages#destroy'

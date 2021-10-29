@@ -1,0 +1,23 @@
+<h3>Confirm which film you would like to select</h3>
+
+
+<% @film_results %>
+
+<% response = @response.parsed_response %>
+
+<% results = response["results"]%>
+
+<% matching_titles = results.select { |movie| movie['title'].include? @film_results} %>
+
+<div>
+<%= form_with do |form| %>
+  <% matching_titles.each do |movie| %>
+  </br>
+  <%= form.radio_button :film, "Pick film" %>
+  <%= form.label :movie, movie['title'], style: 'display: inline-block'  %>
+  <%= form.label :movie, movie['release_date'], style: 'display: inline-block'  %>
+<% end %>
+<br><br>
+<%= form.submit "Save" %>
+<% end %>
+</div>

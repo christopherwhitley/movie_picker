@@ -5,6 +5,11 @@
 
 <% results = response["results"]%>
 
+<% matching_titles = results.select { |movie| movie['title'] == @filmname} %>
+
+<% matching_titles.each do |movie| %>
+<%= movie['title']%>, <%=movie['release_date']%> </br>
+<% end %>
 
 <% if movie = results.find { |movie| movie['title'] == @filmname} %>
 
