@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :people
   root to: 'pages#home'
-  get '/randomfilm' => 'films#randomfilm'
+  get '/randomfilm' => 'films#rand'
 
   resources :films, except: :create
   post "/films" => "films#multiple_film_results", :as => 'filmsubmission'
