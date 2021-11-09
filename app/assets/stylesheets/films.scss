@@ -4,8 +4,35 @@
 
 .poster {
   float: left;
-  margin: 10px;
+  margin-right: 10px;
 }
 .film_details {
   max-width: 75%;
+  margin-bottom: 20px;
+}
+.recommended {
+  float: left;
+  margin-bottom: 10px;
+  clear: both;
+  width: 100%;
+}
+.recommended-films {
+  float: left;
+  width: 110px;
+  margin-right: 5px;
+}
+.recommended-poster {
+  margin-bottom: 0px;
+}
+.recommended-title {
+  margin-top: 0px;
+  max-width: 75%;
+}
+.show-films-links {
+  float: left;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+
 }
