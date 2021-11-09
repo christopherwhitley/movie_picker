@@ -7,10 +7,6 @@
 
 <% matching_titles = results.select { |movie| movie['title'] == @filmname} %>
 
-<% matching_titles.each do |movie| %>
-<%= movie['title']%>, <%=movie['release_date']%> </br>
-<% end %>
-
 <% if movie = results.find { |movie| movie['title'] == @filmname} %>
 
    <%# Poster %>
@@ -30,6 +26,33 @@
 <% 'Film not found' %>
 <% end %>
 
+</br></br></br>
 
+<h3>Recommended films</h3>
+<div class="recommended">
+
+
+  <% genre_match = index.select { |film| film.genre_id == @film.genre_id } %>
+  <% genre_match.each do |film| %>
+    <% film.title  %>
+    <% query = {"query" => film.title} %>
+    <% response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US",
+      :query => query,
+      format: :json)  %>
+      <% response = response.parsed_response %>
+      <% results = response["results"]%>
+      <% film_results = results.find { |film| film['title']} %>
+        <%= link_to film do %>
+        <div class="recommended-films">
+          <p class="recommended-poster"><%= image_tag 'https://image.tmdb.org/t/p/w92' << (film_results['poster_path']) %></p>
+          <p class="recommended-title"><%= film.title %></p>
+        </div>
+        <% end %>
+  <% end %>
+  </div>
+
+<%#= javascript_pack_tag 'test.js' %>
+<div class="show-films-links">
 <%= link_to 'Edit', edit_film_path(@film) %> |
 <%= link_to 'Back', films_path %>
+</div>
