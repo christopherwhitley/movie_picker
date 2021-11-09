@@ -2,12 +2,23 @@ class FilmsController < ApplicationController
   before_action :set_film, only: %i[ show edit update destroy]
 
   def rand
-    @randomfilm
+    @film = Film.order(Arel.sql('RANDOM()')).first
+    @film_title = @film.title
+    @film_description = @film.description
+    @film_genre_id = @film.genre_id
+    query = {"query" => @film_title}
+    @response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US",
+      :query => query,
+      format: :json)
+    respond_to do |format|
+      format.html { redirect_to @film }
+    end
   end
   # GET /films or /films.json
   def index
     @films = Film.all
   end
+  helper_method :index
 
   # GET /films/1 or /films/1.json
   def show
