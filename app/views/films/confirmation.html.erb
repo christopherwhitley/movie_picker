@@ -3,8 +3,9 @@
 <% response = @response.parsed_response %>
 
 <% results = response["results"] %>
-
 <% matching_titles = results.select { |movie| movie['title'].include? @film_title} %>
+
+
 
 <div>
 <%= form_with(url: new_film_path) do |form| %>
