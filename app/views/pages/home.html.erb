@@ -1,11 +1,35 @@
+<head>
+
+<%= javascript_pack_tag "home" %>
+</head>
 <h2>Film Picker</h2>
 
-<p><%= logged_in? %></p>
-<%= link_to 'Add New Film', new_film_path %>
-<br>
-<%= link_to 'Show Films', films_path %>
-<br>
-<%= link_to 'Random Film', randomfilm_path %>
+<div class="home-container">
+
+    <%= link_to new_film_path, class: "home-button" do %>
+
+    <div class="home-button-text">
+      <h3>Add New Film</h3>
+      <p>Add a new film to list</p>
+    </div>
+    <% end %>
+
+  <%= link_to films_path, class: "home-button" do %>
+    <div class="home-button-text">
+      <h3>Show Films</h3>
+      <p>Show all films</p>
+    </div>
+    <% end %>
+
+
+    <%= link_to randomfilm_path, class: "home-button" do %>
+    <div class="home-button-text">
+      <h3>Random Films</h3>
+      <p>Select a random film from all films</p>
+    </div>
+    <% end %>
+</div>
+
 <div class="">
 
 
