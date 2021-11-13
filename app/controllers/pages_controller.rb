@@ -37,7 +37,6 @@ skip_before_action :authorized, only: [:login, :home]
        redirect_to '/'
    else
      flash.alert = 'Username or password incorrect!'
-     redirect_to '/pages/login'
    end
 
  end
