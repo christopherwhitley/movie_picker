@@ -15,21 +15,24 @@
    <h2> <%= movie['title'] %></h2>
    <h4>Description</h4>
    <%= movie['overview'] %> <br />
-   <h4>ID</h4>
-   <%= movie['id']  %><br /><br />
-   <h4>Release Date (U.S.)</h4>
-   <%= movie['release_date'] %>
-   <h4>Genre</h4>
-   <%= link_to @film.genre.name, genre_path(@film.genre)%>
+
+   <%#= movie['id']  %><br /><br />
+   <%= button_tag 'Show more info', type: 'button', id: 'show-hide' %>
+
+     <h4 class="release">Release Date (U.S.)</h4>
+     <span class='release'><%= movie['release_date'] %></span>
+
+   <h4 class="release">Genre</h4>
+   <%= link_to @film.genre.name, genre_path(@film.genre), class: "release"%>
    </div></br>
 <% else  %>
 <% 'Film not found' %>
 <% end %>
 
 </br></br></br>
-
-<h3>Recommended films</h3>
 <div class="recommended">
+<h3>Recommended films</h3>
+
 
 
   <% genre_match = index.select { |film| film.genre_id == @film.genre_id } %>
@@ -51,7 +54,7 @@
   <% end %>
   </div>
 
-<%#= javascript_pack_tag 'test.js' %>
+<%= javascript_pack_tag 'test.js' %>
 <div class="show-films-links">
 <%= link_to 'Edit', edit_film_path(@film) %> |
 <%= link_to 'Back', films_path %>
