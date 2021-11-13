@@ -1,0 +1,25 @@
+.home-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home-button {
+
+  border: 1px solid black;
+  flex: 0 0 33%;
+  margin: 5px;
+  padding: 5px;
+
+
+
+}
+
+.home-button, a {
+  text-decoration: none !important;
+}
+
+.home-button-text {
+  text-align: center;
+}
