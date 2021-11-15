@@ -1,4 +1,4 @@
-window.onload=function(){
+
 
   button = document.getElementById('show-hide');
   itemsToHide = [...document.querySelectorAll('.release')].forEach(function(item) {
@@ -18,7 +18,7 @@ window.onload=function(){
       });
 
     });
-}
+
 
 
 
