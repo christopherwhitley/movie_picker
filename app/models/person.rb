@@ -16,6 +16,17 @@ class Person < ApplicationRecord
       #  @person[:film_id] << (id.to_s)
       #  @person.save
 
+  def remove_film_id_from_person(id)
+    id = id.to_s
+    if film_id.include? id
+      film_id.delete(id)
+      save
+      return "film id deleted"
+    else
+      return "id not found"
+    end
+  end
+
   def add_film_id_to_person(id)
     if film_id.exclude? id
         film_id << (id.to_s)
