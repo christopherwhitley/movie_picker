@@ -1,15 +1,9 @@
 class FilmsController < ApplicationController
   before_action :set_film, only: %i[ show edit update destroy]
+  before_action :authorized, only: %i[ new ]
 
   def rand
     @film = Film.order(Arel.sql('RANDOM()')).first
-    @film_title = @film.title
-    @film_description = @film.description
-    @film_genre_id = @film.genre_id
-    query = {"query" => @film_title}
-    @response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US",
-      :query => query,
-      format: :json)
     respond_to do |format|
       format.html { redirect_to @film }
     end
@@ -43,11 +37,11 @@ class FilmsController < ApplicationController
   # POST /films or /films.json
   def create
     @film = Film.new(film_params)
-
     respond_to do |format|
+
       if @film.save
-        format.html { redirect_to @film, notice: "Film was successfully created." }
-        format.json { render :show, status: :created, location: @film }
+        format.html { add_film_to_person(@film.id) }
+        #format.json { render :show, status: :created, location: @film }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @film.errors, status: :unprocessable_entity }
@@ -72,7 +66,7 @@ class FilmsController < ApplicationController
   def destroy
     @film.destroy
     respond_to do |format|
-      format.html { redirect_to films_url, notice: "Film was successfully destroyed." }
+      format.html { remove_film_id_from_person(@film.id) }
       format.json { head :no_content }
     end
   end
