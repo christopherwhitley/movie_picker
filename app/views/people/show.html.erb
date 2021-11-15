@@ -3,14 +3,12 @@
 <p>
   <strong>Username:</strong>
   <%= @person.username %><br>
-<h2>Add Films</h2>
-  <%= form_with url: add_film_to_person_path, method: :post, model: @film do |form| %>
-    <%= form.select(:film_id, Film.all.collect {|p| [p.title, p.id]},
-    include_blank: true) %>
-    <%= form.submit %>
-  <% end %>
 
-<%# add_film('1') %>
+  <%#= form_with url: add_film_to_person_path, method: :post, model: @film do |form| %>
+    <%#= form.select(:film_id, Film.all.collect {|p| [p.title, p.id]},
+    include_blank: true) %>
+    <%#= form.submit %>
+  <%# end %>
 
 <%= @person.film_id %>
 <%# @person.update(film_id: add_film)  %>
