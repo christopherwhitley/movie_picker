@@ -47,6 +47,8 @@ class PeopleController < ApplicationController
   end
 end
 
+
+
   # PATCH/PUT /people/1 or /people/1.json
   def update
     respond_to do |format|
