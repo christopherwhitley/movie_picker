@@ -36,19 +36,6 @@ class PeopleController < ApplicationController
     end
   end
 
-  def add_film_to_person
-    respond_to do |format|
-      if logged_in?
-        format.html { redirect_to people_path }
-        current_user.add_film_id_to_person(params[:film_id])
-    else
-      format.html { redirect_to people_url, notice: "Need to login." }
-    end
-  end
-end
-
-
-
   # PATCH/PUT /people/1 or /people/1.json
   def update
     respond_to do |format|
