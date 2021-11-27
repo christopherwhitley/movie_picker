@@ -4,28 +4,17 @@
   <strong>Username:</strong>
   <%= @person.username %><br>
 
-  <%#= form_with url: add_film_to_person_path, method: :post, model: @film do |form| %>
-    <%#= form.select(:film_id, Film.all.collect {|p| [p.title, p.id]},
-    include_blank: true) %>
-    <%#= form.submit %>
-  <%# end %>
 
 <%= @person.film_id %>
-<%# @person.update(film_id: add_film)  %>
-<% list_of_person_ids = @person.film_id %>
 
-<% myfilms = Film.where(id: list_of_person_ids)%>
+<% myfilms = @person.get_person_films_list %>
+
+
 
 <h2>My films</h2>
 
 
-<% allfilms = Film.all.select(:title).map(&:title) %>
-
-<% myfilms = myfilms.map(&:title) %>
-
-<% @intersection = allfilms & myfilms %>
-
-<% @intersection.each do |film| %>
+<% myfilms.each do |film| %>
       <% object = Film.where(title: [film.to_s]) %>
       <% id = object.pluck(:id) %>
       <% title = object.pluck(:title) %>
@@ -33,13 +22,11 @@
 
       <li><%= link_to title, film_path(id) %></li>
 
-    <br>
+    <br/>
 <% end %>
-<%#.join("<br>").html_safe %>
-<br></br>
+<br/><br/>
 
-</p>
-
+<p/>
 
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
