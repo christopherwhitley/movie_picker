@@ -36,3 +36,23 @@
   text-align: center;
 
 }
+
+.matching_films {
+  border-style: solid;
+  border-width: 1px;
+  margin: 5px;
+  padding: 5px;
+  min-height: 100px;
+  overflow: hidden;
+}
+
+.radio_button {
+  float: left;
+}
+.movie_title {
+  float: left;
+}
+.poster_confirmation {
+  float: left;
+  margin: 5px;
+}
