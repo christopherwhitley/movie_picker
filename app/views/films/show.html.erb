@@ -30,19 +30,19 @@
 <div class="recommended">
 <h3>Recommended films</h3>
 
+<!--- BUG BELOW - text.find errors for genres with one film ---->
+
 <div class="recommended-films">
-<%= test = @film.recommended_films %>
+<% test = @film.recommended_films %>
 <% film_object = @film.recommended_films_ids %>
 <% film_object.each do |film| %>
 <%= link_to film, class:'recommended_title' do %>
-  <p class="recommended-poster"><%#= image_tag 'https://image.tmdb.org/t/p/w92' << 'poster_path') %></p>
+<% @thing = test.find { |movie| movie['title'] == film.title } %>
+  <p class="recommended-poster"><%= image_tag 'https://image.tmdb.org/t/p/w92' << (@thing['poster_path']) %></p>
   <p class="recommended-title"><%= film.title%></p>
 <% end %>
 <% end %>
 </div>
-
-
-
   </div>
 
 <%= javascript_pack_tag 'test.js' %>

@@ -17,7 +17,7 @@ def recommended_films
     #recommended_results = nil
     film_genre_match.each do |film|
       results = api.api_call(film.title)
-      titles = results.find { |movie| movie['title'] == film.title && movie['original_language'] == 'en' }
+      titles = results.find { |movie| movie['title'] }
       @myapi << titles
 
       puts 'execute loop'
