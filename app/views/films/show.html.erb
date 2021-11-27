@@ -1,22 +1,19 @@
 <% require 'json' %>
 
+<!--pre><%#= JSON.pretty_generate(response) %><!--/pre-->
+<% film_results = @results %>
 
-<% response = @response.parsed_response %>
+<% matching_titles = film_results.select { |movie| movie['title'] == @filmname} %>
 
-<% results = response["results"]%>
+<% if movie = matching_titles.find { |movie| movie['title'] == @filmname} %>
 
-<% matching_titles = results.select { |movie| movie['title'] == @filmname} %>
-
-<% if movie = results.find { |movie| movie['title'] == @filmname} %>
-
-   <%# Poster %>
    <div class="film_details">
-   <p class="poster"><%= image_tag 'https://image.tmdb.org/t/p/w300' << (movie['poster_path']) %></p></br>
+   <p class="poster"><%= image_tag 'https://image.tmdb.org/t/p/w300' << (movie['poster_path']) %></p><br/>
    <h2> <%= movie['title'] %></h2>
    <h4>Description</h4>
    <%= movie['overview'] %> <br />
 
-   <%#= movie['id']  %><br /><br />
+   <br /><br />
    <%= button_tag 'Show more info', type: 'button', id: 'show-hide' %>
 
      <h4 class="release">Release Date (U.S.)</h4>
@@ -24,7 +21,7 @@
 
    <h4 class="release">Genre</h4>
    <%= link_to @film.genre.name, genre_path(@film.genre), class: "release"%>
-   </div></br>
+   </div><br/>
 <% else  %>
 <% 'Film not found' %>
 <% end %>
@@ -33,24 +30,13 @@
 <div class="recommended">
 <h3>Recommended films</h3>
 
-
-
-  <% genre_match = index.select { |film| film.genre_id == @film.genre_id } %>
-  <% genre_match.each do |film| %>
-    <% film.title  %>
-    <% query = {"query" => film.title} %>
-    <% response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US",
-      :query => query,
-      format: :json)  %>
-      <% response = response.parsed_response %>
-      <% results = response["results"]%>
-      <% film_results = results.find { |film| film['title']} %>
-        <%= link_to film do %>
+  <%= films = @film.recommended_films %>
+        <%#= link_to test do %>
+        <% films.each do |film| %>
         <div class="recommended-films">
-          <p class="recommended-poster"><%= image_tag 'https://image.tmdb.org/t/p/w92' << (film_results['poster_path']) %></p>
-          <p class="recommended-title"><%= film.title %></p>
+            <p class="recommended-poster"><%= image_tag 'https://image.tmdb.org/t/p/w92' << (film['poster_path']) %></p>
+          <p class="recommended-title"><%= film['title'] %></p>
         </div>
-        <% end %>
   <% end %>
   </div>
 
