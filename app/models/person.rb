@@ -16,6 +16,18 @@ class Person < ApplicationRecord
       #  @person[:film_id] << (id.to_s)
       #  @person.save
 
+  def get_person_films_list
+    myfilmslist = Film.where(id: film_id)
+    myfilms = myfilmslist.map(&:title)
+
+    myfilms.each do |film|
+        object = Film.where(title: [film.to_s])
+        id = object.pluck(:id)
+        title = object.pluck(:title)
+        title = title.join()
+      end
+  end
+
   def remove_film_id_from_person(id)
     id = id.to_s
     if film_id.include? id
