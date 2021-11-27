@@ -17,11 +17,7 @@ class FilmsController < ApplicationController
   # GET /films/1 or /films/1.json
   def show
     @filmname = @film.title
-
-    query = {"query" => @filmname}
-    @response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US",
-      :query => query,
-      format: :json)
+    api_call(@film.title)
   end
 
   # GET /films/new
