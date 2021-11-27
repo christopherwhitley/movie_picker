@@ -1,23 +1,30 @@
-<h3>Multiple films found! Confirm which film you would like to select</h3>
+<h3> Multiple films found! Confirm which film you would like to select <h3/>
 
 <% response = @response.parsed_response %>
 
-<% results = response["results"] %>
-<% matching_titles = results.select { |movie| movie['title'].include? @film_title} %>
+<% results = response["results"]%>
+<% filtered_results =  results.select {|language| language['original_language'] == 'en'} %>
 
-
+<% matching_titles = filtered_results %>
 
 <div>
 <%= form_with(url: new_film_path) do |form| %>
   <% matching_titles.each do |movie| %>
-  </br>
-  <%= form.radio_button "film[title]", movie['title'] %>
+  <br/>
+  <div class="matching_films">
+  <%= form.radio_button "film[title]", movie['title'], class: 'radio_button' %>
+  <% unless movie['poster_path'].to_s.strip.empty? %>
+    <%= image_tag 'https://image.tmdb.org/t/p/w154' << movie['poster_path'].to_s, class: 'poster_confirmation' %>
+  <% end %>
+  <h3> <%= form.label "film[title]", movie['title'], style: 'display: inline-block', class: 'movie_title' %> </h3><br/><br/>
+  <%= form.label :release_date, movie['release_date'], style: 'display: inline-block'  %><br><br>
+  <%= movie['overview'] %>
   <%= form.hidden_field "film[genre_id]", value: @film_genre_id%>
   <%= form.hidden_field "film[description]", value: @film_description %>
-  <%= form.label "film[title]", movie['title'], style: 'display: inline-block'  %>
-  <%= form.label :release_date, movie['release_date'], style: 'display: inline-block'  %>
+
+  </div>
 <% end %>
-<br><br>
+<br/><br/>
 <%= form.submit "Save" %>
 <% end %>
 </div>
