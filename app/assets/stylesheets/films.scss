@@ -16,16 +16,21 @@
   clear: both;
   width: 100%;
 }
-.recommended-films {
-  width: 100%;
+.recommended-section {
+}
+.recommended_film {
+  display: inline-block;
   margin-right: 5px;
+  width: 120px;
+  vertical-align: top;
 }
 .recommended-poster {
   margin-bottom: 0px;
+
 }
 .recommended-title {
-  margin-top: 0px;
-  max-width: 100%;
+  word-wrap: break-word;
+  margin: 5px;
 }
 .show-films-links {
   float: left;
