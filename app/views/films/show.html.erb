@@ -30,20 +30,20 @@
 <div class="recommended">
 <h3>Recommended films</h3>
 
-<div class="recommended-films">
+<div class="recommended-section">
 <% test = @film.recommended_films %>
 <% film_object = @film.recommended_films_ids %>
 <% film_object.each do |film| %>
-  <%= link_to film, class:'recommended_title' do %>
   <% if film.title != @film.title %>
-    <% poster = @film.get_recommended_film_poster(film.title, test) %>
+  <%= link_to film, class:'recommended_film' do %>
+      <% poster = @film.get_recommended_film_poster(film.title, test) %>
         <p class="recommended-poster"><%= image_tag 'https://image.tmdb.org/t/p/w92' << (poster) %></p>
         <p class="recommended-title"><%= film.title%></p>
         <% end %>
       <% end %>
     <% end %>
 </div>
-  </div>
+</div>
 
 <%= javascript_pack_tag 'test.js' %>
 <div class="show-films-links">
