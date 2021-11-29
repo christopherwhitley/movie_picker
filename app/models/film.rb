@@ -25,19 +25,48 @@ end
 
 def recommended_films_ids
   allfilms = Film.all
-  film_genre_match = @allFilms.select { |movie| movie.genre_id == genre_id }
+  film_genre_match = allfilms.select { |movie| movie.genre_id == genre_id }
   return film_genre_match
 end
 
-def get_recommended_film_poster(film_name, response)
+def get_recommended_film_poster(film_name)
   #Returns an array of Film objects
-  @results = []
-  @poster = nil
 
+  @poster = nil
+  response = recommended_films
   #For each film object in the array, find, in our api_call results, the first result that matches the title in the results with the title of our film object
-    result = response.find { |movie| movie['title'] == film_name }
-    @poster = result['poster_path']
+  result = response.find { |movie| movie['title'] == film_name }
+  @poster = result['poster_path']
+  return @poster
+
+  end
+
+  def get_film_poster(film_name)
+    @poster = nil
+    api = ApiCall.new
+    response = api.api_call(film_name)
+
+    result = response.find {|movie| movie['title'] == film_name}
+    @poster = result["poster_path"]
     return @poster
+  end
+
+  def get_film_description(film_name)
+    api = ApiCall.new
+    response = api.api_call(film_name)
+
+    result = response.find {|movie| movie['title'] == film_name}
+    description = result["overview"]
+    return description
+  end
+
+  def get_film_release_date(film_name)
+    api = ApiCall.new
+    response = api.api_call(film_name)
+    result = response.find {|movie| movie['title'] == film_name}
+    release_date = result["release_date"]
+    return release_date
+
   end
 
 end
