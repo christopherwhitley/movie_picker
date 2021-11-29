@@ -1,42 +1,41 @@
 <% require 'json' %>
 
 <!--pre><%#= JSON.pretty_generate(response) %><!--/pre-->
-<% film_results = @results %>
 
-<% matching_titles = film_results.select { |movie| movie['title'] == @filmname} %>
 
-<% if movie = matching_titles.find { |movie| movie['title'] == @filmname} %>
+<% poster = @film.get_film_poster(@film.title) %>
+<% description = @film.get_film_description(@film.title) %>
+<% release_date = @film.get_film_release_date(@film.title) %>
 
    <div class="film_details">
-   <p class="poster"><%= image_tag 'https://image.tmdb.org/t/p/w300' << (movie['poster_path']) %></p><br/>
-   <h2> <%= movie['title'] %></h2>
+   <p class="poster"><%= image_tag 'https://image.tmdb.org/t/p/w300' << (poster) %></p><br/>
+   <h2> <%= @film.title %></h2>
    <h4>Description</h4>
-   <%= movie['overview'] %> <br />
+   <%= description %> <br />
 
    <br /><br />
    <%= button_tag 'Show more info', type: 'button', id: 'show-hide' %>
 
      <h4 class="release">Release Date (U.S.)</h4>
-     <span class='release'><%= movie['release_date'] %></span>
+     <span class='release'><%= release_date %></span>
 
    <h4 class="release">Genre</h4>
    <%= link_to @film.genre.name, genre_path(@film.genre), class: "release"%>
    </div><br/>
-<% else  %>
-<% 'Film not found' %>
-<% end %>
+<%# else  %>
+<%# 'Film not found' %>
+<%# end %>
 
 </br></br></br>
 <div class="recommended">
 <h3>Recommended films</h3>
 
 <div class="recommended-section">
-<% test = @film.recommended_films %>
 <% film_object = @film.recommended_films_ids %>
 <% film_object.each do |film| %>
   <% if film.title != @film.title %>
   <%= link_to film, class:'recommended_film' do %>
-      <% poster = @film.get_recommended_film_poster(film.title, test) %>
+      <% poster = @film.get_recommended_film_poster(film.title) %>
         <p class="recommended-poster"><%= image_tag 'https://image.tmdb.org/t/p/w92' << (poster) %></p>
         <p class="recommended-title"><%= film.title%></p>
         <% end %>
