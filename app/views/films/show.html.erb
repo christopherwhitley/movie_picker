@@ -2,13 +2,16 @@
 
 <!--pre><%#= JSON.pretty_generate(response) %><!--/pre-->
 
-
 <% poster = @film.get_film_poster(@film.title) %>
 <% description = @film.get_film_description(@film.title) %>
 <% release_date = @film.get_film_release_date(@film.title) %>
 
+<div class="overlay" id="overlay">
+  <p class="overlay_poster" id="overlay_poster"><%= image_tag 'https://image.tmdb.org/t/p/w500' << (poster) %></p>
+</div>
+
    <div class="film_details">
-   <p class="poster"><%= image_tag 'https://image.tmdb.org/t/p/w300' << (poster) %></p><br/>
+   <p class="poster" id="poster"><%= image_tag 'https://image.tmdb.org/t/p/w300' << (poster), id: "poster" %></p><br/>
    <h2> <%= @film.title %></h2>
    <h4>Description</h4>
    <%= description %> <br />
@@ -22,9 +25,6 @@
    <h4 class="release">Genre</h4>
    <%= link_to @film.genre.name, genre_path(@film.genre), class: "release"%>
    </div><br/>
-<%# else  %>
-<%# 'Film not found' %>
-<%# end %>
 
 </br></br></br>
 <div class="recommended">
@@ -36,7 +36,7 @@
   <% if film.title != @film.title %>
   <%= link_to film, class:'recommended_film' do %>
       <% poster = @film.get_recommended_film_poster(film.title) %>
-        <p class="recommended-poster"><%= image_tag 'https://image.tmdb.org/t/p/w92' << (poster) %></p>
+        <p class="recommended-poster"><%= image_tag 'https://image.tmdb.org/t/p/w92' << (poster), id: 'zoom' %></p>
         <p class="recommended-title"><%= film.title%></p>
         <% end %>
       <% end %>
