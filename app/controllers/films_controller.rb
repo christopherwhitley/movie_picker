@@ -69,16 +69,11 @@ class FilmsController < ApplicationController
 
   def multiple_film_results
     #Add logic to process film form results
-
-
     respond_to do |format|
       @film_title = params[:film][:title]
       @film_description = params[:film][:description]
       @film_genre_id = params[:film][:genre_id]
-      query = {"query" => @film_title}
-      @response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US",
-        :query => query,
-        format: :json)
+      @response = Film.get_film_confirmation(@film_title)
       format.html { render 'confirmation.html' }
 
     end
