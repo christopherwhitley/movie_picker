@@ -1,15 +1,8 @@
 <h3> Multiple films found! Confirm which film you would like to select <h3/>
 
-<% response = @response.parsed_response %>
-
-<% results = response["results"]%>
-<% filtered_results =  results.select {|language| language['original_language'] == 'en'} %>
-
-<% matching_titles = filtered_results %>
-
 <div>
 <%= form_with(url: new_film_path) do |form| %>
-  <% matching_titles.each do |movie| %>
+  <% @response.each do |movie| %>
   <br/>
   <div class="matching_films">
   <%= form.radio_button "film[title]", movie['title'], class: 'radio_button' %>
