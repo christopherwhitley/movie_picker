@@ -36,7 +36,7 @@
   <% if film.title != @film.title %>
   <%= link_to film, class:'recommended_film' do %>
       <% poster = @film.get_recommended_film_poster(film.title) %>
-        <p class="recommended-poster"><%= image_tag 'https://image.tmdb.org/t/p/w92' << (poster), id: 'zoom' %></p>
+        <p class="recommended-poster"><%= image_tag 'https://image.tmdb.org/t/p/w92' << (poster)%></p>
         <p class="recommended-title"><%= film.title%></p>
         <% end %>
       <% end %>
