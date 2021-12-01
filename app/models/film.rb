@@ -66,7 +66,13 @@ def get_recommended_film_poster(film_name)
     result = response.find {|movie| movie['title'] == film_name}
     release_date = result["release_date"]
     return release_date
+  end
 
+  def self.get_film_confirmation(film_name)
+    api = ApiCall.new
+    response = api.api_call(film_name)
+    @results = response.select {|language| language['original_language'] == 'en'}
+    return @results
   end
 
 end
