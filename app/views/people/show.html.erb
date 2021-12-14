@@ -5,8 +5,6 @@
   <%= @person.username %><br>
 
 
-<%= @person.film_id %>
-
 <% myfilms = @person.get_person_films_list %>
 
 
@@ -16,11 +14,22 @@
 
 <% myfilms.each do |film| %>
       <% object = Film.where(title: [film.to_s]) %>
-      <% id = object.pluck(:id) %>
+      <% @id = object.pluck(:id) %>
       <% title = object.pluck(:title) %>
       <% title = title.join() %>
 
-      <li><%= link_to title, film_path(id) %></li>
+      <li><%= link_to title, film_path(@id) %></li>
+
+
+
+      <%= form_for :watch do |f| %>
+      <%= f.hidden_field :watched_person_id, :value => @person.id %>
+      <%= f.hidden_field :watched_film_id, :value => @id%>
+      <%= f.hidden_field :watched, :value => true %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+        <%= f.submit%>
+        <% f.label :name%>
+      <% end %>
 
     <br/>
 <% end %>
