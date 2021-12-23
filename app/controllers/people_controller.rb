@@ -1,6 +1,11 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: %i[ show edit update destroy ]
 
+  def get_watched_films(person_id, film_id)
+    Watch.film_watched(person_id, film_id)
+  end
+
+  helper_method :get_watched_films
   # GET /people or /people.json
   def index
     @people = Person.all
@@ -58,11 +63,7 @@ class PeopleController < ApplicationController
     end
   end
 
-  def add_film(id)
 
-  end
-
-  helper_method :add_film
 
 
 

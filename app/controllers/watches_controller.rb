@@ -4,7 +4,7 @@ class WatchesController < ApplicationController
     @watch = Watch.new
   end
 
-def create
+  def create
   @watch = Watch.new(watch_params)
 
   respond_to do |format|
@@ -23,6 +23,8 @@ end
 
   end
 end
+
+
 end
 
 private

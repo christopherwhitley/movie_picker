@@ -2,25 +2,26 @@
 
 <p>
   <strong>Username:</strong>
-  <%= @person.username %><br>
+  <%= @person.username %><br/>
 
 
 <% myfilms = @person.get_person_films_list %>
 
-
-
 <h2>My films</h2>
 
-
 <% myfilms.each do |film| %>
+      <%#  %>
       <% object = Film.where(title: [film.to_s]) %>
       <% @id = object.pluck(:id) %>
       <% title = object.pluck(:title) %>
       <% title = title.join() %>
 
-      <li><%= link_to title, film_path(@id) %></li>
+      <%= link_to title, film_path(@id) %>
 
-
+      <% watched = get_watched_films(@person.id, @id)  %>
+      <% if watched == true %>
+        <%= image_tag "watched-checkmark.png", size: '16', class: 'watched' %>
+      <% end %>
 
       <%= form_for :watch do |f| %>
       <%= f.hidden_field :watched_person_id, :value => @person.id %>
