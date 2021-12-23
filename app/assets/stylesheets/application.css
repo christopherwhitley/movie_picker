@@ -17,3 +17,7 @@
 body {
   background-color: #EAFBF4;
 }
+.watched {
+  display: inline-block;
+  margin-left: 5px;
+}
