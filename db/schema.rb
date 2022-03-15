@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_115705) do
+ActiveRecord::Schema.define(version: 2021_12_09_145428) do
 
   create_table "films", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.integer "genre_id"
+    t.integer "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["genre_id"], name: "index_films_on_genre_id"
@@ -42,14 +42,14 @@ ActiveRecord::Schema.define(version: 2021_12_12_115705) do
     t.text "film_id", default: "--- []\n"
   end
 
-  create_table "watches", force: :cascade do |t|
-    t.integer "watched_film_id"
-    t.integer "watched_person_id"
+  create_table "watched_tables", force: :cascade do |t|
+    t.integer "film_id"
+    t.integer "person_id"
     t.boolean "watched"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["watched_film_id"], name: "index_watches_on_watched_film_id"
-    t.index ["watched_person_id"], name: "index_watches_on_watched_person_id"
+    t.index ["film_id"], name: "index_watched_tables_on_film_id"
+    t.index ["person_id"], name: "index_watched_tables_on_person_id"
   end
 
   add_foreign_key "films", "genres"
