@@ -63,6 +63,7 @@ class FilmsController < ApplicationController
     @film.destroy
     respond_to do |format|
       format.html { remove_film_id_from_person(@film.id) }
+      format.html { render :show }
       format.json { head :no_content }
     end
   end

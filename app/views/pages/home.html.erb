@@ -39,6 +39,35 @@
   <%= button_to "logout", pages_logout_path %>
 
   <% elsif !logged_in?%>
-    <%= "Not logged in" %>
+    <%= button_to "Login", pages_login_path %>
   <% end %>
 </div>
+<br>
+
+<section class="questions">
+  <div class="title">
+    <h2>FAQ</h2>
+  </div>
+  <div class="section-center">
+    <article class="question">
+      <div class="question-title">
+        <p>How does Movie Picker work?</p>
+        <button type="button" class="question-btn">Click
+          </button>
+      </div>
+<div class="question-text">
+  <p>Movie Picker allows you to create a personalised list of movies, select one at random and see detailed information about the movie.</p>
+</div>
+    </article>
+    <article class="question">
+      <div class="question-title">
+        <p>How do I add movies to my list?</p>
+        <button type="button" class="question-btn">Click
+          </button>
+      </div>
+<div class="question-text">
+  <p>First, log in (or register if you haven't created an account). Select 'Add a film' to add a film to your personal list. You can view all of your current films by selecting 'Show Films'.</p>
+</div>
+    </article>
+  </div>
+</section>

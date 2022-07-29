@@ -10,7 +10,6 @@
 <h2>My films</h2>
 
 <% myfilms.each do |film| %>
-      <%#  %>
       <% object = Film.where(title: [film.to_s]) %>
       <% @id = object.pluck(:id) %>
       <% title = object.pluck(:title) %>
@@ -19,14 +18,16 @@
       <%= link_to title, film_path(@id) %>
 
       <% watched = get_watched_films(@person.id, @id)  %>
-      <% if watched == true %>
+      <% if watched.present?%>
         <%= image_tag "watched-checkmark.png", size: '16', class: 'watched' %>
-      <% end %>
+        <% end %>
+
+
 
       <%= form_for :watch do |f| %>
-      <%= f.hidden_field :watched_person_id, :value => @person.id %>
-      <%= f.hidden_field :watched_film_id, :value => @id%>
-      <%= f.hidden_field :watched, :value => true %>
+      <%= f.hidden_field :person_id, :value => @person.id %>
+      <%= f.hidden_field :film_id, :value => @id%>
+
       <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
         <%= f.submit%>
         <% f.label :name%>
