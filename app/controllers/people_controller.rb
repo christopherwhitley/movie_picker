@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: %i[ show edit update destroy ]
+  skip_before_action :authorized, only: [:new]
 
   def get_watched_films(person_id, film_id)
     Watch.film_watched(person_id, film_id)
@@ -13,7 +14,7 @@ class PeopleController < ApplicationController
 
   # GET /people/1 or /people/1.json
   def show
-    @person.film_id
+    @person.id
   end
 
   # GET /people/new

@@ -24,7 +24,7 @@
   <div class="field">
     <%= form.label :genre_id %>
     <%= form.select :genre_id, Genre.all.collect {|p| [p.name, p.id]},
-    include_blank: true %>
+    selected: "Action" %>
   </div>
 
 
