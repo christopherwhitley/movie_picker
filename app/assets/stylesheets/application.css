@@ -69,6 +69,31 @@ main {
 }
 /*
 ===============
+Nav bar
+===============
+*/
+.nav {
+  background-color: skyblue;
+  height: 50px;
+  margin: -33px -33px 0 -33px;
+}
+.nav_list {
+  display: inline-block;
+  margin: 15px 30px 0px 15px;
+}
+.nav_list a {
+  color: white;
+}
+.sign_in_status {
+  float: right;
+  margin: 0px 45px 0 0;
+}
+.sign_in_status input {
+  margin-top: 2.5px;
+}
+
+/*
+===============
 Questions
 ===============
 */

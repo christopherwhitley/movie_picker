@@ -1,0 +1,26 @@
+<header class="nav">
+  <div>
+    <nav class="nav">
+      <ul>
+        <h1 class="nav_list"><%=link_to "Home", root_path %></h1>
+        <h1 class="nav_list"><%=link_to "Random Film", randomfilm_path %></h1>
+        
+          <% if logged_in? %>
+            <h1 class="nav_list"><%= link_to "Profile", person_path(current_user.id) %></h1>
+            
+            <div class="sign_in_status">
+              Logged in as: <%= current_user.username %>
+            
+              <%= button_to "Logout", pages_logout_path, method: :get %>
+            
+              <% elsif !logged_in?%>
+                <%= button_to "Login", pages_login_path, method: :get %>
+                <%= button_to "Register", new_person_path, method: :get %>
+          <% end %>
+         
+        </div>
+        </h1>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -30,18 +30,7 @@
     <% end %>
 </div>
 
-<div class="">
 
-
-<% if logged_in? %>
-  Logged in as: <%= current_user.username %>
-
-  <%= button_to "logout", pages_logout_path %>
-
-  <% elsif !logged_in?%>
-    <%= button_to "Login", pages_login_path %>
-  <% end %>
-</div>
 <br>
 
 <section class="questions">
