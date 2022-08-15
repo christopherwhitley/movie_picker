@@ -12,7 +12,6 @@ require 'api.rb'
 @allFilms = nil
 
 def recommended_films
-    byebug
     @allFilms = Film.all
     api = ApiCall.new
     @myapi = []
