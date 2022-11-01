@@ -1,6 +1,6 @@
 class FilmsController < ApplicationController
   before_action :set_film, only: %i[ show edit update destroy]
-  before_action :authorized, only: %i[ new ]
+  before_action :authorized, only: %i[ new show index]
 
   def rand
     @film = Film.order(Arel.sql('RANDOM()')).first
