@@ -14,19 +14,13 @@
  *= require_self
  */
 
- */
-
-
-
 body {
-  background-color: #EAFBF4;
+  background-color: #eafbf4;
 }
 .watched {
   display: inline-block;
   margin-left: 5px;
 }
-
-
 
 /*  global classes */
 
@@ -141,7 +135,7 @@ Questions
   margin-bottom: 0;
 }
 /* hide text */
- .question-text {
+.question-text {
   display: none;
 }
 .show-text .question-text {
@@ -156,5 +150,3 @@ Questions
 .show-text .plus-icon {
   display: none;
 }
-
-*/

@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2022_03_22_165140) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "films", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
+    t.text "title"
+    t.text "description"
     t.integer "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -27,18 +30,18 @@ ActiveRecord::Schema.define(version: 2022_03_22_165140) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
+    t.text "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "people", force: :cascade do |t|
-    t.string "name"
+    t.text "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
+    t.text "username"
+    t.text "email"
+    t.text "password_digest"
     t.text "film_id", default: "--- []\n"
   end
 

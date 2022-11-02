@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: %i[ show edit update destroy ]
-  skip_before_action :authorized, only: [:new]
+  #skip_before_action :authorized, only: [:new]
 
   def get_watched_films(person_id, film_id)
     Watch.film_watched(person_id, film_id)
