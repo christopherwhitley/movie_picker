@@ -10,11 +10,14 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   host: localhost
+  port: 5432
 
 development:
   <<: *default
   database: sample_postgres_development
   encoding: unicode
+  host: localhost
+  port: 5432
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,8 +26,15 @@ test:
   <<: *default
   database: sample_postgres_test
   encoding: unicode
+  host: localhost
 
 production:
   <<: *default
   database: sample_postgres_production
   encoding: unicode
+  host: localhost
+  port: 5432
+
+staging:
+  host: localhost
+  port: 5432
