@@ -11,6 +11,8 @@ default: &default
   timeout: 5000
   host: localhost
   port: 5432
+  username: moviepicker
+  password: <%= ENV['moviepicker_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
@@ -18,6 +20,8 @@ development:
   encoding: unicode
   host: localhost
   port: 5432
+  username: moviepicker
+  password: <%= ENV['moviepicker_DATABASE_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -33,7 +37,9 @@ production:
   database: sample_postgres_production
   encoding: unicode
   host: localhost
-  port: 5432
+  port: 5433
+  username: moviepicker
+  password: <%= ENV['moviepicker_DATABASE_PASSWORD'] %>
 
 staging:
   host: localhost
