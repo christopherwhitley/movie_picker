@@ -16,7 +16,7 @@ development:
   <<: *default
   database: sample_postgres_development
   encoding: unicode
-  host: "localhost"
+  host: localhost
   username: moviepicker
   password: <%= ENV['moviepicker_DATABASE_PASSWORD'] %>
 
@@ -31,6 +31,7 @@ test:
 
 production:
   <<: *default
+  host: postgres
   encoding: unicode
   url: <%= ENV['DATABASE_URL'] %>
 
