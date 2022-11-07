@@ -31,6 +31,7 @@ test:
 
 production:
   <<: *default
+  url: <%= ENV['database-1.cvydfq6d0x5t.eu-west-2.rds.amazonaws.com'] %>
   database: <%= ENV['database-1'] %>
   encoding: unicode
   host: <%= ENV['database-1.cvydfq6d0x5t.eu-west-2.rds.amazonaws.com'] %>
