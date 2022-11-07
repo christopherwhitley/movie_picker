@@ -31,7 +31,7 @@ test:
 
 production:
   <<: *default
-  host: postgres
+  host: localhost
   encoding: unicode
   url: <%= ENV['DATABASE_URL'] %>
 
