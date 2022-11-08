@@ -29,7 +29,7 @@ production:
   <<: *default
   host: localhost
   encoding: unicode
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['movie-picker.cvydfq6d0x5t.eu-west-2.rds.amazonaws.com'] %>
 
 staging:
   <<: *default
