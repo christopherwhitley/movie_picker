@@ -1,5 +1,5 @@
 current directory: /Users/chriswhitley/movie-picker/movie_picker/vendor/cache/ruby/3.0.0/gems/pg-1.4.4/ext
-/Users/chriswhitley/.rvm/rubies/ruby-3.0.4/bin/ruby -I /Users/chriswhitley/.rvm/rubies/ruby-3.0.4/lib/ruby/3.0.0 -r ./siteconf20221108-22123-95urpa.rb extconf.rb
+/Users/chriswhitley/.rvm/rubies/ruby-3.0.4/bin/ruby -I /Users/chriswhitley/.rvm/rubies/ruby-3.0.4/lib/ruby/3.0.0 -r ./siteconf20221108-34089-961uco.rb extconf.rb
 Calling libpq with GVL unlocked
 checking for pg_config... yes
 Using config values from /usr/local/bin/pg_config
@@ -56,5 +56,5 @@ ld: warning: -undefined dynamic_lookup may not work with chained fixups
 
 current directory: /Users/chriswhitley/movie-picker/movie_picker/vendor/cache/ruby/3.0.0/gems/pg-1.4.4/ext
 make DESTDIR\= install
-/usr/local/opt/coreutils/bin/ginstall -c -m 0755 pg_ext.bundle ./.gem.20221108-22123-i3q44v
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 pg_ext.bundle ./.gem.20221108-34089-sq7o6b
 installing pg_ext libraries

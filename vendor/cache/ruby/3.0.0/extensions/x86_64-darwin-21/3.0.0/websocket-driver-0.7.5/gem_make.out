@@ -1,5 +1,5 @@
 current directory: /Users/chriswhitley/movie-picker/movie_picker/vendor/cache/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
-/Users/chriswhitley/.rvm/rubies/ruby-3.0.4/bin/ruby -I /Users/chriswhitley/.rvm/rubies/ruby-3.0.4/lib/ruby/3.0.0 -r ./siteconf20221108-22123-8nemes.rb extconf.rb
+/Users/chriswhitley/.rvm/rubies/ruby-3.0.4/bin/ruby -I /Users/chriswhitley/.rvm/rubies/ruby-3.0.4/lib/ruby/3.0.0 -r ./siteconf20221108-34089-eqlfk0.rb extconf.rb
 creating Makefile
 
 current directory: /Users/chriswhitley/movie-picker/movie_picker/vendor/cache/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
@@ -13,4 +13,4 @@ ld: warning: -undefined dynamic_lookup may not work with chained fixups
 
 current directory: /Users/chriswhitley/movie-picker/movie_picker/vendor/cache/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
 make DESTDIR\= install
-/usr/local/opt/coreutils/bin/ginstall -c -m 0755 websocket_mask.bundle ./.gem.20221108-22123-v61ck5
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 websocket_mask.bundle ./.gem.20221108-34089-zarghu
