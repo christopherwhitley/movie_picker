@@ -28,6 +28,7 @@ test:
 production:
   <<: *default
   host: localhost
+  database: production
   encoding: unicode
   url: <%= ENV['movie-picker.cvydfq6d0x5t.eu-west-2.rds.amazonaws.com'] %>
 

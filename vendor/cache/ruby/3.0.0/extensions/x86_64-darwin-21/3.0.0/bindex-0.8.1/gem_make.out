@@ -1,0 +1,16 @@
+current directory: /Users/chriswhitley/movie-picker/movie_picker/vendor/cache/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/chriswhitley/.rvm/rubies/ruby-3.0.4/bin/ruby -I /Users/chriswhitley/.rvm/rubies/ruby-3.0.4/lib/ruby/3.0.0 -r ./siteconf20221108-98930-33rx88.rb extconf.rb
+creating Makefile
+
+current directory: /Users/chriswhitley/movie-picker/movie_picker/vendor/cache/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= clean
+
+current directory: /Users/chriswhitley/movie-picker/movie_picker/vendor/cache/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\=
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+ld: warning: -undefined dynamic_lookup may not work with chained fixups
+
+current directory: /Users/chriswhitley/movie-picker/movie_picker/vendor/cache/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20221108-98930-a458vk/skiptrace/internal
