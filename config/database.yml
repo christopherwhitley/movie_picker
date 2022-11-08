@@ -7,7 +7,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%=ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
@@ -30,7 +30,7 @@ production:
   host: localhost
   database: postgres
   encoding: unicode
-  url: <%= ENV['movie-picker.cvydfq6d0x5t.eu-west-2.rds.amazonaws.com'] %>
+  url: <%=ENV['movie-picker.cvydfq6d0x5t.eu-west-2.rds.amazonaws.com'] %>
 
 staging:
   <<: *default
