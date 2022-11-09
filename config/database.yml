@@ -30,9 +30,8 @@ production:
   host: localhost
   database: postgres
   encoding: unicode
-  port: <%= ENV['DATABASE_PORT'] %>
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  username: <%=ENV['DATABASE_USERNAME'] %>
+  password: <%=ENV['DATABASE_PASSWORD'] %>
 
 staging:
   <<: *default
