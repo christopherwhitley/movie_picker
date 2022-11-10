@@ -29,8 +29,7 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
-  host: movie-picker-db.cvydfq6d0x5t.eu-west-2.rds.amazonaws.com
+  url: <%=ENV['DATABASE_URL'] %>
   username: postgres
   password: heisenberg171293
 
