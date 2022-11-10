@@ -30,8 +30,7 @@ production:
   host: localhost
   database: postgres
   encoding: unicode
-  username: <%=ENV['DATABASE_USERNAME'] %>
-  password: <%=ENV['DATABASE_PASSWORD'] %>
+  url: movie-picker-db.cvydfq6d0x5t.eu-west-2.rds.amazonaws.com
 
 staging:
   <<: *default
