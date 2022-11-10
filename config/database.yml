@@ -29,10 +29,7 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
-  database: postgres
-  encoding: unicode
-  url: movie-picker-db.cvydfq6d0x5t.eu-west-2.rds.amazonaws.com
+  url: <%= ENV['DATABASE_URL'] %>
 
 staging:
   <<: *default
