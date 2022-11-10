@@ -13,6 +13,7 @@ default: &default
 development:
   <<: *default
   database: sample_postgres_development
+  adapter: postgresql
   encoding: unicode
   host: localhost
 
@@ -24,10 +25,11 @@ test:
   database: sample_postgres_test
   encoding: unicode
   host: localhost
+  adapter: postgresql
 
 production:
   <<: *default
-  host: localhost
+  adapter: postgresql
   database: postgres
   encoding: unicode
   url: movie-picker-db.cvydfq6d0x5t.eu-west-2.rds.amazonaws.com
