@@ -30,6 +30,9 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
+  database: movie_picker_db
+  username: postgres
+  password: heisenberg171293
 
 staging:
   <<: *default
