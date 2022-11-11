@@ -1,0 +1,17 @@
+2022-11-11 10:35:35.659 GMT [37072] LOG:  starting PostgreSQL 15.0 on aarch64-apple-darwin21.6.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.102), 64-bit
+2022-11-11 10:35:35.661 GMT [37072] LOG:  listening on IPv6 address "::1", port 5432
+2022-11-11 10:35:35.661 GMT [37072] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-11-11 10:35:35.662 GMT [37072] FATAL:  lock file "/tmp/.s.PGSQL.5432.lock" already exists
+2022-11-11 10:35:35.662 GMT [37072] HINT:  Is another postmaster (PID 35793) using socket file "/tmp/.s.PGSQL.5432"?
+2022-11-11 10:35:35.662 GMT [37072] LOG:  database system is shut down
+2022-11-11 10:35:42.814 GMT [37081] LOG:  starting PostgreSQL 15.0 on aarch64-apple-darwin21.6.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.102), 64-bit
+2022-11-11 10:35:42.816 GMT [37081] LOG:  listening on IPv6 address "::1", port 5432
+2022-11-11 10:35:42.816 GMT [37081] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-11-11 10:35:42.817 GMT [37081] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-11-11 10:35:42.821 GMT [37084] LOG:  database system was shut down at 2022-11-11 10:35:26 GMT
+2022-11-11 10:35:42.825 GMT [37081] LOG:  database system is ready to accept connections
+2022-11-11 10:40:42.819 GMT [37082] LOG:  checkpoint starting: time
+2022-11-11 10:40:47.261 GMT [37082] LOG:  checkpoint complete: wrote 47 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.434 s, sync=0.003 s, total=4.442 s; sync files=11, longest=0.001 s, average=0.001 s; distance=272 kB, estimate=272 kB
+2022-11-11 10:46:46.967 GMT [43008] FATAL:  lock file "postmaster.pid" already exists
+2022-11-11 10:46:46.967 GMT [43008] HINT:  Is another postmaster (PID 37081) running in data directory "/usr/local/var/run/postgresql"?
+2022-11-11 10:49:07.411 GMT [43300] FATAL:  database "chriswhitley" does not exist
