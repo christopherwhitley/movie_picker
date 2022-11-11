@@ -31,17 +31,18 @@ class PagesController < ApplicationController
  def login
    if params['username']
      user = Person.find_by_username(params['username'])
-     @valid = user.authenticate(params['password'])
-     if @valid
-       session[:user_id] = user.id
-       redirect_to '/'
+     if user != nil
+      @valid = user.authenticate(params['password'])
+      if @valid
+        session[:user_id] = user.id
+        redirect_to '/'
+      else 
+        flash.alert = 'Username or password incorrect!'
+     end
    else
      flash.alert = 'Username or password incorrect!'
    end
+   end
 
  end
-
-
-
-end
 end

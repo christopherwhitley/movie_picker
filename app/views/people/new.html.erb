@@ -1,10 +1,10 @@
 <h1>New Person</h1>
 
-<% if !flash.empty? and !flash.alert.empty?  %>
-  <% flash.alert.each do |error| %>
-  <div class="alert error"> <%= error %></div>
-<% end %>
-<% end %>
+<%# if !flash.empty? and !flash.alert.empty?  %>
+  <%# flash.alert.each do |error| %>
+  <div class="alert error"> <%#= error %></div>
+<%# end %>
+<%# end %>
 <%= form_for(@person) do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username, placeholder: :username  %>
