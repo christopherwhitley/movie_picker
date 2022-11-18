@@ -7,6 +7,7 @@ class Person < ApplicationRecord
     end
 
   has_secure_password
+  validates :password, length: { in: 8..20 }, presence: true
   validates :username, :email, uniqueness: true
 
 #Method of a Class
