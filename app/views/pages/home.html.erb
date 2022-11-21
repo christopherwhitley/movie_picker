@@ -14,13 +14,14 @@
     </div>
     <% end %>
 
+  <% if logged_in? %>
   <%= link_to person_path(current_user.id), class: "home-button" do %>
     <div class="home-button-text">
       <h3>Show Movies</h3>
-      <p>Show all films</p>
+      <p>Show all my films</p>
     </div>
     <% end %>
-
+  <% end %>
 
     <%= link_to randomfilm_path, class: "home-button" do %>
     <div class="home-button-text">

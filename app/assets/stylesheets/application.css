@@ -110,9 +110,9 @@ Questions
 }
 .question {
   background: var(--clr-white);
-  border: darkgray;
+  border: 2px solid var(--clr-black);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
-  box-shadow: var(--light-shadow);
   padding: 1.5rem 1.5rem 0 1.5rem;
   width: 50%;
 }
