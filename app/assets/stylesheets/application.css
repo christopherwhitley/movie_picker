@@ -92,11 +92,11 @@ Questions
 ===============
 */
 .questions {
-  width: 60%;
+  /*width: 60%;*/
   align-content: center;
   text-align: center;
   align-self: center;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .title {
@@ -106,7 +106,7 @@ Questions
   text-align: center;
 }
 .section-center {
-  margin: 0 0 0 0;
+  width: 50%;
 }
 .question {
   background: var(--clr-white);
@@ -114,7 +114,7 @@ Questions
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
   padding: 1.5rem 1.5rem 0 1.5rem;
-  width: 50%;
+  /*width: 50%;*/
 }
 .question-title {
   display: flex;
