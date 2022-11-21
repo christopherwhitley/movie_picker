@@ -2,21 +2,21 @@
 
 <%= javascript_pack_tag "home" %>
 </head>
-<h2>Film Picker</h2>
+<h2>Movie Picker</h2>
 
 <div class="home-container">
 
     <%= link_to new_film_path, class: "home-button" do %>
 
     <div class="home-button-text">
-      <h3>Add New Film</h3>
+      <h3>Add New Movie</h3>
       <p>Add a new film to list</p>
     </div>
     <% end %>
 
-  <%= link_to films_path, class: "home-button" do %>
+  <%= link_to person_path(current_user.id), class: "home-button" do %>
     <div class="home-button-text">
-      <h3>Show Films</h3>
+      <h3>Show Movies</h3>
       <p>Show all films</p>
     </div>
     <% end %>
@@ -24,7 +24,7 @@
 
     <%= link_to randomfilm_path, class: "home-button" do %>
     <div class="home-button-text">
-      <h3>Random Films</h3>
+      <h3>Random Movie</h3>
       <p>Select a random film from all films</p>
     </div>
     <% end %>
@@ -41,7 +41,7 @@
     <article class="question">
       <div class="question-title">
         <p>How does Movie Picker work?</p>
-        <button type="button" class="question-btn">Click
+        <button type="button" class="question-btn">Show
           </button>
       </div>
 <div class="question-text">
@@ -51,11 +51,11 @@
     <article class="question">
       <div class="question-title">
         <p>How do I add movies to my list?</p>
-        <button type="button" class="question-btn">Click
+        <button type="button" class="question-btn">Show
           </button>
       </div>
 <div class="question-text">
-  <p>First, log in (or register if you haven't created an account). Select 'Add a film' to add a film to your personal list. You can view all of your current films by selecting 'Show Films'.</p>
+  <p>First, log in (or register if you haven't created an account). Select 'Add new movie' to add a film to your personal list. You can view all of your current films by selecting 'Show Movies'.</p>
 </div>
     </article>
   </div>

@@ -91,22 +91,30 @@ Nav bar
 Questions
 ===============
 */
+.questions {
+  width: 60%;
+  align-content: center;
+  text-align: center;
+  align-self: center;
+  margin: auto;
+}
+
 .title {
-  margin-top: 15vh;
-  margin-bottom: 4rem;
 }
 .title h2 {
   color: var(--clr-gold);
   text-align: center;
 }
 .section-center {
-  max-width: var(--fixed-width);
+  margin: 0 0 0 0;
 }
 .question {
   background: var(--clr-white);
+  border: darkgray;
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
   padding: 1.5rem 1.5rem 0 1.5rem;
+  width: 50%;
 }
 .question-title {
   display: flex;
@@ -117,6 +125,7 @@ Questions
 }
 .question-title p {
   margin-bottom: 0;
+  font-weight: bold;
   letter-spacing: var(--spacing);
   color: var(--clr-grey-1);
 }
@@ -130,6 +139,7 @@ Questions
 .question-text {
   padding: 1rem 0 1.5rem 0;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
+  text-align: left;
 }
 .question-text p {
   margin-bottom: 0;
