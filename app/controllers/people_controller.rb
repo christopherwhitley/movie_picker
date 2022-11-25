@@ -21,7 +21,7 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
-    @person = Person.new
+    @person = Person.new(person_params)
   end
 
   # GET /people/1/edit
