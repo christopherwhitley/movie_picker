@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_22_165140) do
+ActiveRecord::Schema.define(version: 2022_11_25_141936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2022_03_22_165140) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.text "film_id", default: "--- []\n"
+    t.integer "film_id", default: [], array: true
   end
 
   create_table "watches", force: :cascade do |t|
