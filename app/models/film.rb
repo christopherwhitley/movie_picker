@@ -2,7 +2,7 @@ class Film < ApplicationRecord
 require 'api.rb'
 
 
-  serialize :film_id, Array
+  has_one :film_id
 
   belongs_to :genre
   has_many :films
@@ -42,7 +42,7 @@ def get_recommended_film_poster(film_name)
     poster = result["poster_path"]
       return poster
       
-  end
+end
 
   def get_film_poster(film_name)
     @poster = nil
