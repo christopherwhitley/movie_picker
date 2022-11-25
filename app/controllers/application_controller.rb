@@ -32,11 +32,11 @@ end
 def add_film_to_person(film_id)
   respond_to do |format|
     if logged_in?
-      format.html { redirect_to people_path }
-      current_user.add_film_id_to_person(film_id)
-  else
-    format.html { redirect_to people_url, notice: "Need to login." }
-  end
+      format.html { redirect_to person_path }
+      current_user.add_film_id_to_person(current_user, film_id)
+    else
+      format.html { redirect_to people_url, notice: "Need to login." }
+    end
 end
 
 def remove_film_id_from_person(id)
