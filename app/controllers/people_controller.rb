@@ -1,5 +1,7 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: %i[ show edit update destroy ]
+  #before_action :authorized, only: %i[ show edit update destroy]
+  before_action :authorize!, only: [:show, :update, :edit, :destroy]
   #skip_before_action :authorized, only: [:new]
 
   def get_watched_films(person_id, film_id)
@@ -65,17 +67,23 @@ class PeopleController < ApplicationController
   end
 
 
-
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
       @person = Person.find(params[:id])
     end
 
+    def authorize!
+      @person = Person.find(params[:id])
+      if @person != current_user
+        flash[:error] = "You don't have access to this section."
+        redirect_to '/'
+      end
+    end
+
     # Only allow a list of trusted parameters through.
     def person_params
       params.require(:person).permit(:username, :password, :salt, :encrypted_password, :email, :film_id)
     end
-  end
+
+end

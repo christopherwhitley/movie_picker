@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
-
   protect_from_forgery with: :exception
-
+  
   #before_action :authorized, except: [:new, :home]
   helper_method :current_user
   helper_method :logged_in?
@@ -46,6 +45,5 @@ def remove_film_id_from_person(id)
     current_user.remove_film_id_from_person(id)
   end
 end
-
 
 end
