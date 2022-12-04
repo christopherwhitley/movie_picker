@@ -3,11 +3,18 @@ class FilmsController < ApplicationController
   before_action :authorized, only: %i[rand new show index]
 
   def rand
-    @film = Film.order(Arel.sql('RANDOM()')).first
-    respond_to do |format|
-      format.html { redirect_to @film }
-    end
+    @film = unwatched_films.order(Arel.sql('RANDOM()')).first
+          respond_to do |format|
+            format.html { redirect_to @film }
+          end
+          
+        end
+
+  def unwatched_films
+    @films = Film.all.where.not(id: Watch.pluck(:film_id))
   end
+
+
   # GET /films or /films.json
   def index
     @films = Film.all
@@ -17,7 +24,6 @@ class FilmsController < ApplicationController
   # GET /films/1 or /films/1.json
   def show
     @filmname = @film.title
-    api_call(@film.title)
   end
 
   # GET /films/new
@@ -33,11 +39,17 @@ class FilmsController < ApplicationController
   # POST /films or /films.json
   def create
     @film = Film.new(film_params)
+    results = api_call(@film.title)
+        @film.poster_path = results[0]
+        @film.description = results[1]
+        @film.release_date = results[2]
     respond_to do |format|
 
       if @film.save
         format.html { add_film_to_person(@film.id) }
         #format.json { render :show, status: :created, location: @film }
+        
+        
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @film.errors, status: :unprocessable_entity }

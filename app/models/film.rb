@@ -6,6 +6,7 @@ require 'api.rb'
 
   belongs_to :genre
   has_many :films
+  has_many :watches
   has_and_belongs_to_many :people
   validates :title, presence: true, uniqueness: true
 
@@ -34,8 +35,6 @@ end
 
 def get_recommended_film_poster(film_name)
   #Returns an array of Film objects
-    
-    @poster = nil
     response = recommended_films
     #For each film object in the array, find, in our api_call results, the first result that matches the title in the results with the title of our film object
     result = response.find { |movie| movie['title'] == film_name }
@@ -45,31 +44,34 @@ def get_recommended_film_poster(film_name)
 end
 
   def get_film_poster(film_name)
-    @poster = nil
-    api = ApiCall.new
-    response = api.api_call(film_name)
+    @film = Film.find_by(title: film_name)
+    if @film.poster_path = ''
+      
+      api = ApiCall.new
+      response = api.api_call(film_name)
 
-    result = response.find {|movie| movie['title'] == film_name}
-      @poster = result["poster_path"]
-      return @poster
+      result = response.find {|movie| movie['title'] == film_name}
+      puts result
+        @poster = result["poster_path"]
+        @film.save_poster_path(@poster, @film)
+        return @poster
+    
+    else
+      return @film.poster_path
+    end
+  end
+
+  def save_poster_path(poster_path, film)
+    @film.poster_path = poster_path
   end
 
 
-  def get_film_description(film_name)
-    api = ApiCall.new
-    response = api.api_call(film_name)
-
-    result = response.find {|movie| movie['title'] == film_name}
-    description = result["overview"]
-    return description
+  def save_film_description(description, film)
+    @film.description = description
   end
 
-  def get_film_release_date(film_name)
-    api = ApiCall.new
-    response = api.api_call(film_name)
-    result = response.find {|movie| movie['title'] == film_name}
-    release_date = result["release_date"]
-    return release_date
+  def save_film_release_date(release_date, film)
+    @film.release_date = release_date
   end
 
   def self.get_film_confirmation(film_name)

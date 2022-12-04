@@ -25,7 +25,16 @@ class ApplicationController < ActionController::Base
       :query => query,
       format: :json)
       response = @response.parsed_response
-      @results = response["results"]
+      result = response["results"]
+      puts result
+      poster_path = result[0]["poster_path"]
+      description = result[0]["overview"]
+      release_date = result[0]["release_date"]
+      return [poster_path, description, release_date] 
+      @film.save_poster_path(poster_path, @film)
+      @film.save_film_description(@result["overview"])
+      release_date = @result["release_date"]
+      @film.save_film_release_date(release_date)
   end
 end
 
