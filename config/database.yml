@@ -16,7 +16,7 @@ development:
   adapter: postgresql
   encoding: unicode
   host: localhost
-  url: <%=ENV['DATABASE_URL'] %>
+  #url: <%=ENV['DATABASE_URL'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -30,14 +30,14 @@ test:
 
 production:
   <<: *default
-  url: <%=ENV['DATABASE_URL'] %>
-  username: postgres
-  password: heisenberg171293
-  database: <%= ENV['RDS_DB_NAME'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOSTNAME'] %>
-  port: <%= ENV['RDS_PORT'] %>
+  #surl: <%=ENV['DATABASE_URL'] %>
+  #username: postgres
+  #password: heisenberg171293
+  #database: <%= ENV['RDS_DB_NAME'] %>
+  #username: <%= ENV['RDS_USERNAME'] %>
+  #password: <%= ENV['RDS_PASSWORD'] %>
+  #host: <%= ENV['RDS_HOSTNAME'] %>
+  #port: <%= ENV['RDS_PORT'] %>
 
 staging:
   <<: *default
