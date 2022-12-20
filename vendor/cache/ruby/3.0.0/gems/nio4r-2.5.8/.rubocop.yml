@@ -50,8 +50,9 @@ Metrics/ClassLength:
   Max: 128
 
 Metrics/MethodLength:
+  Enabled: false
   CountComments: false
-  Max: 50
+  Max: 1000
 
 Metrics/CyclomaticComplexity:
   Max: 15

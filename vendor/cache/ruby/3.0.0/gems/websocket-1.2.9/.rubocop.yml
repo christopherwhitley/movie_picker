@@ -36,7 +36,9 @@ Metrics/LineLength:
 
 # Target: 10
 Metrics/MethodLength:
-  Max: 18
+  Enabled: false
+  DisabledByDefault: true
+  Max: 1000
   Exclude:
     - lib/websocket/frame/handler/handler75.rb
 

@@ -1,26 +1,26 @@
 AllCops:
   Exclude:
     # Exclude .gemspec files because they are generally auto-generated
-    - '*.gemspec'
+    - "*.gemspec"
     # Exclude vendored folders
-    - 'tmp/**/*'
-    - 'vendor/**/*'
+    - "tmp/**/*"
+    - "vendor/**/*"
   NewCops: enable
 
 # [codesmell]
 Layout/LineLength:
   Enabled: false
   Exclude:
-    - 'spec/**/*_spec.rb'
-    - 'test/**/*_test.rb'
+    - "spec/**/*_spec.rb"
+    - "test/**/*_test.rb"
   Max: 100
 
 # [codesmell]
 Metrics/AbcSize:
   Enabled: false
   Exclude:
-    - 'spec/**/*_spec.rb'
-    - 'test/**/*_test.rb'
+    - "spec/**/*_spec.rb"
+    - "test/**/*_test.rb"
 
 # [codesmell]
 Metrics/BlockLength:
@@ -30,30 +30,30 @@ Metrics/BlockLength:
 Metrics/CyclomaticComplexity:
   Enabled: false
   Exclude:
-    - 'spec/**/*_spec.rb'
-    - 'test/**/*_test.rb'
+    - "spec/**/*_spec.rb"
+    - "test/**/*_test.rb"
 
 # [codesmell]
 Metrics/ClassLength:
   Enabled: false
   Exclude:
-    - 'spec/**/*_spec.rb'
-    - 'test/**/*_test.rb'
+    - "spec/**/*_spec.rb"
+    - "test/**/*_test.rb"
 
 # [codesmell]
 Metrics/MethodLength:
   Enabled: false
   Exclude:
-    - 'spec/**/*_spec.rb'
-    - 'test/**/*_test.rb'
-  Max: 10
+    - "spec/**/*_spec.rb"
+    - "test/**/*_test.rb"
+  Max: 1000
 
 # [codesmell]
 Metrics/ModuleLength:
   Enabled: false
   Exclude:
-    - 'spec/**/*_spec.rb'
-    - 'test/**/*_test.rb'
+    - "spec/**/*_spec.rb"
+    - "test/**/*_test.rb"
 
 # [codesmell]
 Metrics/ParameterLists:
@@ -71,8 +71,8 @@ Style/AndOr:
 
 Style/Documentation:
   Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
+    - "spec/**/*"
+    - "test/**/*"
 
 # Double empty lines are useful to separate conceptually different methods
 # in the same class or module.

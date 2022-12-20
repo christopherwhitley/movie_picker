@@ -63,7 +63,7 @@ module RSpec
             # rubocop:enable Lint/EnsureReturn
           end
         end
-        # rubocop:enable Metrics/MethodLength
+        # rubocop:disable Metrics/MethodLength
 
         def does_not_match?(given_proc)
           !matches?(given_proc) && Proc === given_proc

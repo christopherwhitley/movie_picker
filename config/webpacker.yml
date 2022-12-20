@@ -67,9 +67,10 @@ development:
     quiet: false
     pretty: false
     headers:
-      "Access-Control-Allow-Origin": "*"
+      'Access-Control-Allow-Origin': '*'
     watch_options:
-      ignored: "**/node_modules/**"
+      ignored: '**/node_modules/**'
+
 
 test:
   <<: *default
@@ -83,8 +84,6 @@ production:
 
   # Production depends on precompilation of packs prior to booting for performance.
   compile: false
-
-  public_output_path: assets/packs
 
   # Extract and emit a css file
   extract_css: true

@@ -73,7 +73,7 @@ module RSpec
 
           expectation_matched?
         end
-        # rubocop:enable Metrics/MethodLength
+        # rubocop:disable Metrics/MethodLength
 
         # @private
         def does_not_match?(given_proc)

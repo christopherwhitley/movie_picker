@@ -52,7 +52,7 @@ module RSpec
       rescue Encoding::CompatibilityError
         handle_encoding_errors(actual, expected)
       end
-      # rubocop:enable Metrics/MethodLength
+      # rubocop:disable Metrics/MethodLength
 
       def diff_as_object(actual, expected)
         actual_as_string = object_to_string(actual)

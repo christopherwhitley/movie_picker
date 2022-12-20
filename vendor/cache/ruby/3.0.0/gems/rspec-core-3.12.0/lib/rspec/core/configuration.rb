@@ -563,7 +563,7 @@ module RSpec
         define_built_in_hooks
       end
       # rubocop:enable Metrics/AbcSize
-      # rubocop:enable Metrics/MethodLength
+      # rubocop:disable Metrics/MethodLength
 
       # @private
       #
