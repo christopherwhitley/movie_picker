@@ -2,7 +2,19 @@ inherit_from: .rubocop_todo.yml
 
 AllCops:
   EnabledByDefault: false
+  AutoCorrect: true
+
+Layout/IndentationConsistency:
+  AutoCorrect: true
+
+Style/Documentation:
+  Enabled: false
+  AutoCorrect: false
+
+Style/BlockComments:
+  Enabled: false
 
 Metrics/MethodLength:
+  AutoCorrect: false
   Enabled: false
   Max: 1000

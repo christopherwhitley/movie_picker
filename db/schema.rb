@@ -16,45 +16,45 @@ ActiveRecord::Schema.define(version: 2022_12_04_143210) do
   enable_extension "plpgsql"
 
   create_table "films", force: :cascade do |t|
-    t.text "title"
-    t.text "description"
-    t.bigint "genre_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "poster_path"
-    t.string "release_date"
-    t.index ["genre_id"], name: "index_films_on_genre_id"
+    t.text("title")
+    t.text("description")
+    t.bigint("genre_id", null: false)
+    t.datetime("created_at", precision: 6, null: false)
+    t.datetime("updated_at", precision: 6, null: false)
+    t.string("poster_path")
+    t.string("release_date")
+    t.index(["genre_id"], name: "index_films_on_genre_id")
   end
 
   create_table "films_people", id: false, force: :cascade do |t|
-    t.bigint "film_id", null: false
-    t.bigint "person_id", null: false
+    t.bigint("film_id", null: false)
+    t.bigint("person_id", null: false)
   end
 
   create_table "genres", force: :cascade do |t|
-    t.text "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.text("name")
+    t.datetime("created_at", precision: 6, null: false)
+    t.datetime("updated_at", precision: 6, null: false)
   end
 
   create_table "people", force: :cascade do |t|
-    t.text "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-    t.integer "film_id", default: [], array: true
+    t.text("name")
+    t.datetime("created_at", precision: 6, null: false)
+    t.datetime("updated_at", precision: 6, null: false)
+    t.string("username")
+    t.string("email")
+    t.string("password_digest")
+    t.integer("film_id", default: [], array: true)
   end
 
   create_table "watches", force: :cascade do |t|
-    t.bigint "film_id"
-    t.bigint "person_id"
-    t.boolean "watched"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["film_id"], name: "index_watches_on_film_id"
-    t.index ["person_id"], name: "index_watches_on_person_id"
+    t.bigint("film_id")
+    t.bigint("person_id")
+    t.boolean("watched")
+    t.datetime("created_at", precision: 6, null: false)
+    t.datetime("updated_at", precision: 6, null: false)
+    t.index(["film_id"], name: "index_watches_on_film_id")
+    t.index(["person_id"], name: "index_watches_on_person_id")
   end
 
   add_foreign_key "films", "genres"

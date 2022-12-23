@@ -8,12 +8,12 @@ class Watch < ApplicationRecord
 
   def self.find_watched_film(film_id)
     thing = Watch.find_by(film_id: film_id)
-    if thing != nil
-      puts 'true'
-      return true 
-    else
-      puts 'false'
+    if thing.nil?
+      puts('false')
       return false
+    else
+      puts('true')
+      return true 
     end
   end
 end

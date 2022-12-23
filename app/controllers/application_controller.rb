@@ -15,17 +15,15 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized
-    redirect_to '/pages/login' unless logged_in?
+    redirect_to('/pages/login') unless logged_in?
   end
 
   def api_call(title)
     query = { 'query' => title }
-    @response = HTTParty.get('https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US',
-                             query: query,
-                             format: :json)
+    @response = HTTParty.get('https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US', query: query, format: :json)
     response = @response.parsed_response
     result = response['results']
-    puts result
+    puts(result)
     poster_path = result[0]['poster_path']
     description = result[0]['overview']
     release_date = result[0]['release_date']
@@ -40,16 +38,16 @@ end
 def add_film_to_person(film_id)
   respond_to do |format|
     if logged_in?
-      format.html { redirect_to person_path(current_user.id) }
+      format.html { redirect_to(person_path(current_user.id)) }
       current_user.add_film_id_to_person(current_user, film_id)
     else
-      format.html { redirect_to people_url, notice: 'Need to login.' }
+      format.html { redirect_to(people_url, notice: 'Need to login.') }
     end
   end
 
   def remove_film_id_from_person(id)
     respond_to do |format|
-      format.html { redirect_to people_url, notice: 'Film removed from person' }
+      format.html { redirect_to(people_url, notice: 'Film removed from person') }
       current_user.remove_film_id_from_person(id)
     end
   end

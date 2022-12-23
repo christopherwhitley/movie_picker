@@ -9,15 +9,15 @@ class WatchesController < ApplicationController
 
     respond_to do |format|
       if @watch.save
-        format.html { redirect_to '/' }
+        format.html { redirect_to('/') }
         flash.alert = "Save success"
       else
-        format.html { redirect_to current_user }
+        format.html { redirect_to(current_user) }
         flash.alert = "Save Unsuccessful"
 
         @watch.errors.each do |error|
-          puts attribute = error.attribute
-          puts message = error.message
+          puts(attribute = error.attribute)
+          puts(message = error.message)
         end
       end
     end

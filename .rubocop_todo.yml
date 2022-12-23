@@ -366,11 +366,6 @@ Style/ClassAndModuleChildren:
     - "test/channels/application_cable/connection_test.rb"
     - "test/test_helper.rb"
 
-# Offense count: 30
-# Configuration parameters: AllowedConstants.
-Style/Documentation:
-  Enabled: false
-
 # Offense count: 4
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.

@@ -8,22 +8,19 @@ class PagesController < ApplicationController
   end
 
   def index
-    p params
+    p(params)
   end
 
   def api
     @filmname = "joker"
 
     query = {"query" => @filmname}
-    @response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US",
-      :query => query,
-      format: :json)
-
+    @response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US", :query => query, format: :json)
 
  end
 
  def destroy
-   redirect_to '/'
+   redirect_to('/')
    reset_session
    @current_user = nil
  end
@@ -31,16 +28,16 @@ class PagesController < ApplicationController
  def login
    if params['username']
      user = Person.find_by_username(params['username'])
-     if user != nil
+     if user.nil?
+     flash.alert = 'Username or password incorrect!'
+   else
       @valid = user.authenticate(params['password'])
       if @valid
         session[:user_id] = user.id
-        redirect_to '/'
+        redirect_to('/')
       else 
         flash.alert = 'Username or password incorrect!'
      end
-   else
-     flash.alert = 'Username or password incorrect!'
    end
    end
 

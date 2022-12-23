@@ -15,7 +15,7 @@ end
 
 class ActionDispatch::IntegrationTest
   def create_person
-    post people_path, params: { person: {username: "cw", email: "c.w@gmail.com", password: 'secret'} }
+    post(people_path, params: { person: {username: "cw", email: "c.w@gmail.com", password: 'secret'} })
   end
   
   def get_bill

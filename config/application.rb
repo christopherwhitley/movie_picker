@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 module MoviePicker
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.1
+    config.load_defaults(6.1)
     config.assets.compile = true
 
     config.assets.initialize_on_precompile = false

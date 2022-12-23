@@ -1,1 +1,1 @@
-json.array! @films, partial: "films/film", as: :film
+json.array!(@films, partial: "films/film", as: :film)
