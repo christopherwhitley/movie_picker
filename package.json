@@ -6,6 +6,7 @@
     "license": "MIT"
   },
   "devDependencies": {
+    "@rails/webpacker": "5.4.3",
     "webpack-dev-server": "^3",
     "license": "MIT"
   }
