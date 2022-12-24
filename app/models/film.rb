@@ -57,16 +57,16 @@ class Film < ApplicationRecord
     end
   end
 
-  def save_poster_path(poster_path, _film)
-    @film.poster_path = poster_path
+  def save_poster_path(poster_path, film)
+    film.poster_path = poster_path
   end
 
-  def save_film_description(description, _film)
-    @film.description = description
+  def save_film_description(description, film)
+    film.description = description
   end
 
-  def save_film_release_date(release_date, _film)
-    @film.release_date = release_date
+  def save_film_release_date(release_date, film)
+    film.release_date = release_date
   end
 
   def self.get_film_confirmation(film_name)
