@@ -44,7 +44,7 @@
       <% poster = poster %>
       <% if (poster != nil) %>
         <p class="recommended-poster">
-        <%= image_tag 'https://image.tmdb.org/t/p/w92' << (film.poster_path)%></p>
+        <%= image_tag 'https://image.tmdb.org/t/p/w92' << (poster) %></p>
       <% else %> 
        <p class="recommended-poster">
         <%= image_tag "poster_placeholder.jpeg", size: 100%></p>

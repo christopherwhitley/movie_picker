@@ -4,6 +4,7 @@ class Film < ApplicationRecord
   has_one :film_id
 
   belongs_to :genre
+  has_and_belongs_to_many :custom_lists
   has_many :films
   has_many :watches
   has_and_belongs_to_many :people

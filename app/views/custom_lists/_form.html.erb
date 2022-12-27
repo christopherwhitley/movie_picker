@@ -1,0 +1,30 @@
+<% @films = Film.all%>
+
+<%= form_with(model: custom_list) do |form| %>
+  <% if custom_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(custom_list.errors.count, "error") %> prohibited this custom list from being saved:</h2>
+
+      <ul>
+        <% custom_list.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  
+  
+  <% @films.each do |film| %>
+    <%#= film.title %>
+    <%#= check_box_tag(:films) %>
+  <% end %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

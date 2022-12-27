@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @custom_list.name %><br/>
+  <p></p>
+  <% @custom_list.films.each do |f| %>
+  <%= link_to f.title, film_path(f.id) %>
+  <p></p>
+  <% end %>
+  <p></p>
+<%= link_to 'Back', custom_lists_path %>

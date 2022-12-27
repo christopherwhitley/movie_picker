@@ -4,7 +4,7 @@
   <strong>Username:</strong>
   <%= @person.username %><br/>
 
-
+</p>
 <% myfilms = @person.get_person_films_list %>
 
 <h2>My films</h2>
@@ -20,7 +20,7 @@
       <% watched = get_watched_films(@person.id, @id)  %>
       <% if watched.present?%>
         <%= image_tag "watched-checkmark.png", size: '16', class: 'watched' %>
-        <% end %>
+      <% end %>
 
 
 
@@ -35,10 +35,17 @@
 
     <br/>
 <% end %>
-<br/><br/>
 
-<p/>
 
+<h2>My Custom Lists </h2>
+<% mylists = current_user.custom_lists %>
+<% mylists.each do |l|  %>
+  <%= link_to l.name, custom_list_path(l.id) %>
+<% end %>
+<%= button_to "Random", customrandomfilm_path, method: :get  %>
+
+<br/>
+<br/>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
