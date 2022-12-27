@@ -40,6 +40,7 @@ class CustomListsController < ApplicationController
   end
 
   def rand
+    @custom_list = CustomList.find(params[:id])
     @film = @custom_list.films.order(Arel.sql('RANDOM()')).first
     respond_to do |format|
       format.html { redirect_to(@film) }
