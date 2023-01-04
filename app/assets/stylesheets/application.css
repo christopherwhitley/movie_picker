@@ -182,3 +182,17 @@ Questions
   content: "\a";
   white-space: pre;
 }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0 15px;
+  border-width: 1px;
+}
+
+table td {
+  vertical-align: top;
+}
+
+table tr {
+  border-bottom: 1pt solid black;
+}
