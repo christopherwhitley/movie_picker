@@ -160,3 +160,25 @@ Questions
 .show-text .plus-icon {
   display: none;
 }
+.customlistfilmtitle {
+}
+.customlistfilmtitle input {
+  display: inline;
+}
+.customlistfilmtitle input[type="checkbox"] {
+  display: inline-block;
+}
+.customlistfilmtitle input[type="checkbox"] + label {
+  display: inline-block;
+}
+
+.customlistfilmtitle input[type="checkbox"] + label:after {
+  display: inline-block;
+  content: "\a";
+  white-space: pre;
+}
+
+.customlistfilmtitle:after {
+  content: "\a";
+  white-space: pre;
+}

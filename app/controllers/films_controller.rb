@@ -1,4 +1,6 @@
 class FilmsController < ApplicationController
+  require 'i18n'
+  require 'i18n_data'
   before_action :set_film, only: %i[show edit update destroy]
   before_action :authorized, only: %i[rand new show index]
 
@@ -35,10 +37,12 @@ class FilmsController < ApplicationController
   # POST /films or /films.json
   def create
     @film = Film.new(film_params)
-    results = api_call(@film.title)
+    lang = I18nData.language_code(params[:film][:language])
+    results = api_call(@film.title, lang)
     @film.poster_path = results[0]
     @film.description = results[1]
     @film.release_date = results[2]
+    @film.language = lang
     respond_to do |format|
       if @film.save
         format.html { add_film_to_person(@film.id) }
@@ -79,9 +83,9 @@ class FilmsController < ApplicationController
     # Add logic to process film form results
     respond_to do |format|
       @film_title = params[:film][:title]
-      @film_description = params[:film][:description]
+      @film_language = params[:film][:language]
       @film_genre_id = params[:film][:genre_id]
-      @response = Film.get_film_confirmation(@film_title)
+      @response = Film.get_film_confirmation(@film_title, @film_language)
       format.html { render('confirmation.html') }
     end
   end
@@ -95,6 +99,6 @@ class FilmsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def film_params
-    params.require(:film).permit(:title, :description, :genre_id)
+    params.require(:film).permit(:title, :description, :genre_id, :language)
   end
 end

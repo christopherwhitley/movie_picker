@@ -14,6 +14,7 @@
   <%= movie['overview'] %>
   <%= form.hidden_field "film[genre_id]", value: @film_genre_id%>
   <%= form.hidden_field "film[description]", value: @film_description %>
+  <%= form.hidden_field "film[language]", value: @film_language %>
 
   </div>
 <% end %>

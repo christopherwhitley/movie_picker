@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :logged_in?
   helper_method :api_call
+  helper_method :supported_languages
 
   def current_user
     Person.find_by(id: session[:user_id])
@@ -18,18 +19,30 @@ class ApplicationController < ActionController::Base
     redirect_to('/pages/login') unless logged_in?
   end
 
-  def api_call(title)
+  def supported_languages
+    @response = HTTParty.get('https://api.themoviedb.org/3/configuration/languages?api_key=b6ba0af499c6872471a982365c647f0e', format: :json)
+    response = @response.parsed_response
+    # puts @response
+    @languages = response.each do |r|
+      puts r['name']
+    end
+  end
+
+  def api_call(title, lang)
     query = { 'query' => title }
-    @response = HTTParty.get('https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e&language=en-US', query: query, format: :json)
+    language = lang
+    @response = HTTParty.get('https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e', query: query, langauges: lang, format: :json)
     response = @response.parsed_response
     result = response['results']
+    puts result
     poster_path = result[0]['poster_path']
     description = result[0]['overview']
     release_date = result[0]['release_date']
     @film.save_poster_path(poster_path, @film)
     @film.save_film_description(description, @film)
     @film.save_film_release_date(release_date, @film)
-    [poster_path, description, release_date]
+    @film.save_film_language(language, @film)
+    [poster_path, description, release_date, language]
   end
 end
 

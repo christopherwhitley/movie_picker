@@ -21,6 +21,9 @@
     <%= form.select :genre_id, Genre.all.collect {|p| [p.name, p.id]},
     selected: "Action" %>
   </div>
+  <div class="field">
+    <%= form.select :language, [ 'English', 'German','Spanish','Japanese' ], :prompt => 'Select Language' %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

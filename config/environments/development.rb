@@ -1,4 +1,6 @@
 require "active_support/core_ext/integer/time"
+require "i18n"
+require 'i18n_data'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.

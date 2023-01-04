@@ -4,9 +4,16 @@
 <%= form_for @custom_list do |c| %>
     <div class="field">
         <%= c.label :name %>
-        <%= c.text_field :name %>
+        <%= c.text_field :name, class: "customlistfilmtitle" %>
     </div>
-    <%= c.collection_check_boxes :film_ids, @films, :id, :title %>
+    <div class="customlistfilmtitle">
+    <%= c.collection_check_boxes:film_ids, @films, :id, :title do |f| %>
+     <%= f.label(class: "check_box") do %>
+     <%= f.check_box(class: "check_box") %>
+     <%= f.object.title %>
+     <% end %>
+     <% end %>
+    </div>
     <%= c.submit %>
 <% end %>
 
