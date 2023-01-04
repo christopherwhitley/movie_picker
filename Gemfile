@@ -62,6 +62,7 @@ end
 
 group :production do
   gem "nokogiri"
+  gem "i18n_data"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
