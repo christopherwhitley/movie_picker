@@ -41,10 +41,10 @@
   <% if film.title != @film.title %>
   <%= link_to film, class:'recommended_film' do %>
 
-      <% poster = poster %>
-      <% if (poster != nil) %>
+      <% recommended_poster = film.poster_path %>
+      <% if (recommended_poster != nil) %>
         <p class="recommended-poster">
-        <%= image_tag 'https://image.tmdb.org/t/p/w92' << (poster) %></p>
+        <%= image_tag 'https://image.tmdb.org/t/p/w92' << (recommended_poster) %></p>
       <% else %> 
        <p class="recommended-poster">
         <%= image_tag "poster_placeholder.jpeg", size: 100%></p>
