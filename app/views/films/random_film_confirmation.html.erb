@@ -1,0 +1,12 @@
+<h3>Select genres</h3>
+<br/>
+<%= form_tag("/random_film_confirmation", method: "post") do %>
+  <%= g = collection_check_boxes :genre, :id, Genre.all, :id, :id, include_hidden: false do |g| %>
+    <%= g.label(class: "check_box") do %>
+    <%= g.check_box(class: "check_box") %>
+    <%= g.object.name %>
+  <% end %>
+  <% end %>
+  <br/>
+  <%= submit_tag("Find") %>
+<% end %>

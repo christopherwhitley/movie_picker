@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   post "/films" => "films#multiple_film_results", :as => 'filmsubmission'
   post "/films/new" => "films#create", :as => 'new_film_path'
   get 'films/confirmation'
-  get '/randomfilm' => 'films#rand'
+  get '/randomfilm' => 'films#randomconfirm'
+  get '/random_film_confirmation' => 'films#randomconfirm'
+  post '/random_film_confirmation' => 'films#rand'
 
   # Pages
   get '/api' => 'pages#api'

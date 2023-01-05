@@ -5,9 +5,19 @@ class FilmsController < ApplicationController
   before_action :authorized, only: %i[rand new show index]
 
   def rand
-    @film = unwatched_films.order(Arel.sql('RANDOM()')).first
+    @films = unwatched_films.where(genre_id: (params[:genre][:id])).order(Arel.sql('RANDOM()')).first
     respond_to do |format|
-      format.html { redirect_to(@film) }
+      if !@films.nil?
+        format.html { redirect_to(@films) }
+      else
+        format.html { redirect_to(random_film_confirmation_path, notice: "Please select a genre containing films") }
+      end
+    end
+  end
+
+  def randomconfirm
+    respond_to do |format|
+      format.html { render('random_film_confirmation.html.erb') }
     end
   end
 
