@@ -1,5 +1,5 @@
 class CustomListsController < ApplicationController
-  # before_action :authorized, only: %i[new]
+  before_action :authorized, only: %i[new show]
   before_action :set_custom_list, only: %i[show]
 
   def index
