@@ -1,8 +1,12 @@
+<%= javascript_pack_tag 'random_confirmation.js' %>
+
 <h3>Select genres</h3>
 <br/>
 <%= form_tag("/random_film_confirmation", method: "post") do %>
+  <input type="checkbox" id="check_all" onclick="toggleAll()"/>Select all<br/>
+  <br/>
   <%= g = collection_check_boxes :genre, :id, Genre.all, :id, :id, include_hidden: false do |g| %>
-    <%= g.label(class: "check_box") do %>
+    <%= g.label() do %>
     <%= g.check_box(class: "check_box") %>
     <%= g.object.name %>
   <% end %>
