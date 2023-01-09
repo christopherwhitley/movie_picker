@@ -38,6 +38,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop'
   gem 'i18n_data'
+  gem 'factory_bot_rails'
 end
 
 group :development, :staging do
