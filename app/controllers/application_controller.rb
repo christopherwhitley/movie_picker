@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def supported_languages
-    @response = HTTParty.get('https://api.themoviedb.org/3/configuration/languages?api_key=b6ba0af499c6872471a982365c647f0e', format: :json)
+    @response = HTTParty.get('https://api.themoviedb.org/3/configuration/languages?api_key=b6ba0af499c6872471a982365c647f0e', include_adult: false, format: :json)
     response = @response.parsed_response
     # puts @response
     @languages = response.each do |r|
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   def api_call(title, lang)
     query = { 'query' => title }
     language = lang
-    @response = HTTParty.get('https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e', query: query, langauges: lang, format: :json)
+    @response = HTTParty.get('https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e', query: query, langauges: lang, include_adult: false, format: :json)
     response = @response.parsed_response
     result = response['results']
     puts result
