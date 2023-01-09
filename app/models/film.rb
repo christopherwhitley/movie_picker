@@ -59,22 +59,6 @@ class Film < ApplicationRecord
     end
   end
 
-  def save_poster_path(poster_path, film)
-    film.poster_path = poster_path
-  end
-
-  def save_film_description(description, film)
-    film.description = description
-  end
-
-  def save_film_release_date(release_date, film)
-    film.release_date = release_date
-  end
-
-  def save_film_language(lang, film)
-    film.language = lang
-  end
-
   def self.get_film_confirmation(film_name, lang)
     api = ApiCall.new
     langu = I18nData.language_code(lang)

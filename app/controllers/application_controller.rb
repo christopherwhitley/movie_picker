@@ -38,10 +38,10 @@ class ApplicationController < ActionController::Base
     poster_path = result[0]['poster_path']
     description = result[0]['overview']
     release_date = result[0]['release_date']
-    @film.save_poster_path(poster_path, @film)
-    @film.save_film_description(description, @film)
-    @film.save_film_release_date(release_date, @film)
-    @film.save_film_language(language, @film)
+    # @film.save_poster_path(poster_path, @film)
+    # @film.save_film_description(description, @film)
+    # @film.save_film_release_date(release_date, @film)
+    # @film.save_film_language(language, @film)
     [poster_path, description, release_date, language]
   end
 end
