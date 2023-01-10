@@ -71,11 +71,12 @@
 </section>
 <br/>
 <br/>
-
-<div class="banner" id="banner">
-<% controller = FilmsController.new %>
- <% films = controller.unwatched_films %>
- <% films.each do |f| %>
-  <%= link_to image_tag('https://image.tmdb.org/t/p/w154' << f['poster_path'].to_s), f, class: "film" %>
+<% if logged_in? %>
+  <div class="banner" id="banner">
+  <% controller = FilmsController.new %>
+  <% films = controller.unwatched_films %>
+  <% films.each do |f| %>
+    <%= link_to image_tag('https://image.tmdb.org/t/p/w154' << f['poster_path'].to_s), f, class: "film" %>
+  <% end %>
+  </div>
 <% end %>
-</div>
