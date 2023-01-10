@@ -1,21 +1,29 @@
 
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('pageshow', () => {
   const banner = document.getElementById("banner");
   const films = document.querySelectorAll('.film');
   const bannerScrollWidth = banner.scrollWidth;
+  const homepage = window.location.href;
 
   var refreshIntervalId = setInterval(function () {
-    console.log(refreshIntervalId)
-    if (banner.scrollLeft != bannerScrollWidth) {
+    if (window.location.href != homepage) {
+      console.log(window.location.href, homepage)
+      banner.scrollTo(0, 0)
+      continueScroll()
+      return;
+    }
+    else if (banner.scrollLeft != bannerScrollWidth) {
+      const banner = document.getElementById("banner");
       banner.scrollTo(banner.scrollLeft + 1, 0);
 
     }
-    if (banner.offsetWidth + banner.scrollLeft == banner.scrollWidth) {
-      console.log("start again")
+    else if (banner.offsetWidth + banner.scrollLeft == banner.scrollWidth) {
+      console.log("start again - initial")
       banner.scrollTo(0, 0)
       banner.scrollTo(banner.scrollLeft + 1, 0);
     }
+
   }, 15);
 
   films.forEach((f) => {
@@ -36,12 +44,16 @@ window.addEventListener('DOMContentLoaded', () => {
     console.log("start")
     banner.style.overflow = 'scroll'
     secondInterval = setInterval(function () {
-      console.log(secondInterval)
-      if (banner.scrollLeft != bannerScrollWidth) {
+      //console.log(secondInterval)
+      if (window.location.href != homepage) {
+        banner.scrollTo(0, 0)
+        return;
+      }
+      else if (banner.scrollLeft != bannerScrollWidth) {
         banner.scrollTo(banner.scrollLeft + 1, 0);
       }
-      if (banner.offsetWidth + banner.scrollLeft == banner.scrollWidth) {
-        console.log("start again")
+      else if (banner.offsetWidth + banner.scrollLeft == banner.scrollWidth) {
+        console.log("start again - continue")
         banner.scrollTo(0, 0)
         banner.scrollTo(banner.scrollLeft + 1, 0);
       }
