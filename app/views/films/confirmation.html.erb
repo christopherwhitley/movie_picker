@@ -5,7 +5,7 @@
   <% @response.each do |movie| %>
   <br/>
   <div class="matching_films">
-  <%= form.radio_button "film[title]", movie['title'], class: 'radio_button' %>
+  <%= form.radio_button "film_id", movie['id'], class: 'radio_button' %>
   <% unless movie['poster_path'].to_s.strip.empty? %>
     <%= image_tag 'https://image.tmdb.org/t/p/w154' << movie['poster_path'].to_s, class: 'poster_confirmation' %>
   <% end %>

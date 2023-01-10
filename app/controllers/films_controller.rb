@@ -48,16 +48,16 @@ class FilmsController < ApplicationController
   def create
     @film = Film.new(film_params)
     lang = I18nData.language_code(params[:film][:language])
-    results = api_call(@film.title, lang)
-    @film.poster_path = results[0]
-    @film.description = results[1]
-    @film.release_date = results[2]
+    results = get_movie(params[:film_id], lang)
+    @film.title = results[0]
+    @film.poster_path = results[1]
+    @film.description = results[2]
+    @film.release_date = results[3]
     @film.language = lang
     respond_to do |format|
       if @film.save
         format.html { add_film_to_person(@film.id) }
         # format.json { render :show, status: :created, location: @film }
-
       else
         format.html { render(:new, status: :unprocessable_entity) }
         format.json { render(json: @film.errors, status: :unprocessable_entity) }
