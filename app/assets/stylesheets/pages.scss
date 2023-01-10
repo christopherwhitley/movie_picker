@@ -26,3 +26,6 @@
   white-space: nowrap;
   background-color: #fff;
 }
+.banner::-webkit-scrollbar{
+  display: none;
+}

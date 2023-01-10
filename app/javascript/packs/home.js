@@ -6,10 +6,12 @@ window.addEventListener('DOMContentLoaded', () => {
   const bannerScrollWidth = banner.scrollWidth;
 
   var refreshIntervalId = setInterval(function () {
+    console.log(refreshIntervalId)
     if (banner.scrollLeft != bannerScrollWidth) {
       banner.scrollTo(banner.scrollLeft + 1, 0);
+
     }
-    if (banner.offsetWidth + banner.scrollLeft + 0.5 == banner.scrollWidth) {
+    if (banner.offsetWidth + banner.scrollLeft == banner.scrollWidth) {
       console.log("start again")
       banner.scrollTo(0, 0)
       banner.scrollTo(banner.scrollLeft + 1, 0);
@@ -25,16 +27,20 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   function stopScroll() {
-    console.log("stop")
     clearInterval(refreshIntervalId);
+    clearInterval(secondInterval);
+    banner.style.overflow = 'none'
+    console.log("stop")
   };
   function continueScroll() {
     console.log("start")
-    setInterval(function () {
+    banner.style.overflow = 'scroll'
+    secondInterval = setInterval(function () {
+      console.log(secondInterval)
       if (banner.scrollLeft != bannerScrollWidth) {
         banner.scrollTo(banner.scrollLeft + 1, 0);
       }
-      if (banner.offsetWidth + banner.scrollLeft + 0.5 == banner.scrollWidth) {
+      if (banner.offsetWidth + banner.scrollLeft == banner.scrollWidth) {
         console.log("start again")
         banner.scrollTo(0, 0)
         banner.scrollTo(banner.scrollLeft + 1, 0);
