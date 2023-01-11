@@ -27,7 +27,7 @@ window.addEventListener('pageshow', () => {
       banner.scrollTo(banner.scrollLeft + 1, 0);
     }
 
-  }, 2);
+  }, 15);
 
   films.forEach((f) => {
     f.addEventListener("mouseenter", stopScroll);
@@ -91,7 +91,7 @@ window.addEventListener('pageshow', () => {
         banner.scrollTo(banner.scrollLeft + 1, 0);
         console.log("style=", banner.style.overflow)
       }
-    }, 2);
+    }, 15);
   };
 });
 
