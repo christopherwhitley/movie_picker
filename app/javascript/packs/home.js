@@ -2,7 +2,6 @@
 
 window.addEventListener('pageshow', () => {
   const banner = document.getElementById("banner");
-  console.log("banner=", banner)
   const films = document.querySelectorAll('.film');
   const bannerScrollWidth = banner.scrollWidth;
   const homepage = window.location.href;
@@ -68,9 +67,8 @@ window.addEventListener('pageshow', () => {
         f.addEventListener("mouseup", continueScroll);
       });
 
-      if (window.location.href != homepage) {
-      }
-      else if (banner.scrollLeft + banner.offsetWidth != bannerScrollWidth) {
+
+      if (banner.scrollLeft + banner.offsetWidth != bannerScrollWidth) {
 
         onpageshow = () => { banner.scrollTo(0, 0) };
         banner.scrollTo(banner.scrollLeft + 1, 0);
@@ -85,9 +83,7 @@ window.addEventListener('pageshow', () => {
 });
 
 
-
 window.onload = function () {
-
   [...document.querySelectorAll('.home-button')].forEach(function (item) {
     item.addEventListener('mouseenter', function () {
       this.style.background = "#9DFED7";
@@ -97,14 +93,13 @@ window.onload = function () {
     });
   });
 
-
-  const btns = document.querySelectorAll(".question-btn");
-
-  btns.forEach(function (btn) {
-    btn.addEventListener("click", function (e) {
-      const question = e.currentTarget.parentElement.parentElement
-      question.classList.toggle("show-text")
+  window.addEventListener('turbolinks:load', () => {
+    const btns = document.querySelectorAll(".question-btn");
+    btns.forEach(function (btn) {
+      btn.addEventListener("mousedown", function (e) {
+        const question = e.currentTarget.parentElement.parentElement
+        question.classList.toggle("show-text")
+      });
     });
   });
-
 }
