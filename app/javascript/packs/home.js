@@ -1,6 +1,45 @@
+window.addEventListener('turbolinks:load', () => {
+  // TURBOLINKS IS ACTIVATING TWICE!!
+  console.log('turbolinks:load')
+  //FAQ
+  const btns = document.querySelectorAll(".question-btn");
+  btns.forEach(function (btn) {
+    btn.addEventListener("mousedown", function (e) {
+      const question = e.currentTarget.parentElement.parentElement
+      question.classList.toggle("show-text")
+      console.log("toggle")
+    });
+  });
+});
 
+window.addEventListener('load', () => {
+  console.log('onload')
+  //FAQ
+  const btns = document.querySelectorAll(".question-btn");
+  btns.forEach(function (btn) {
+    btn.addEventListener("mousedown", function (e) {
+      const question = e.currentTarget.parentElement.parentElement
+      question.classList.toggle("show-text")
+      console.log("toggle")
+    });
+  });
+});
 
 window.addEventListener('pageshow', () => {
+  console.log('pageshow')
+  //FAQ
+  const btns = document.querySelectorAll(".question-btn");
+  btns.forEach(function (btn) {
+    btn.addEventListener("mousedown", function (e) {
+      const question = e.currentTarget.parentElement.parentElement
+      question.classList.toggle("show-text")
+      console.log("toggle")
+    });
+  });
+});
+
+window.addEventListener('pageshow', () => {
+  //Banner
   const banner = document.getElementById("banner");
   const films = document.querySelectorAll('.film');
   const bannerScrollWidth = banner.scrollWidth;
@@ -92,14 +131,6 @@ window.onload = function () {
       this.style.background = "#EAFBF4";
     });
   });
-
-  window.addEventListener('turbolinks:load', () => {
-    const btns = document.querySelectorAll(".question-btn");
-    btns.forEach(function (btn) {
-      btn.addEventListener("mousedown", function (e) {
-        const question = e.currentTarget.parentElement.parentElement
-        question.classList.toggle("show-text")
-      });
-    });
-  });
 }
+
+
