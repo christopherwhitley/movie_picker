@@ -7,23 +7,31 @@
 </p>
 <% myfilms = @person.get_person_films_list %>
 
+<h2>Films watched this year</h2>
+<% watches = Watch.where(person_id: @person.id, created_at: Time.current.all_year)  %>
+<% watches.each do |f| %>
+  <% film = Film.find_by(id: f.film_id) %>
+  <%= film.title %>
+  <br>
+<% end %>
+
 <h2>My films</h2>
 
-<% myfilms.each do |film| %>
-      <% object = Film.where(title: [film.to_s]) %>
+
+<% myfilms.in_groups_of(15, false).each do |films| %>
+<div class="col-md-4">
+    <% films.each do |f| %>
+    <div class="row">
+      <% object = Film.where(title: [f.to_s]) %>
       <% @id = object.pluck(:id) %>
       <% title = object.pluck(:title) %>
       <% title = title.join() %>
-
       <%= link_to title, film_path(@id) %>
 
       <% watched = get_watched_films(@person.id, @id)  %>
       <% if watched.present?%>
         <%= image_tag "watched-checkmark.png", size: '16', class: 'watched' %>
       <% end %>
-
-
-
       <%= form_for :watch do |f| %>
       <%= f.hidden_field :person_id, :value => @person.id %>
       <%= f.hidden_field :film_id, :value => @id%>
@@ -32,21 +40,15 @@
         <%= f.submit%>
         <% f.label :name%>
       <% end %>
+      </div>
 
-    <br/>
-<% end %>
-
-
-<h2>My Custom Lists </h2>
-<% mylists = current_user.custom_lists %>
-<% mylists.each do |l|  %>
-  <%= link_to l.name, custom_list_path(l.id) %>
-  <%= button_to "Random", customrandomfilm_path, params: {'id' => l.id}, method: :get  %>
-<% end %>
+ 
+    <% end %>
+     </div>
+    <% end %>
 
 
-<br/>
-<br/>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+
+<%#= link_to 'Edit', edit_person_path(@person) %> 
+<%#= link_to 'Back', people_path %>

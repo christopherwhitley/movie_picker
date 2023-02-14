@@ -196,3 +196,14 @@ table td {
 table tr {
   border-bottom: 1pt solid black;
 }
+
+.row:after {
+  display: table;
+  clear: both;
+}
+
+.col-md-4 {
+  float: left;
+  width: 50%;
+  margin-bottom: 50px;
+}
