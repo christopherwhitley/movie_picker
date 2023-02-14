@@ -18,10 +18,11 @@
 <h2>My films</h2>
 
 
-<% myfilms.in_groups_of(15, false).each do |films| %>
-<div class="col-md-4">
+<% myfilms.in_groups_of(8, false).each do |films| %>
+<div class="row">
+
     <% films.each do |f| %>
-    <div class="row">
+    <div class="col-md-4">
       <% object = Film.where(title: [f.to_s]) %>
       <% @id = object.pluck(:id) %>
       <% title = object.pluck(:title) %>
@@ -30,7 +31,7 @@
 
       <% watched = get_watched_films(@person.id, @id)  %>
       <% if watched.present?%>
-        <%= image_tag "watched-checkmark.png", size: '16', class: 'watched' %>
+        <%= image_tag "watched-checkmark.png", size: '12', class: 'watched' %>
       <% end %>
       <%= form_for :watch do |f| %>
       <%= f.hidden_field :person_id, :value => @person.id %>
