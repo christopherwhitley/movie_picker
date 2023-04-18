@@ -66,6 +66,7 @@ main {
 Nav bar
 ===============
 */
+
 .nav {
   background-color: skyblue;
   height: 50px;
@@ -78,6 +79,18 @@ Nav bar
 .nav_list a {
   color: white;
 }
+
+@media screen and (max-width: 599px) {
+  .nav_list {
+    display: inline-block;
+    margin: 15px 10px 0px 15px;
+  }
+  .nav_list a {
+    font-size: 15px;
+    color: white;
+  }
+}
+
 .sign_in_status {
   float: right;
   margin: 0 45px 0 0;
