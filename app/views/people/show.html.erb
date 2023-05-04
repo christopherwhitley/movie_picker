@@ -6,9 +6,9 @@
 
 </p>
 <% myfilms = @person.get_person_films_list %>
-
-<h2>Films watched this year</h2>
 <% watches = Watch.where(person_id: @person.id, created_at: Time.current.all_year)  %>
+
+<h2>Films watched this year: <%= watches.count %></h2>
 <% watches.each do |f| %>
   <% film = Film.find_by(id: f.film_id) %>
   <%= film.title %>
