@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.watches_count {
-    
+.films-watched {
+    float: right;
+    border: 2px;
+    border-style: solid;
+    border-radius: 100px;
+    background-color: #fbf5ea;
+}
+.films-watched-title{
+    margin: 10px 15px 10px 15px;
+}
+
+.films-watched-count {
+    text-align: center;
+    margin: 5px 5px 10px 5px;
 }

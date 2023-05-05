@@ -2,7 +2,10 @@
 
 <%= javascript_pack_tag "home" %>
 </head>
+
+
 <h2>Movie Picker</h2>
+
 
 <div class="home-container">
 
@@ -38,10 +41,16 @@
     </div>
     <% end %>
 </div>
+<br/><br/>
 
 
-<br>
+<% watches = Watch.where(person_id: current_user.id, created_at: Time.current.all_year)  %>
+<div class="home-films-watched">
+<h3 class="home-films-watched-title">Films watched in <%= Time.current.year %> </h3>
+<h2 class = "home-films-watched-count"><%= watches.count %></h2>
+</div>
 
+<br/><br/>
 <section class="questions">
   <div class="title">
     <h2>FAQ</h2>

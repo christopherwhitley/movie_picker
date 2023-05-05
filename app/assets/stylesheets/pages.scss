@@ -29,3 +29,21 @@
 .banner::-webkit-scrollbar{
   display: none;
 }
+
+.home-films-watched {
+  float: none;
+  margin: auto;
+  border: 2px;
+  border-style: solid;
+  border-radius: 100px;
+  background-color: #fbf5ea;
+  /* margin-top: 25px; */
+  width: fit-content;
+}
+.home-films-watched-title{
+  margin: 10px 15px 10px 15px;
+}
+.home-films-watched-count {
+  text-align: center;
+  margin: 5px 5px 10px 5px;
+}

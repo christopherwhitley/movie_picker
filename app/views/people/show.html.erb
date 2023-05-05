@@ -8,7 +8,11 @@
 <% myfilms = @person.get_person_films_list %>
 <% watches = Watch.where(person_id: @person.id, created_at: Time.current.all_year)  %>
 
-<h2>Films watched this year: <%= watches.count %></h2>
+<div class="films-watched">
+<h3 class="films-watched-title">Films watched in <%= Time.current.year %> </h3>
+<h2 class = "films-watched-count"><%= watches.count %></h2>
+</div>
+
 <% watches.each do |f| %>
   <% film = Film.find_by(id: f.film_id) %>
   <%= film.title %>
