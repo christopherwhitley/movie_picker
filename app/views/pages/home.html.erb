@@ -43,12 +43,15 @@
 </div>
 <br/><br/>
 
+<% if logged_in? %>
 
-<% watches = Watch.where(person_id: current_user.id, created_at: Time.current.all_year)  %>
-<div class="home-films-watched">
-<h3 class="home-films-watched-title">Films watched in <%= Time.current.year %> </h3>
-<h2 class = "home-films-watched-count"><%= watches.count %></h2>
-</div>
+  <% watches = Watch.where(person_id: current_user.id, created_at: Time.current.all_year)  %>
+  <div class="home-films-watched">
+  <h3 class="home-films-watched-title">Films watched in <%= Time.current.year %> </h3>
+  <h2 class = "home-films-watched-count"><%= watches.count %></h2>
+  </div>
+
+<% end %>
 
 <br/><br/>
 <section class="questions">
