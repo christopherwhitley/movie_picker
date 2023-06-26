@@ -70,7 +70,8 @@ Nav bar
 .nav {
   background-color: skyblue;
   height: 50px;
-  margin: -33px -33px 0 -33px;
+  width: 100vw;
+  margin: -33px 0 0 -33px;
 }
 .nav_list {
   display: inline-block;
@@ -93,7 +94,6 @@ Nav bar
 
 .sign_in_status {
   float: right;
-  margin: 0 45px 0 0;
 }
 .sign_in_status input {
   margin-top: 2.5px;
