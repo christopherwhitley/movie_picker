@@ -15,45 +15,34 @@
 
 <% watches.each do |f| %>
   <% film = Film.find_by(id: f.film_id) %>
-  <%= film.title %>
+  <%= link_to film.title, film_path(film.id) %>
   <br>
 <% end %>
 
 <h2>My films</h2>
 
+<% film_list = get_unwatched_films %>
 
-<% myfilms.in_groups_of(8, false).each do |films| %>
+<% film_list.in_groups_of(8, false).each do |films| %>
 <div class="row">
 
-    <% films.each do |f| %>
-    <div class="col-md-4">
-      <% object = Film.where(title: [f.to_s]) %>
-      <% @id = object.pluck(:id) %>
-      <% title = object.pluck(:title) %>
-      <% title = title.join() %>
-      <%= link_to title, film_path(@id) %>
+  <% films.each do |id| %>
+  <div class="col-md-4">
+    <% film = Film.find_by(id: id) %>
+    <% title = film.title %>
+    <%= link_to title, film_path(id) %>
 
-      <% watched = get_watched_films(@person.id, @id)  %>
-      <% if watched.present?%>
-        <%= image_tag "watched-checkmark.png", size: '12', class: 'watched' %>
-      <% end %>
-      <%= form_for :watch do |f| %>
-      <%= f.hidden_field :person_id, :value => @person.id %>
-      <%= f.hidden_field :film_id, :value => @id%>
+    <%= form_for :watch do |f| %>
+    <%= f.hidden_field :person_id, :value => @person.id %>
+    <%= f.hidden_field :film_id, :value => id%>
 
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-        <%= f.submit%>
-        <% f.label :name%>
-      <% end %>
-      </div>
-
- 
-    <% end %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <%= f.submit%>
+    <% f.label :name%>
      </div>
-    <% end %>
+  <% end %>
+  </div>
+<% end %>
+<% end %>
 
-
-
-
-<%#= link_to 'Edit', edit_person_path(@person) %> 
-<%#= link_to 'Back', people_path %>
+<br><br>

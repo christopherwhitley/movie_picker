@@ -10,7 +10,14 @@ class PeopleController < ApplicationController
     Watch.film_watched(person_id, film_id)
   end
 
+  def get_unwatched_films
+
+    all_my_films = @person.film_id
+      Film.where.not(id: Watch.pluck(:film_id))
+  end
+
   helper_method :get_watched_films
+  helper_method :get_unwatched_films
   # GET /people or /people.json
   def index
     @people = Person.all
