@@ -8,7 +8,6 @@
   cursor: pointer;
 }
 .film_details {
-  max-width: 75%;
   margin-bottom: 20px;
 }
 .recommended {
@@ -16,8 +15,6 @@
   margin-bottom: 10px;
   clear: both;
   width: 100%;
-}
-.recommended-section {
 }
 .recommended_film {
   display: inline-block;
@@ -81,3 +78,31 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+.watched-tick {
+  display: inline-block;
+  padding-left: 10px;
+  }
+
+  .film-title {
+    display: inline-block;
+  }
+
+
+@media screen and (max-width: 600px) {
+  .watched-tick {
+    display: inline-block;
+  }
+  .film-title {
+    display: inline-block;
+  }
+  .film_details {
+    max-width: 100%;
+  }
+}
+// @media screen and (min-width: 600px) {
+//   .watched-tick {
+//     display: inline-block;
+//     padding-left: 10px;
+//   }
+// }
