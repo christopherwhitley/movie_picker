@@ -18,7 +18,10 @@
   <% else %> 
     <p class="poster" id="poster"><%= image_tag "poster_placeholder.jpeg", id: poster %>
   <% end %>
-   <h2> <%= @film.title %></h2>
+   <h2 class="film-title"> <%= @film.title %></h2>
+     <% if @watched == true  %>
+    <%= image_tag 'watched-checkmark.png', size: '16', class: 'watched-tick' %>
+  <% end %>
    <h4>Description</h4>
    <%= description %> <br />
 

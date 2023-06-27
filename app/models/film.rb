@@ -33,6 +33,15 @@ class Film < ApplicationRecord
     film_genre_match.first(5)
   end
 
+  def film_watched?(person_id)
+    watched = Watch.find_by(person_id: person_id, film_id: id)
+    if watched === nil
+      false
+    else
+      true
+    end
+  end
+
   def get_recommended_film_poster(film_name)
     # Returns an array of Film objects
     response = recommended_films

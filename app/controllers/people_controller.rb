@@ -2,7 +2,7 @@
 
 class PeopleController < ApplicationController
   before_action :set_person, only: %i[show edit update destroy]
-  # before_action :authorized, only: %i[ show edit update destroy]
+  before_action :authorized, only: %i[ show edit update destroy]
   before_action :authorize!, only: %i[show update edit destroy]
   # skip_before_action :authorized, only: [:new]
 
@@ -11,9 +11,8 @@ class PeopleController < ApplicationController
   end
 
   def get_unwatched_films
-
     all_my_films = @person.film_id
-      Film.where.not(id: Watch.pluck(:film_id))
+    Film.where.not(id: Watch.pluck(:film_id))
   end
 
   helper_method :get_watched_films

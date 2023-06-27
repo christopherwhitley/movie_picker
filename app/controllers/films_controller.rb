@@ -34,6 +34,7 @@ class FilmsController < ApplicationController
   # GET /films/1 or /films/1.json
   def show
     @filmname = @film.title
+    @watched = @film.film_watched?(current_user.id)
   end
 
   # GET /films/new
