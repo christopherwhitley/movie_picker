@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   # People
   post 'people_path' => 'people#add_film_to_person', as: 'add_film_to_person'
+  get 'people/watched_films' => 'people#watched_films'
   resources :people
 
   # Watched

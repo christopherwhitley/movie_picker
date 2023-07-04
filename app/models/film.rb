@@ -58,7 +58,6 @@ class Film < ApplicationRecord
       response = api.api_call(film_name)
 
       result = response.find { |movie| movie['title'] == film_name }
-      #puts(result)
       @poster = result["poster_path"]
       @film.save_poster_path(@poster, @film)
       @poster

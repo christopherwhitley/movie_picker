@@ -16,7 +16,7 @@ class WatchesController < ApplicationController
 
     respond_to do |format|
       if @watch.save
-        format.html { redirect_to('/') }
+        format.html { redirect_to(current_user) }
         flash.alert = "Save success"
       else
         format.html { redirect_to(current_user) }

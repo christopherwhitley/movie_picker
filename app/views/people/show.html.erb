@@ -1,10 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @person.username %><br/>
+<%= link_to "View watched films", people_watched_films_path(:id => @person.id), {:style=>'font-size:22px;',} %>
 
-</p>
 <% myfilms = @person.get_person_films_list %>
 <% watches = Watch.where(person_id: @person.id, created_at: Time.current.all_year)  %>
 
@@ -13,12 +10,7 @@
 <h2 class = "films-watched-count"><%= watches.count %></h2>
 </div>
 
-<% watches.each do |f| %>
-  <% film = Film.find_by(id: f.film_id) %>
-  <%= link_to film.title, film_path(f.film_id) %>
-  <br>
-<% end %>
-
+<br><br><br>
 <h2>My films</h2>
 
 <% film_list = get_unwatched_films %>

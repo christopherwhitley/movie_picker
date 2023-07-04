@@ -26,6 +26,16 @@ class Person < ApplicationRecord
     end
   end
 
+  def get_watched_films
+    my_watches = Watch.where(person_id: id)
+    film_list = []
+    films = my_watches.each do |w| 
+      film_list << Film.find(w.film_id)
+      # link_to film.title, film_path(w.film_id)
+    end
+    film_list
+  end
+
   def remove_film_id_from_person(id)
     id = id.to_s
     if film_id.include?(id)

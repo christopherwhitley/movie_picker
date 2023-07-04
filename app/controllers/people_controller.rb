@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 class PeopleController < ApplicationController
-  before_action :set_person, only: %i[show edit update destroy]
+  before_action :set_person, only: %i[show edit update destroy watched_films]
   before_action :authorized, only: %i[ show edit update destroy]
   before_action :authorize!, only: %i[show update edit destroy]
   # skip_before_action :authorized, only: [:new]
 
-  def get_watched_films(person_id, film_id)
-    Watch.film_watched(person_id, film_id)
+  def watched_films
+    @linked_films = @person.get_watched_films
+    respond_to do |format|
+      format.html { render(:watched_films) }
+    end
   end
 
   def get_unwatched_films
@@ -15,7 +18,6 @@ class PeopleController < ApplicationController
     Film.where.not(id: Watch.pluck(:film_id))
   end
 
-  helper_method :get_watched_films
   helper_method :get_unwatched_films
   # GET /people or /people.json
   def index
