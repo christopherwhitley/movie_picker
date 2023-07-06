@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'films/confirmation'
   get '/randomfilm' => 'films#randomconfirm'
   get '/random_film_confirmation' => 'films#randomconfirm'
-  post '/random_film_confirmation' => 'films#rand'
+  post '/random_film_confirmation' => 'films#wheel'
 
   # Pages
   get '/api' => 'pages#api'

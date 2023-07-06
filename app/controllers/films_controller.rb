@@ -15,6 +15,17 @@ class FilmsController < ApplicationController
     end
   end
 
+  def wheel
+    @films = unwatched_films.where(genre_id: (params[:genre][:id])).order(Arel.sql('RANDOM()'))
+    respond_to do |format|
+      if !@films.nil?
+        format.html { render('wheel.html.erb') }
+      else
+        format.html { redirect_to(random_film_confirmation_path, notice: "Please select a genre containing films") }
+      end
+    end
+  end
+
   def randomconfirm
     respond_to do |format|
       format.html { render('random_film_confirmation.html.erb') }
@@ -22,7 +33,7 @@ class FilmsController < ApplicationController
   end
 
   def unwatched_films
-    @films = Film.all.where.not(id: Watch.pluck(:film_id))
+    Film.all.where.not(id: Watch.pluck(:film_id))
   end
 
   # GET /films or /films.json
@@ -35,6 +46,10 @@ class FilmsController < ApplicationController
   def show
     @filmname = @film.title
     @watched = @film.film_watched?(current_user.id)
+    respond_to do |format|
+      format.json { render @film }
+      format.html { render :show }
+    end
   end
 
   # GET /films/new

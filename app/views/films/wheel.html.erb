@@ -1,0 +1,42 @@
+<%= javascript_pack_tag 'wheel.js' %>
+
+<div class="directions">
+      Click to spin the wheel to see what film has been chosen
+</div>
+<div class="spin-the-wheel">
+  <label>
+    <input class="wheel-input" type="radio">
+    <div id="clicker" class="clicker"></div>
+
+<div id="wheel" class="wheel">
+  <div id="<%= @films[0].id %>" class="option o1">
+  <p id="<%= @films[0].id %>" class="top-title">
+    <%= @films[0].title %>     
+    </p>
+  </div>
+
+  <div id="<%= @films[1].id %>" class="option o2">
+    <p id="<%= @films[1].id %>" class="top-title">  
+        <%= @films[1].title %>   
+        </p>
+  </div>
+
+  <div id="<%= @films[2].id %>" class="option o3">
+    <p id="<%= @films[2].id %>" class="bottom-title">
+    <%= @films[2].title %>    
+    </p>
+  </div>
+
+  <div id="<%= @films[3].id %>" class="option o4">
+    <p id="<%= @films[3].id %>" class="bottom-title">
+    <%= @films[3].title %>
+    </p>
+  </div>
+</div>
+    
+    <div id="message" class="message">
+      <br>
+    </div>
+    
+  </label>
+</div>
