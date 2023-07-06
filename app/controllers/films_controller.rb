@@ -18,10 +18,10 @@ class FilmsController < ApplicationController
   def wheel
     @films = unwatched_films.where(genre_id: (params[:genre][:id])).order(Arel.sql('RANDOM()'))
     respond_to do |format|
-      if !@films.nil?
+      if !@films.nil? && @films.length >= 4
         format.html { render('wheel.html.erb') }
       else
-        format.html { redirect_to(random_film_confirmation_path, notice: "Please select a genre containing films") }
+        format.html { redirect_to(random_film_confirmation_path, notice: "Please select a genre containing more films") }
       end
     end
   end
