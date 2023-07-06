@@ -24,6 +24,10 @@ body {
 
 /*  global classes */
 
+a:hover {
+  color:darkblue
+}
+
 .btn {
   text-transform: uppercase;
   background: transparent;
@@ -41,6 +45,7 @@ body {
   color: var(--clr-white);
   background: var(--clr-black);
 }
+
 /* section */
 .section {
   padding: 5rem 0;
