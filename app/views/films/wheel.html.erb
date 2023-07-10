@@ -2,24 +2,60 @@
 <div class="directions">
       Click to spin the wheel to see what film has been chosen
 </div>
-      
+
 <div id="mainbox" class="mainbox">
   <div id="box" class="box">    
     <div id="box1" class="box1">
-      <span class="span1"><b class="question_marks">?</b><b class="film_title"><%= @films[0].title %></b></span>
-      <span class="span2"><b class="question_marks">?</b><b class="film_title"><%= @films[1].title %></b></span>
-      <span class="span3"><b class="question_marks">?</b><b class="film_title"><%= @films[2].title %></b></span>
-      <span class="span4"><b class="question_marks">?</b><b class="film_title"><%= @films[3].title %></b></span>
+      <span class="span1">
+        <b class="question_marks">?</b>
+        <b class="film_id"><%= @films[0].id %></b>
+        <b class="film_title"><%= @films[0].title %></b>
+      </span>
+      <span class="span2">
+        <b class="question_marks">?</b>
+        <b class="film_id"><%= @films[1].id %></b>
+        <b class="film_title"><%= @films[1].title %></b>
+      </span>
+      <span class="span3">
+        <b class="question_marks">?</b>
+        <b class="film_id"><%= @films[2].id %></b>
+        <b class="film_title"><%= @films[2].title %></b>
+      </span>
+      <span class="span4">
+        <b class="question_marks">?</b>
+        <b class="film_id"><%= @films[3].id %></b>
+        <b class="film_title"><%= @films[3].title %></b>
+      </span>
     </div>
     <div id="box2" class="box2">
-      <span class="span1"><b class="question_marks">?</b><b class="film_title"><%= @films[4].title %></b></span>
-      <span class="span2"><b class="question_marks">?</b><b class="film_title"><%= @films[5].title %></b></span>
-      <span class="span3"><b class="question_marks">?</b><b class="film_title"><%= @films[6].title %></b></span>
-      <span class="span4"><b class="question_marks">?</b><b class="film_title"><%= @films[7].title %></b></span>
+      <span class="span1">
+        <b class="question_marks">?</b>
+        <b class="film_id"><%= @films[4].id %></b>
+        <b class="film_title"><%= @films[4].title %></b>
+      </span>
+      <span class="span2">
+        <b class="question_marks">?</b>
+        <b class="film_id"><%= @films[5].id %></b>
+        <b class="film_title"><%= @films[5].title %></b>
+      </span>
+      <span class="span3">
+        <b class="question_marks">?</b>
+        <b class="film_id"><%= @films[6].id %></b>
+        <b class="film_title"><%= @films[6].title %></b>
+      </span>
+      <span class="span4">
+        <b class="question_marks">?</b>
+        <b class="film_id"><%= @films[7].id %></b>
+        <b class="film_title"><%= @films[7].title %></b>
+      </span>
     </div>
   </div>
   <div id="arrow" class="arrow"></div>
   <button id="spin" class="spin" onclick="rotateFunction()">SPIN</button>
 </div>
 
+<div id="message-block" class="message-block">
+  <p id="message" class="message">Film title goes here</p>
+  <a href="#" id="film_link">View film</a>
+</div>
 
