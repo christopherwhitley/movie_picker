@@ -1,0 +1,27 @@
+<h1>Editing Custom List</h1>
+
+<%#= render 'form', custom_list: @custom_list %>
+    <%= form_for @custom_list do |c| %>
+    <div class="field">
+        <%= c.label :name %>
+        <%= c.text_field :name, class: "customlistfilmtitle" %>
+    </div>
+    <div class="customlistfilmtitle">
+    <%= c.collection_check_boxes:film_ids, @films, :id, :title do |f| %>
+        <%= f.label(class: "check_box") do %>
+            <%= f.check_box(class: "check_box") %>
+            <%= f.object.title %>
+        <% end %>
+     <% end %>
+    </div>
+    <%= c.submit %>
+<% end %>
+
+<h3>Current films</h3>
+<% @custom_list.films.each do |f| %>    
+    <%= link_to f.title, film_path(f.id) %>
+<br>
+<% end %>
+<br>
+<%= link_to 'Show', @custom_list %> |
+<%= link_to 'Back', custom_list_path %>

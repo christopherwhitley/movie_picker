@@ -1,6 +1,6 @@
 class CustomListsController < ApplicationController
   before_action :authorized, only: %i[new show]
-  before_action :set_custom_list, only: %i[show]
+  before_action :set_custom_list, only: %i[show edit update]
 
   def index
     @custom_list = CustomList.all
@@ -8,6 +8,22 @@ class CustomListsController < ApplicationController
 
   def show
     @custom_list.id
+  end
+
+  def edit
+    @films = Film.all
+  end
+
+  def update
+    respond_to do |format|
+      if @custom_list.update(custom_list_params)
+        format.html { redirect_to(@custom_list, notice: "List was successfully updated.") }
+        format.json { render(:show, status: :ok, location: @custom_list) }
+      else
+        format.html { render(:edit, status: :unprocessable_entity) }
+        format.json { render(json: @custom_list.errors, status: :unprocessable_entity) }
+      end
+    end
   end
 
   def new
