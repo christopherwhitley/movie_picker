@@ -16,15 +16,27 @@ class FilmsController < ApplicationController
   end
 
   def wheel
-    @films = unwatched_films.where(genre_id: (params[:genre][:id])).order(Arel.sql('RANDOM()'))
-    respond_to do |format|
-      if !@films.nil? && @films.length >= 4
-        format.html { render('wheel.html.erb') }
-      else
-        format.html { redirect_to(random_film_confirmation_path, notice: "Please select a genre containing more films") }
+    if params[:custom_lists][:id]
+      @films = CustomList.random_custom_list_films(params[:custom_lists][:id])
+      respond_to do |format|
+        if !@films.nil? && @films.length >= 8
+          format.html { render('wheel.html.erb') }
+        else
+          format.html { redirect_to(random_film_confirmation_path, notice: "Please select a custom list containing at least 8 films") }
+        end
+      end
+    else
+      @films = unwatched_films.where(genre_id: (params[:genre][:id])).order(Arel.sql('RANDOM()'))
+      respond_to do |format|
+        if !@films.nil? && @films.length >= 8
+          format.html { render('wheel.html.erb') }
+        else
+          format.html { redirect_to(random_film_confirmation_path, notice: "Please select a genre containing at least 8 films") }
+        end
       end
     end
   end
+
 
   def randomconfirm
     respond_to do |format|

@@ -7,9 +7,17 @@
   <br/>
   <%= g = collection_check_boxes :genre, :id, Genre.all, :id, :id, include_hidden: false do |g| %>
     <%= g.label() do %>
-    <%= g.check_box(class: "check_box") %>
-    <%= g.object.name %>
+      <%= g.check_box(class: "check_box") %>
+      <%= g.object.name %>
+    <% end %>
   <% end %>
+  <br/>
+  <h3>Select custom lists</h3>
+  <%= cl= collection_radio_buttons :custom_lists, :id, CustomList.where(person_id: current_user.id), :id, :id, include_hidden: false do |cl| %>
+    <%= cl.label() do %>
+      <%= cl.radio_button(class: "check_box") %>
+      <%= cl.object.name %>
+    <% end %>
   <% end %>
   <br/>
   <%= submit_tag("Find") %>
