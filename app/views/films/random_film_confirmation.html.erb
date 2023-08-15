@@ -15,7 +15,7 @@
   <h3>Select custom lists</h3>
   <%= cl= collection_radio_buttons :custom_lists, :id, CustomList.where(person_id: current_user.id), :id, :id, include_hidden: false do |cl| %>
     <%= cl.label() do %>
-      <%= cl.radio_button(class: "check_box") %>
+      <%= cl.radio_button(class: "custom_list_radio_button") %>
       <%= cl.object.name %>
     <% end %>
   <% end %>

@@ -16,7 +16,7 @@ class FilmsController < ApplicationController
   end
 
   def wheel
-    if params[:custom_lists][:id]
+    if params["custom_lists"]
       @films = CustomList.random_custom_list_films(params[:custom_lists][:id])
       respond_to do |format|
         if !@films.nil? && @films.length >= 8
