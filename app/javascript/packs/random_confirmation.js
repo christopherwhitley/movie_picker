@@ -32,27 +32,30 @@ window.onload = function() {
         }
     }
     // If 'Select all' checkbox is ticked
-    window.toggleAll = function () {
-        toggle = document.getElementById("check_all")
-        if (toggle.checked == true) {
-            for (var i = 0; i < checkboxes.length; i++) {
-                checkboxes[i].checked = true;
-            }
-            
-            for (var i = 0; i < radiobuttons.length; i++) {
-                radiobuttons[i].disabled = true
-            }
 
+}
+window.toggleAll = function () {
+    toggle = document.getElementById("check_all")
+    const checkboxes = document.querySelectorAll(".check_box");
+    const radiobuttons = document.querySelectorAll(".custom_list_radio_button")
+    if (toggle.checked == true) {
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = true;
         }
-        else {
-            for (var i = 0; i < checkboxes.length; i++) {
-                checkboxes[i].checked = false;
-            }
-            for (var i = 0; i < radiobuttons.length; i++) {
-                radiobuttons[i].disabled = false
-            }
+        
+        for (var i = 0; i < radiobuttons.length; i++) {
+            radiobuttons[i].disabled = true
         }
 
     }
+    else {
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = false;
+        }
+        for (var i = 0; i < radiobuttons.length; i++) {
+            radiobuttons[i].disabled = false
+        }
+    }
+
 }
 
