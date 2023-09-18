@@ -33,7 +33,7 @@ window.onload = function() {
     }
     // If 'Select all' checkbox is ticked
     window.toggleAll = function () {
-
+        toggle = document.getElementById("check_all")
         if (toggle.checked == true) {
             for (var i = 0; i < checkboxes.length; i++) {
                 checkboxes[i].checked = true;
