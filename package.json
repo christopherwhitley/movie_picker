@@ -2,7 +2,7 @@
   "dependencies": {
     "@rails/activestorage": "^7.0.4",
     "@rails/ujs": "^7.0.4",
-    "@rails/webpacker": "5.4.3",
+    "@rails/webpacker": "5.4.4",
     "license": "MIT",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",

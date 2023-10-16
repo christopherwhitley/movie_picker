@@ -1,6 +1,5 @@
 window.addEventListener('turbolinks:load', () => {
   // TURBOLINKS IS ACTIVATING TWICE!!
-  console.log('turbolinks:load')
   //FAQ
   const btns = document.querySelectorAll(".question-btn");
   btns.forEach(function (btn) {
@@ -13,7 +12,6 @@ window.addEventListener('turbolinks:load', () => {
 });
 
 window.addEventListener('load', () => {
-  console.log('onload')
   //FAQ
   const btns = document.querySelectorAll(".question-btn");
   btns.forEach(function (btn) {
@@ -26,7 +24,6 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('pageshow', () => {
-  console.log('pageshow')
   //FAQ
   const btns = document.querySelectorAll(".question-btn");
   btns.forEach(function (btn) {
@@ -38,22 +35,36 @@ window.addEventListener('pageshow', () => {
   });
 });
 
-window.addEventListener('pageshow', () => {
+window.addEventListener('turbolinks:load', () => {
   //Banner
   const banner = document.getElementById("banner");
+  if (banner === null) {
+    return;
+  }
   const films = document.querySelectorAll('.film');
   const bannerScrollWidth = banner.scrollWidth;
   const homepage = window.location.href;
 
+
+
+
   var refreshIntervalId = setInterval(function () {
     const homepage = window.location.href;
+
+    if (banner === null) {
+      return;
+    }
+
     if (window.location.href != homepage) {
-      banner.scrollTo(0, 0)
-      continueScroll()
+      // banner.scrollTo(0, 0)
+      // continueScroll()
       return;
     }
     else if (banner.scrollLeft + banner.offsetWidth != bannerScrollWidth) {
       const banner = document.getElementById("banner");
+      if (banner === null) {
+        return;
+      }
       banner.scrollTo(banner.scrollLeft + 1, 0);
 
     }
