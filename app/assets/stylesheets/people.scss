@@ -8,6 +8,11 @@
     border-style: solid;
     border-radius: 100px;
     background-color: #fbf5ea;
+
+    @media screen and (max-width: 600px) {
+        width: 30%;
+        text-align: center;
+    }
 }
 .films-watched-title{
     margin: 10px 15px 10px 15px;
