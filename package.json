@@ -11,7 +11,7 @@
   "devDependencies": {
     "@rails/webpacker": "5.4.3",
     "license": "MIT",
-    "webpack-dev-server": "^3"
+    "webpack-dev-server": "^4.15.1"
   },
   "name": "movie_picker",
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",

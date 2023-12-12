@@ -22,3 +22,20 @@
     text-align: center;
     margin: 5px 5px 10px 5px;
 }
+.film img {
+    size: A4
+}
+.title {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.container{
+    position: relative;
+    text-align: center;
+}
+.section {
+    width: 20%
+}

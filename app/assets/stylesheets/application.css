@@ -229,7 +229,19 @@ table tr {
 
 .col-md-4 {
   float: left;
-  width: 50%;
+  width: 40%;
+
   margin-bottom: 15px;
+
+  @media screen and (min-width: 620px) {
+    width: 30%;
+  }
+  @media screen and (min-width: 900px) {
+    width: 20%;
+  }
+  @media screen and (min-width: 1600px) {
+    width: 10%;
+  }
+}
 }
 

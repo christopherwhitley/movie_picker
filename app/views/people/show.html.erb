@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'person.js' %>
+
 <p id="notice"><%= notice %></p>
 
 <%= link_to "View watched films", people_watched_films_path(:id => @person.id), {:style=>'font-size:22px;',} %>
@@ -21,16 +23,22 @@
   <% films.each do |film| %>
   <div class="col-md-4">
     <% film = Film.find_by(id: film) %>
-    <% title = film.title %>
-    <%= link_to title, film_path(film) %>
 
-    <%= form_for :watch do |f| %>
+    <%= link_to film do %>
+      <div class="container">
+        <p class="title"><%= film.title %></p> 
+        <%= image_tag('https://image.tmdb.org/t/p/w154' << film['poster_path'].to_s,  class: "film") %>
+            <%= form_for :watch do |f| %>
     <%= f.hidden_field :person_id, :value => @person.id %>
     <%= f.hidden_field :film_id, :value => film.id%>
 
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
     <%= f.submit%>
     <% f.label :name%>
+      </div>
+    <% end %>
+
+
      </div>
   <% end %>
   </div>
