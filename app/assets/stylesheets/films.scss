@@ -307,12 +307,6 @@ label {
 //   background-size: cover;
 // }
 
-.mainbox{
-  position: relative;
-  width: 500px;
-  height: 500px;
-  margin: auto;
-}
 .arrow{
   position: absolute;
   content: '';
@@ -444,4 +438,53 @@ span b{
 }
 #film_link {
   display: none;
+}
+
+@media screen and (max-width: 999px) {
+  .mainbox{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+  }
+  .span1{
+    clip-path: polygon(0 92%, 100% 50%, 0 8%);
+    background-color: #fffb00;
+    top: 65px;
+    left: 0;
+  }
+  .span2{
+    clip-path: polygon(100% 92%, 0 50%, 100% 8%);
+    background-color: #ff4fa1;
+    top: 60px;
+    right: 0;
+  }
+  .span3{
+    clip-path: polygon(50% 0%, 8% 100%, 92% 100%);
+    background-color: #ffaa00;
+    bottom: 0;
+    left: 65px;
+  }
+  .span4{
+    clip-path: polygon(50% 100%, 92% 0, 8% 0);
+    background-color: #22ff00;
+    top: 0;
+    left: 60px;
+  }
+  .spin {
+    top: 54%;
+    left: 54%;
+    font-size: 14px;
+  }
+  span b{
+    font-size: 8px;
+
+   }
+  .message-block {
+  top: 500px;
+  left: 35%;
+  }
+  .film_title {
+    padding-left: 50px;
+  }
 }
