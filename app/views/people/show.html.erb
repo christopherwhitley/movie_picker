@@ -13,7 +13,7 @@
 </div>
 
 <br><br><br>
-<h2>My films</h2>
+<h2>My films to watch</h2>
 
 <% film_list = get_unwatched_films %>
 
@@ -28,7 +28,8 @@
       <div class="container">
         <p class="title"><%= film.title %></p> 
         <%= image_tag('https://image.tmdb.org/t/p/w154' << film['poster_path'].to_s,  class: "film") %>
-            <%= form_for :watch do |f| %>
+            <% end %>
+    <%= form_for :watch do |f| %>
     <%= f.hidden_field :person_id, :value => @person.id %>
     <%= f.hidden_field :film_id, :value => film.id%>
 
@@ -36,7 +37,7 @@
     <%= f.submit%>
     <% f.label :name%>
       </div>
-    <% end %>
+
 
 
      </div>
