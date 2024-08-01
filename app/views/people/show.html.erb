@@ -6,10 +6,9 @@
 
 <% myfilms = @person.get_person_films_list %>
 <% watches = Watch.where(person_id: @person.id, created_at: Time.current.all_year)  %>
-
 <div class="films-watched">
-<h3 class="films-watched-title">Films watched in <%= Time.current.year %> </h3>
-<h2 class = "films-watched-count"><%= watches.count %></h2>
+  <h3 class="films-watched-title">Films watched in <%= Time.current.year %> </h3>
+  <h2 class = "films-watched-count"><%= watches.count %></h2>
 </div>
 
 <br><br><br>
@@ -19,16 +18,14 @@
 
 <% film_list.in_groups_of(8, false).each do |films| %>
 <div class="row">
-
   <% films.each do |film| %>
-  <div class="col-md-4">
+  <div class="col-md-4 unwatched-films-row">
     <% film = Film.find_by(id: film) %>
-
     <%= link_to film do %>
       <div class="container">
-        <p class="title"><%= film.title %></p> 
         <%= image_tag('https://image.tmdb.org/t/p/w154' << film['poster_path'].to_s,  class: "film") %>
             <% end %>
+      <p class="title"><%= film.title %></p> 
     <%= form_for :watch do |f| %>
     <%= f.hidden_field :person_id, :value => @person.id %>
     <%= f.hidden_field :film_id, :value => film.id%>
@@ -37,9 +34,6 @@
     <%= f.submit%>
     <% f.label :name%>
       </div>
-
-
-
      </div>
   <% end %>
   </div>

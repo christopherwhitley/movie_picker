@@ -10,8 +10,10 @@
     background-color: #fbf5ea;
 
     @media screen and (max-width: 600px) {
-        width: 30%;
+        width: 100px;
         text-align: center;
+        font-size: 12px;
+        clear: left;
     }
 }
 .films-watched-title{
@@ -26,11 +28,8 @@
     size: A4
 }
 .title {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 5px 0px 8px 0px;
+    padding: 0px 15px 0px 15px;
 }
 .container{
     position: relative;
@@ -38,4 +37,10 @@
 }
 .section {
     width: 20%
+}
+@media screen and (max-width: 619px) {
+    .unwatched-films-row {
+        width: 50% !important;
+        margin-top: 25px;
+    }
 }
