@@ -21,7 +21,22 @@
 
 .films-watched-count {
     text-align: center;
-    margin: 5px 5px 10px 5px;
+    margin: 15px 5px 10px 5px;
+}
+
+@media screen and (max-width: 375px) {
+    .films-watched {
+        width: 80px;
+        height: 80px;
+        font-size: 8px;
+    
+    }
+    .films-watched-title{
+        margin: 3px 10px 5px 10px;
+    }
+    .films-watched-count {
+        margin: 5px 5px 10px 5px;
+    }
 }
 
 @media screen and (max-width: 619px) {
