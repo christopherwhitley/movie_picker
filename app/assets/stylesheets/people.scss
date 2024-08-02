@@ -13,7 +13,6 @@
         width: 100px;
         text-align: center;
         font-size: 12px;
-        clear: left;
     }
 }
 .films-watched-title{
@@ -24,23 +23,79 @@
     text-align: center;
     margin: 5px 5px 10px 5px;
 }
-.film img {
-    size: A4
-}
-.title {
-    margin: 5px 0px 8px 0px;
-    padding: 0px 15px 0px 15px;
-}
-.container{
-    position: relative;
-    text-align: center;
-}
-.section {
-    width: 20%
-}
+
 @media screen and (max-width: 619px) {
     .unwatched-films-row {
         width: 50% !important;
-        margin-top: 25px;
+        margin-top: 50px;
+    }
+    .title {
+        font-size: 12px;
+        height: 40px;
+        padding: 0px 15px 0px 15px;
+    }
+    .film {
+        width: 100px;
+        height: 150px;
+    }
+    .container {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 620px) {
+    .title {
+        font-size: 14px;
+        height: 40px;
+        padding: 0px 15px 0px 15px;
+    }
+    .film {
+        height: 300px;
+    }
+    .unwatched-films-row {
+        width: 50% !important;
+        margin-top: 50px;
+    }
+    .container {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .films-watched {
+        float: right;
+        border: 2px;
+        border-style: solid;
+        border-radius: 100px;
+        background-color: #fbf5ea;
+    }
+    
+    .films-watched-title{
+        margin: 10px 15px 10px 15px;
+    }
+    
+    .films-watched-count {
+        text-align: center;
+        margin: 5px 5px 10px 5px;
+    }
+    .title {
+        margin: 5px 0px 8px 0px;
+        padding: 0px 15px 0px 15px;
+    
+    }
+    .container{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    .section {
+        width: 20%
+    }
+    .unwatched-films-row {
+        width: 25% !important;
+        margin-top: 50px;
     }
 }
