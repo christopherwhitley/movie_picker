@@ -1,4 +1,4 @@
-class FilmsController < ApplicationController
+class FilmsController < ApplicationController # rubocop:disable Metrics/ClassLength
   require 'i18n'
   require 'i18n_data'
   before_action :set_film, only: %i[show edit update destroy]
@@ -15,7 +15,7 @@ class FilmsController < ApplicationController
     end
   end
 
-  def wheel
+  def wheel # rubocop:disable Metrics/AbcSize
     if params["custom_lists"]
       @films = CustomList.random_custom_list_films(params[:custom_lists][:id])
       respond_to do |format|
@@ -73,7 +73,7 @@ class FilmsController < ApplicationController
   def edit; end
 
   # POST /films or /films.json
-  def create
+  def create # rubocop:disable Metrics/AbcSize
     @film = Film.new(film_params)
     lang = I18nData.language_code(params[:film][:language])
     results = get_movie(params[:film_id], lang)
