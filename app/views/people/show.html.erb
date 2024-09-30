@@ -23,7 +23,7 @@
     <% film = Film.find_by(id: film) %>
     <%= link_to film do %>
       <div class="container">
-        <%= image_tag('https://image.tmdb.org/t/p/w154' << film['poster_path'].to_s,  class: "film") %>
+        <%= image_tag('https://image.tmdb.org/t/p/w780' << film['poster_path'].to_s,  class: "film") %>
             <% end %>
       <p class="title"><%= film.title %></p> 
     <%= form_for :watch do |f| %>

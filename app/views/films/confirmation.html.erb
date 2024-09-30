@@ -7,7 +7,7 @@
   <div class="matching_films">
   <%= form.radio_button "film_id", movie['id'], class: 'radio_button' %>
   <% unless movie['poster_path'].to_s.strip.empty? %>
-    <%= image_tag 'https://image.tmdb.org/t/p/w154' << movie['poster_path'].to_s, class: 'poster_confirmation' %>
+    <%= image_tag 'https://image.tmdb.org/t/p/w185' << movie['poster_path'].to_s, class: 'poster_confirmation' %>
   <% end %>
   <h3> <%= form.label "film[title]", movie['title'], style: 'display: inline-block', class: 'movie_title' %> </h3><br/><br/>
   <%= form.label :release_date, movie['release_date'], style: 'display: inline-block'  %><br><br>
