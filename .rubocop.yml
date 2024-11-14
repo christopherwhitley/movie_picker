@@ -3,6 +3,7 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   EnabledByDefault: false
   AutoCorrect: true
+  NewCops: enable
 
 Layout/IndentationConsistency:
   AutoCorrect: true

@@ -2,16 +2,16 @@
 
 <div>
 <%= form_with(url: new_film_path) do |form| %>
-  <% @response.each do |movie| %>
+  <% @film_confirmation_presenter.formatted_movies.each do |movie| %>
   <br/>
   <div class="matching_films">
-  <%= form.radio_button "film_id", movie['id'], class: 'radio_button' %>
-  <% unless movie['poster_path'].to_s.strip.empty? %>
-    <%= image_tag 'https://image.tmdb.org/t/p/w185' << movie['poster_path'].to_s, class: 'poster_confirmation' %>
+  <%= form.radio_button "film_id", movie[:id], class: 'radio_button' %>
+  <% unless movie[:poster_path].to_s.strip.empty? %>
+    <%= image_tag @film_confirmation_presenter.poster_base_url << movie[:poster_path].to_s, class: 'poster_confirmation' %>
   <% end %>
-  <h3> <%= form.label "film[title]", movie['title'], style: 'display: inline-block', class: 'movie_title' %> </h3><br/><br/>
-  <%= form.label :release_date, movie['release_date'], style: 'display: inline-block'  %><br><br>
-  <%= movie['overview'] %>
+  <h3> <%= form.label "film[title]", movie[:title], style: 'display: inline-block', class: 'movie_title' %> </h3><br/><br/>
+  <%= form.label :release_date, movie[:release_date], style: 'display: inline-block'  %><br><br>
+  <%= movie[:description] %>
   <%= form.hidden_field "film[genre_id]", value: @film_genre_id%>
   <%= form.hidden_field "film[description]", value: @film_description %>
   <%= form.hidden_field "film[language]", value: @film_language %>

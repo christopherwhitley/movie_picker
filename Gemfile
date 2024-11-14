@@ -32,12 +32,12 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'httparty', '~> 0.17.3'
 
 gem 'bcrypt'
+gem 'i18n_data'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop'
-  gem 'i18n_data'
   gem 'factory_bot_rails'
 end
 
@@ -56,14 +56,12 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'rexml'
-  gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
 end
 
 group :production do
   gem "nokogiri"
-  gem "i18n_data"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

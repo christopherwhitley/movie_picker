@@ -123,8 +123,9 @@ class FilmsController < ApplicationController # rubocop:disable Metrics/ClassLen
       @film_title = params[:film][:title]
       @film_language = params[:film][:language]
       @film_genre_id = params[:film][:genre_id]
-      @response = Film.get_film_confirmation(@film_title, @film_language)
-      format.html { render('confirmation.html') }
+      response = Film.get_film_confirmation(@film_title, @film_language)
+      @film_confirmation_presenter = FilmConfirmationPresenter.new(response)
+      format.html { render('confirmation') }
     end
   end
 
