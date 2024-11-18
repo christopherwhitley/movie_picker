@@ -16,10 +16,10 @@ class WatchesController < ApplicationController
 
     respond_to do |format|
       if @watch.save
-        format.html { redirect_to(current_user) }
+        format.html { redirect_to request.referer || root_path }
         flash.alert = "Save success"
       else
-        format.html { redirect_to(current_user) }
+        format.html { redirect_to request.referer || root_path }
         flash.alert = "Save Unsuccessful"
 
         @watch.errors.each do |error|
@@ -31,15 +31,15 @@ class WatchesController < ApplicationController
   end
 
   # DELETE /films/1 or /films/1.json
-   def destroy
+  def destroy
     @watch.destroy
-      respond_to do |format|
-        # format.html { remove_film_id_from_person(@film.id) }
-        format.html { @watch.destroy }
-        format.html { render(:show) }
-        format.json { head(:no_content) }
-      end
+    respond_to do |format|
+      # format.html { remove_film_id_from_person(@film.id) }
+      format.html { @watch.destroy }
+      format.html { render(:show) }
+      format.json { head(:no_content) }
     end
+  end
 
 private
   def watch_params

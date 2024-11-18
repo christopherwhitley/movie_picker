@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   # Watched
   post '/people/:id' => 'watches#create'
+  post '/films/:id' => 'watches#create'
   resources :watches
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

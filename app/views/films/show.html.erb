@@ -32,6 +32,17 @@
 
    <h4 class="release">Genre</h4>
    <%= link_to @film.genre.name, genre_path(@film.genre), class: "release"%>
+   <br><br>
+    <% unless @film.film_watched?(@person)%>
+      <%= form_for :watch do |f| %>
+      <%= f.hidden_field :person_id, :value => @person.id %>
+      <%= f.hidden_field :film_id, :value => @film.id%>
+
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= f.submit%>
+      <% f.label :name%>
+      <% end %>
+      <% end %>
    </div><br/>
 
 </br></br></br>

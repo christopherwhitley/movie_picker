@@ -7,10 +7,10 @@ class FilmsController < ApplicationController # rubocop:disable Metrics/ClassLen
   def rand
     @films = unwatched_films.where(genre_id: (params[:genre][:id])).order(Arel.sql('RANDOM()')).first
     respond_to do |format|
-      if !@films.nil?
-        format.html { redirect_to(@films) }
-      else
+      if @films.nil?
         format.html { redirect_to(random_film_confirmation_path, notice: "Please select a genre containing films") }
+      else
+        format.html { redirect_to(@films) }
       end
     end
   end
@@ -57,6 +57,7 @@ class FilmsController < ApplicationController # rubocop:disable Metrics/ClassLen
   # GET /films/1 or /films/1.json
   def show
     @filmname = @film.title
+    @person = current_user
     @watched = @film.film_watched?(current_user.id)
     respond_to do |format|
       format.json { render @film }
