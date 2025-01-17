@@ -4,7 +4,6 @@
 
 <% poster = @film.poster_path %>
 <% description = @film.description%>
-<%# release_date = @film.get_film_release_date(@film.title) %>
 
 <div class="overlay" id="overlay">
 <% if (poster != nil) %>
@@ -28,7 +27,7 @@
    <br /><br />
    <%= button_tag 'Show more info', type: 'button', id: 'show-hide' %>
     <h4 class="release">Release Date (U.S.)</h4>
-     <span class='release'><%= @film.release_date %></span>
+     <div class='release'><%= @film.release_date %></div>
 
    <h4 class="release">Genre</h4>
    <%= link_to @film.genre.name, genre_path(@film.genre), class: "release"%>
