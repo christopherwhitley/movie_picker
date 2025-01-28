@@ -38,10 +38,17 @@
       <%= f.hidden_field :film_id, :value => @film.id%>
 
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <%= f.submit%>
+      <%= f.submit "Mark as seen"%>
       <% f.label :name%>
       <% end %>
       <% end %>
+    <% if @film.film_watched?(@person) %>
+      <%= form_with(url: :watch, method: "delete") do |form| %>
+        <%= form.hidden_field :person_id, :value => @person.id %>
+        <%= form.hidden_field :film_id, :value => @film.id%>
+        <%= form.button "Mark as unseen" %>
+      <% end %>
+    <% end %>
    </div><br/>
 
 </br></br></br>

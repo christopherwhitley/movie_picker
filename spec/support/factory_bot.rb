@@ -16,5 +16,6 @@ FactoryBot.define do
     sequence(:title, 1) { |n| "some title#{n}" }
     sequence(:id, 1) { |n| n }
     genre_id { 1 }
+    association :genre
   end
 end

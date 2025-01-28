@@ -1,6 +1,6 @@
 class WatchesController < ApplicationController
 
-  before_action :set_film, only: %i[destroy]
+  before_action :set_watch, only: %i[destroy]
 
   def index
     @watches = Watch.all
@@ -17,7 +17,7 @@ class WatchesController < ApplicationController
     respond_to do |format|
       if @watch.save
         format.html { redirect_to request.referer || root_path }
-        flash.alert = "Save success"
+        flash.alert = "Successfully marked as seen"
       else
         format.html { redirect_to request.referer || root_path }
         flash.alert = "Save Unsuccessful"
@@ -30,14 +30,11 @@ class WatchesController < ApplicationController
     end
   end
 
-  # DELETE /films/1 or /films/1.json
   def destroy
     @watch.destroy
     respond_to do |format|
-      # format.html { remove_film_id_from_person(@film.id) }
-      format.html { @watch.destroy }
-      format.html { render(:show) }
-      format.json { head(:no_content) }
+      format.html { redirect_back fallback_location: root_path, notice: 'Successfully marked as unseen' }
+      format.json { head :no_content }
     end
   end
 
@@ -46,7 +43,7 @@ private
     params.require(:watch).permit(:film_id, :person_id)
   end
 
-  def set_film
-    @watch = Watch.find(params[:id])
+  def set_watch
+    @watch = Watch.find_by(film_id: params[:film_id], person_id: params[:person_id])
   end
 end
