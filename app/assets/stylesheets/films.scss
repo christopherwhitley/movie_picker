@@ -183,17 +183,21 @@ label {
 }
 
 .message-block {
-  position: absolute;
   padding: 20px;
   background-color: white;
   color: black;
   text-align: center;
   box-shadow: 0 0 5px black;
-  top: 150px;
-  left: 46%;
   width: 100px;
   z-index: 5;
   display: none;
+  position: absolute;
+  @media screen and (max-width: 999px) {
+    top: 40%;
+  }
+  top: 75%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .clicker {
@@ -440,12 +444,17 @@ span b{
   display: none;
 }
 
-@media screen and (max-width: 999px) {
+
   .mainbox{
-    position: relative;
+    @media screen and (min-width: 999px) {
+      transform: scale(1.5);
+      transform-origin: top;
+    }
+
     width: 250px;
     height: 250px;
     margin: auto;
+    position: relative;
   }
   .span1{
     clip-path: polygon(0 92%, 100% 50%, 0 8%);
@@ -479,12 +488,8 @@ span b{
   span b{
     font-size: 8px;
 
-   }
-  .message-block {
-  top: 500px;
-  left: 35%;
-  }
+    }
+
   .film_title {
     padding-left: 50px;
   }
-}
