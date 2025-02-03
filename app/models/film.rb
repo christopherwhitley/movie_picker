@@ -35,11 +35,7 @@ class Film < ApplicationRecord
 
   def film_watched?(person_id)
     watched = Watch.find_by(person_id: person_id, film_id: id)
-    if watched === nil
-      false
-    else
-      true
-    end
+    !watched.nil?
   end
 
   def get_recommended_film_poster(film_name)

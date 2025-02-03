@@ -8,10 +8,23 @@ RSpec.describe 'Show film', type: :feature, js: true do
     log_in(person)
   end
 
-  describe 'show page' do
+  context 'when the film has not been marked as watched' do
     it 'shows the save watch button' do
       visit film_path(film)
       expect(page).to have_button('Mark as seen')
+    end
+  end
+
+  context 'when the film has been marked as watched' do
+    let(:watch) { instance_double(Watch, watched: true, film_id: film.id, person_id: person.id) }
+
+    before do
+      allow(Watch).to receive(:find_by).with(person_id: person.id, film_id: film.id).and_return(watch)
+    end
+
+    it 'shows the remove watch button' do
+      visit film_path(film)
+      expect(page).to have_button('Mark as unseen')
     end
   end
 end

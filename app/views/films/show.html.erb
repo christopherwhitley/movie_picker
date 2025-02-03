@@ -32,7 +32,7 @@
    <h4 class="release">Genre</h4>
    <%= link_to @film.genre.name, genre_path(@film.genre), class: "release"%>
    <br><br>
-    <% unless @film.film_watched?(@person)%>
+    <% unless @film.film_watched?(@person.id)%>
       <%= form_for :watch do |f| %>
       <%= f.hidden_field :person_id, :value => @person.id %>
       <%= f.hidden_field :film_id, :value => @film.id%>
@@ -42,7 +42,7 @@
       <% f.label :name%>
       <% end %>
       <% end %>
-    <% if @film.film_watched?(@person) %>
+    <% if @film.film_watched?(@person.id) %>
       <%= form_with(url: :watch, method: "delete") do |form| %>
         <%= form.hidden_field :person_id, :value => @person.id %>
         <%= form.hidden_field :film_id, :value => @film.id%>
