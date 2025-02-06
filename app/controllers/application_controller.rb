@@ -34,14 +34,9 @@ class ApplicationController < ActionController::Base
     @response = HTTParty.get('https://api.themoviedb.org/3/search/movie?api_key=b6ba0af499c6872471a982365c647f0e', query: query, langauges: lang, include_adult: false, format: :json)
     response = @response.parsed_response
     result = response['results']
-    #puts result
     poster_path = result[0]['poster_path']
     description = result[0]['overview']
     release_date = result[0]['release_date']
-    # @film.save_poster_path(poster_path, @film)
-    # @film.save_film_description(description, @film)
-    # @film.save_film_release_date(release_date, @film)
-    # @film.save_film_language(language, @film)
     [poster_path, description, release_date, language]
   end
 

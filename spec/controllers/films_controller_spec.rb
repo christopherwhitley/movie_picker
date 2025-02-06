@@ -3,20 +3,22 @@ require 'rails_helper'
 
 RSpec.describe FilmsController do
   # Arrange
-  let(:params) { { title: 'some title', description: 'some description', genre_id: 1, language: 'english' } }
+  let(:params) { { title: 'some title', description: 'some description', genre_id: 1, language: 'english', external_id: '345' } }
 
   it 'checks attributes are added to film' do
     # Act
     film = Film.create(
       description: 'some description',
       title: "some title",
-      genre_id: 1
+      genre_id: 1,
+      external_id: "345"
     )
 
     # Assert
     expect(film.description).to eq('some description')
     expect(film.title).to eq('some title')
     expect(film.genre_id).to eq(1)
+    expect(film.external_id).to eq("345")
   end
 
   context 'when there are multiple film results' do

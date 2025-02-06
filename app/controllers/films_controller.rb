@@ -83,6 +83,7 @@ class FilmsController < ApplicationController # rubocop:disable Metrics/ClassLen
     @film.description = results[2]
     @film.release_date = results[3]
     @film.language = lang
+    @film.external_id = params[:film_id]
     respond_to do |format|
       if @film.save
         format.html { add_film_to_person(@film.id) }
@@ -139,6 +140,6 @@ class FilmsController < ApplicationController # rubocop:disable Metrics/ClassLen
 
   # Only allow a list of trusted parameters through.
   def film_params
-    params.require(:film).permit(:title, :description, :genre_id, :language)
+    params.require(:film).permit(:title, :description, :genre_id, :language, :external_id)
   end
 end
