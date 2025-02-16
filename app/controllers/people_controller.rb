@@ -19,7 +19,7 @@ class PeopleController < ApplicationController
   end
 
   def render_unwatched_films
-    @unwatched_films = Person.search_unwatched_films(params[:search])
+    @unwatched_films = Person.search_unwatched_films(@person, params[:search])
     respond_to do |format|
       format.html { render(:unwatched_films) }
     end

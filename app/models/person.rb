@@ -31,17 +31,14 @@ class Person < ApplicationRecord
   end
 
   def get_unwatched_films
-    unseen_films = Watch.where.not(person_id: id)
-    film_list = []
-    unseen_films.each do |w|
-      film_list << Film.find(w.film_id)
-    end
-    film_list
+    watched_film_ids = Watch.where(person_id: id).pluck(:film_id)
+    Film.where.not(id: watched_film_ids)
   end
 
-  def self.search_unwatched_films(search)
+  def self.search_unwatched_films(person, search)
     if search
-      Film.where('title ILIKE ?', "%#{search}%")
+      unwatched_films = person.get_unwatched_films
+      unwatched_films.select { |film| film.title.downcase.include?(search.downcase)}
     else
       @unwatched_films = Person.get_unwatched_films
     end
