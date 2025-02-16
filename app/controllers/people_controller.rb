@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class PeopleController < ApplicationController
-  before_action :set_person, only: %i[show edit update destroy watched_films]
-  before_action :authorized, only: %i[ show edit update destroy]
+  before_action :set_person, only: %i[show edit update destroy watched_films render_unwatched_films]
+  before_action :authorized, only: %i[show edit update destroy]
   before_action :authorize!, only: %i[show update edit destroy]
   # skip_before_action :authorized, only: [:new]
 
@@ -16,6 +16,13 @@ class PeopleController < ApplicationController
   def get_unwatched_films
     all_my_films = @person.film_id
     Film.where.not(id: Watch.pluck(:film_id))
+  end
+
+  def render_unwatched_films
+    @unwatched_films = Person.search_unwatched_films(params[:search])
+    respond_to do |format|
+      format.html { render(:unwatched_films) }
+    end
   end
 
   helper_method :get_unwatched_films
@@ -91,6 +98,6 @@ class PeopleController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def person_params
-    params.require(:person).permit(:username, :password, :salt, :encrypted_password, :email, :film_id)
+    params.require(:person).permit(:username, :password, :salt, :encrypted_password, :email, :film_id, :search)
   end
 end

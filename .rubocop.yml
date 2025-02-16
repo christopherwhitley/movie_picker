@@ -19,3 +19,6 @@ Metrics/MethodLength:
   AutoCorrect: false
   Enabled: false
   Max: 1000
+
+Metrics/AbcSize
+  Enabled: false

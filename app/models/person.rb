@@ -7,12 +7,6 @@ class Person < ApplicationRecord
   validates :password, length: { in: 8..20 }, presence: true, on: :create
   validates :username, :email, uniqueness: true
 
-  # Method of a Class
-  # def self.add_film_id_to_person(id, person)
-  # @person = person
-  # if @person.film_id.exclude? id
-  # @person[:film_id] << (id.to_s)
-  # @person.save
 
   def get_person_films_list
     myfilmslist = Film.where(id: film_id)
@@ -34,6 +28,23 @@ class Person < ApplicationRecord
       # link_to film.title, film_path(w.film_id)
     end
     film_list
+  end
+
+  def get_unwatched_films
+    unseen_films = Watch.where.not(person_id: id)
+    film_list = []
+    unseen_films.each do |w|
+      film_list << Film.find(w.film_id)
+    end
+    film_list
+  end
+
+  def self.search_unwatched_films(search)
+    if search
+      Film.where('title ILIKE ?', "%#{search}%")
+    else
+      @unwatched_films = Person.get_unwatched_films
+    end
   end
 
   def remove_film_id_from_person(id)
