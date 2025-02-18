@@ -2,8 +2,8 @@
 
 <!--pre><%#= JSON.pretty_generate(response) %><!--/pre-->
 
-<% poster = @film.poster_path %>
-<% description = @film.description%>
+<% poster = @film_presenter.poster_path %>
+<% description = @film_presenter.description%>
 
 <div class="overlay" id="overlay">
 <% if (poster != nil) %>
@@ -17,17 +17,20 @@
   <% else %> 
     <p class="poster" id="poster"><%= image_tag "poster_placeholder.jpeg", id: poster %>
   <% end %>
-   <h2 class="film-title"> <%= @film.title %></h2>
+   <h2 class="film-title"> <%= @film_presenter.title %></h2>
      <% if @watched == true  %>
     <%= image_tag 'watched-checkmark.png', size: '16', class: 'watched-tick' %>
   <% end %>
    <h4>Description</h4>
    <%= description %> <br />
 
+   <h4>Directed by</h4>
+   <%= @film_presenter.directors %><br/>
+
    <br /><br />
    <%= button_tag 'Show more info', type: 'button', id: 'show-hide' %>
     <h4 class="release">Release Date (U.S.)</h4>
-     <div class='release'><%= @film.release_date %></div>
+     <div class='release'><%= @film_presenter.release_date %></div>
 
    <h4 class="release">Genre</h4>
    <%= link_to @film.genre.name, genre_path(@film.genre), class: "release"%>
@@ -58,7 +61,7 @@
 <div class="recommended-section">
 <% film_object = @film.recommended_films_ids %>
 <% film_object.each do |film| %>
-  <% if film.title != @film.title %>
+  <% if film.title != @film_presenter.title %>
   <%= link_to film, class:'recommended_film' do %>
 
       <% recommended_poster = film.poster_path %>

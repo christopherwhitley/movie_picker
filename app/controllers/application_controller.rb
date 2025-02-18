@@ -40,6 +40,12 @@ class ApplicationController < ActionController::Base
     [poster_path, description, release_date, language]
   end
 
+  def fetch_movie_details(id)
+    base_uri = "https://api.themoviedb.org/3/movie/#{id}?append_to_response=credits"
+    @response = HTTParty.get(base_uri + '&api_key=b6ba0af499c6872471a982365c647f0e', include_adult: false, format: :json)
+    @response.parsed_response
+  end
+
   def get_movie(id, lang)
     language = lang
     base_uri = "https://api.themoviedb.org/3/movie/#{id}"

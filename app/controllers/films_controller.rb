@@ -56,6 +56,8 @@ class FilmsController < ApplicationController # rubocop:disable Metrics/ClassLen
 
   # GET /films/1 or /films/1.json
   def show
+    @film_details = fetch_movie_details(@film.external_id)
+    @film_presenter = FilmPresenter.new(@film_details)
     @filmname = @film.title
     @person = current_user
     @watched = @film.film_watched?(current_user.id)
