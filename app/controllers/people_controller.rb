@@ -13,11 +13,6 @@ class PeopleController < ApplicationController
     end
   end
 
-  def get_unwatched_films
-    all_my_films = @person.film_id
-    Film.where.not(id: Watch.pluck(:film_id))
-  end
-
   def render_unwatched_films
     @unwatched_films = Person.search_unwatched_films(@person, params[:search])
     respond_to do |format|
@@ -25,7 +20,6 @@ class PeopleController < ApplicationController
     end
   end
 
-  helper_method :get_unwatched_films
   # GET /people or /people.json
   def index
     @people = Person.all
@@ -34,6 +28,7 @@ class PeopleController < ApplicationController
   # GET /people/1 or /people/1.json
   def show
     @person.id
+    @attributes = PersonPresenter.new(@person).attributes
   end
 
   # GET /people/new

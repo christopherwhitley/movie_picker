@@ -13,17 +13,15 @@
 
 <%= link_to "View watched films", people_watched_films_path(:id => @person.id), {:style=>'font-size:22px;',} %>
 
-<% myfilms = @person.get_person_films_list %>
-<% watches = Watch.where(person_id: @person.id, created_at: Time.current.all_year)  %>
 <div class="films-watched">
   <h3 class="films-watched-title">Films watched in <%= Time.current.year %> </h3>
-  <h2 class = "films-watched-count"><%= watches.count %></h2>
+  <h2 class = "films-watched-count"><%= @attributes[:watch_count] %></h2>
 </div>
 
 <br><br><br>
 <h2>My films to watch</h2>
 
-<% film_list = get_unwatched_films %>
+<% film_list = @attributes[:unwatched_films] %>
 
 <% film_list.in_groups_of(8, false).each do |films| %>
 <div class="row">
