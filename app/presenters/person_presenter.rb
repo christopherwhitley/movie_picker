@@ -1,7 +1,8 @@
 class PersonPresenter
 
-  def initialize(person)
+  def initialize(person, search_params: nil)
     @person = person
+    @search_params = search_params
   end
 
   def attributes
@@ -19,7 +20,15 @@ class PersonPresenter
   end
 
   def unwatched_films
-    Film.where.not(id: Watch.pluck(:film_id))
+    if @search_params.present?
+      return search_results
+    else
+      Film.where.not(id: Watch.pluck(:film_id))
+    end
+  end
+
+  def search_results
+    Person.search_unwatched_films(@person, @search_params)
   end
 
   def films

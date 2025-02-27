@@ -14,9 +14,9 @@ class PeopleController < ApplicationController
   end
 
   def render_unwatched_films
-    @unwatched_films = Person.search_unwatched_films(@person, params[:search])
+    @attributes = PersonPresenter.new(@person, search_params: params[:search]).attributes
     respond_to do |format|
-      format.html { render(:unwatched_films) }
+      format.html { render(:show) }
     end
   end
 
