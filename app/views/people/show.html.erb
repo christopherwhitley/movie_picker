@@ -4,8 +4,7 @@
 
 <%= form_tag people_unwatched_films_path(id: @person.id), method: :get do %>
   <%= hidden_field_tag :id, @person.id %>
-  <%= label_tag(:search, "Search for film:") %>
-  <%= text_field_tag :search, params[:search] %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search..." %>
   <%= submit_tag("Search", name: nil) %>
 <% end %>
 
