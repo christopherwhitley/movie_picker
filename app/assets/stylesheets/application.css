@@ -17,6 +17,9 @@
 body {
   background-color: #eafbf4;
 }
+div {
+  margin-bottom: 1rem;
+}
 .watched {
   display: inline-block;
   margin-left: 5px;
@@ -36,7 +39,11 @@ input[type=submit] {
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
-  padding: 6px 8px;
+  margin-top: 0.5rem;
+}
+
+.login-button input {
+  margin-top: 0;
 }
 
 /*  global classes */
@@ -142,8 +149,6 @@ Questions
   /* margin: auto; */
 }
 
-.title {
-}
 .title h2 {
   color: var(--clr-gold);
   text-align: center;
@@ -202,8 +207,6 @@ Questions
 }
 .show-text .plus-icon {
   display: none;
-}
-.customlistfilmtitle {
 }
 .customlistfilmtitle input {
   display: inline;

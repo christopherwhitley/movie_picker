@@ -13,7 +13,7 @@
 
    <div class="film_details">
    <% if (poster != nil) %>
-    <p class="poster" id="poster"><%= image_tag 'https://image.tmdb.org/t/p/w300' << (poster), id: "poster" %></p><br/>
+    <p class="poster" id="poster"><%= image_tag 'https://image.tmdb.org/t/p/w300' << (poster), id: "poster" %></p>
   <% else %> 
     <p class="poster" id="poster"><%= image_tag "poster_placeholder.jpeg", id: poster %>
   <% end %>
@@ -25,16 +25,15 @@
    <%= description %> <br />
 
    <h4>Directed by</h4>
-   <%= @film_presenter.directors %><br/>
+   <%= @film_presenter.directors %>
 
    <br /><br />
    <%= button_tag 'Show more info', type: 'button', id: 'show-hide' %>
     <h4 class="release">Release Date (U.S.)</h4>
      <div class='release'><%= @film_presenter.release_date %></div>
-
    <h4 class="release">Genre</h4>
    <%= link_to @film.genre.name, genre_path(@film.genre), class: "release"%>
-   <br><br>
+   <br>
     <% unless @film.film_watched?(@person.id)%>
       <%= form_for :watch do |f| %>
       <%= f.hidden_field :person_id, :value => @person.id %>

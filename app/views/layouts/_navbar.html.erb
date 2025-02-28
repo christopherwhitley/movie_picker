@@ -12,7 +12,7 @@
           <div class="sign_in_status">
               <p class="username"><%= current_user.username %></p>
             
-              <%= button_to "Logout", pages_logout_path, method: :get %>
+              <%= button_to "Logout", pages_logout_path, method: :get, form_class: "login-button" %>
             
               <% elsif !logged_in?%>
               <div class="sign_in_status">
