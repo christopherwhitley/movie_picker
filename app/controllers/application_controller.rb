@@ -47,7 +47,6 @@ class ApplicationController < ActionController::Base
   end
 
   def get_movie(id, lang)
-    language = lang
     base_uri = "https://api.themoviedb.org/3/movie/#{id}"
     @response = HTTParty.get(base_uri + '?api_key=b6ba0af499c6872471a982365c647f0e', langauges: lang, include_adult: false, format: :json)
     response = @response.parsed_response
@@ -55,7 +54,12 @@ class ApplicationController < ActionController::Base
     poster_path = response['poster_path']
     description = response['overview']
     release_date = response['release_date']
-    [title, poster_path, description, release_date]
+      {
+        title: title, 
+        poster_path: poster_path, 
+        description: description, 
+        release_date: release_date
+      }
   end
 end
 

@@ -76,20 +76,14 @@ class FilmsController < ApplicationController # rubocop:disable Metrics/ClassLen
   def edit; end
 
   # POST /films or /films.json
-  def create # rubocop:disable Metrics/AbcSize
+  def create
     @film = Film.new(film_params)
     lang = I18nData.language_code(params[:film][:language])
     results = get_movie(params[:film_id], lang)
-    @film.title = results[0]
-    @film.poster_path = results[1]
-    @film.description = results[2]
-    @film.release_date = results[3]
-    @film.language = lang
-    @film.external_id = params[:film_id]
+    @film.create_film(results, lang, params[:film_id])
     respond_to do |format|
       if @film.save
         format.html { add_film_to_person(@film.id) }
-        # format.json { render :show, status: :created, location: @film }
       else
         format.html { render(:new, status: :unprocessable_entity) }
         format.json { render(json: @film.errors, status: :unprocessable_entity) }

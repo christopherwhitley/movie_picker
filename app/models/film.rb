@@ -9,9 +9,18 @@ class Film < ApplicationRecord
   has_many :films
   has_many :watches
   has_and_belongs_to_many :people
-  validates :title, presence: true, uniqueness: true
+  validates :external_id, presence: true, uniqueness: true
 
   @allFilms = nil
+
+  def create_film(results, lang, external_id)
+    self.title = results[:title]
+    self.poster_path = results[:poster_path]
+    self.description = results[:description]
+    self.release_date = results[:release_date]
+    self.language = lang
+    self.external_id = external_id
+  end
 
   def recommended_films
     @allFilms = Film.all
