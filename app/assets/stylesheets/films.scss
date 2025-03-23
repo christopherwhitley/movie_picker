@@ -2,6 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.film-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.watch-button {
+  margin-left: auto; 
+}
+
+@media (max-width: 900px) {
+  .film-header {
+    display: block; /* Remove flexbox on mobile */
+    align-items: unset; /* Remove alignment properties */
+  }
+
+  .watch-button {
+    margin-left: 0; /* Remove margin */
+    margin-top: 10px; /* Add spacing between title and button */
+    width: 100%; /* Ensure the button stretches on mobile */
+  }
+}
+
+
 .poster {
   float: left;
   margin-right: 10px;

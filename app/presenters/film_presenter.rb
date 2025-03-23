@@ -19,6 +19,16 @@ class FilmPresenter
   def release_date
     @film_details['release_date']
   end
+  
+  def runtime
+    calculate_runtime(@film_details['runtime'])
+  end
+
+  def calculate_runtime(minutes)
+    hours = minutes / 60
+    mins = minutes % 60
+    "#{hours} hours and #{mins} minutes"
+  end
 
   def directors
     directors = @film_details.dig('credits', 'crew')&.select { |crew| crew['job'] == 'Director' }
