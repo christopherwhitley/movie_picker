@@ -24,15 +24,17 @@ class FilmPresenter
     calculate_runtime(@film_details['runtime'])
   end
 
-  def calculate_runtime(minutes)
-    hours = minutes / 60
-    mins = minutes % 60
-    "#{hours} hours and #{mins} minutes"
-  end
-
   def directors
     directors = @film_details.dig('credits', 'crew')&.select { |crew| crew['job'] == 'Director' }
     director_names = directors&.map { |director| director['name'] }
     director_names&.join(', ')
+  end
+
+  private
+
+  def calculate_runtime(minutes)
+    hours = minutes / 60
+    mins = minutes % 60
+    "#{hours} hours and #{mins} minutes"
   end
 end
