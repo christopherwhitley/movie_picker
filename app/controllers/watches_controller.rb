@@ -15,11 +15,10 @@ class WatchesController < ApplicationController
     @watch = Watch.new(watch_params)
 
     respond_to do |format|
+      format.html { redirect_to request.referer || root_path }
       if @watch.save
-        format.html { redirect_to request.referer || root_path }
         flash.alert = "Successfully marked as seen"
       else
-        format.html { redirect_to request.referer || root_path }
         flash.alert = "Save Unsuccessful"
 
         @watch.errors.each do |error|

@@ -15,7 +15,7 @@ class FilmsController < ApplicationController # rubocop:disable Metrics/ClassLen
     end
   end
 
-  def wheel # rubocop:disable Metrics/AbcSize
+  def wheel
     if params["custom_lists"]
       @films = CustomList.random_custom_list_films(params[:custom_lists][:id])
       respond_to do |format|

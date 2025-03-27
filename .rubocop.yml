@@ -20,5 +20,5 @@ Metrics/MethodLength:
   Enabled: false
   Max: 1000
 
-Metrics/AbcSize
+Metrics/AbcSize:
   Enabled: false

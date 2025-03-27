@@ -7,7 +7,6 @@ class Person < ApplicationRecord
   validates :password, length: { in: 8..20 }, presence: true, on: :create
   validates :username, :email, uniqueness: true
 
-
   def get_person_films_list
     myfilmslist = Film.where(id: film_id)
     myfilms = myfilmslist.map(&:title)
@@ -23,7 +22,7 @@ class Person < ApplicationRecord
   def get_watched_films
     my_watches = Watch.where(person_id: id)
     film_list = []
-    films = my_watches.each do |w| 
+    films = my_watches.each do |w|
       film_list << Film.find(w.film_id)
       # link_to film.title, film_path(w.film_id)
     end
@@ -38,7 +37,7 @@ class Person < ApplicationRecord
   def self.search_unwatched_films(person, search)
     if search
       unwatched_films = person.get_unwatched_films
-      unwatched_films.select { |film| film.title.downcase.include?(search.downcase)}
+      unwatched_films.select { |film| film.title.downcase.include?(search.downcase) }
     else
       @unwatched_films = Person.get_unwatched_films
     end

@@ -2,7 +2,7 @@ require 'film_presenter'
 require 'rails_helper'
 
 RSpec.describe FilmPresenter do
-  let(:film_details) { 
+  let(:film_details) do
     {
       'title' => 'LeBatman',
       'original_title' => 'Batman',
@@ -17,12 +17,12 @@ RSpec.describe FilmPresenter do
         }]
       }
     }
-  }
+  end
   let(:subject) { FilmPresenter.new(film_details) }
 
   describe '#title' do
     it 'returns the original title of the film' do
-      expect(subject.title).to eq('Batman') 
+      expect(subject.title).to eq('Batman')
     end
   end
 
@@ -56,4 +56,3 @@ RSpec.describe FilmPresenter do
     end
   end
 end
-  

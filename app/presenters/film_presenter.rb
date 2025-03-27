@@ -1,5 +1,4 @@
 class FilmPresenter
-  
   def initialize(film_details)
     @film_details = film_details
   end
@@ -19,7 +18,7 @@ class FilmPresenter
   def release_date
     @film_details['release_date']
   end
-  
+
   def runtime
     calculate_runtime(@film_details['runtime'])
   end
