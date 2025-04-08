@@ -4,7 +4,7 @@ require 'rails_helper'
 describe 'Custom list' do
   # Arrange
   let(:genre) { FactoryBot.create(:genre) }
-  let(:film) { FactoryBot.create_list(:film, 3, genre_id: genre.id) }
+  let(:film) { FactoryBot.create_list(:film, 3) }
 
   it 'checks attributes are added to custom list' do
     # Act
@@ -13,7 +13,6 @@ describe 'Custom list' do
       person_id: "1",
       film_ids: [film.first.id]
     )
-    puts film.inspect
 
     # Assert
     expect(custom_list.name).to eq('My custom list')

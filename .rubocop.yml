@@ -20,5 +20,10 @@ Metrics/MethodLength:
   Enabled: false
   Max: 1000
 
+Metrics/BlockLength:
+  AutoCorrect: false
+  Enabled: false
+  Max: 1000
+
 Metrics/AbcSize:
   Enabled: false
