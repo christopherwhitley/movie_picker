@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PeopleController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_person, only: %i[show edit update destroy watched_films render_unwatched_films]
   before_action :authorized, only: %i[show edit update destroy]
   before_action :authorize!, only: %i[show update edit destroy]
@@ -29,6 +31,8 @@ class PeopleController < ApplicationController
   def show
     @person.id
     @attributes = PersonPresenter.new(@person).attributes
+
+    @pagy, @films = pagy(@attributes[:unwatched_films], items: 32)
   end
 
   # GET /people/new

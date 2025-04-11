@@ -20,30 +20,28 @@
 <br><br><br>
 <h2>My films to watch</h2>
 
-<% film_list = @attributes[:unwatched_films] %>
-
-<% film_list.in_groups_of(8, false).each do |films| %>
-<div class="row">
-  <% films.each do |film| %>
-  <div class="col-md-4 unwatched-films-row">
-    <% film = Film.find_by(id: film) %>
-    <%= link_to film do %>
-      <div class="container">
-        <%= image_tag('https://image.tmdb.org/t/p/w780' << film['poster_path'].to_s,  class: "film") %>
-            <% end %>
+<div class="container">
+<% @films.each do |film| %>
+  <div class="row">
+    <div class="col-md-4 unwatched-films-row">
+      <%= link_to film do %>
+        <div class="img-container">
+          <%= image_tag('https://image.tmdb.org/t/p/w780' << film.poster_path.to_s, class: "film") %>
+        </div>
+      <% end %>
       <p class="title"><%= film.title %></p> 
-    <%= form_for :watch do |f| %>
-    <%= f.hidden_field :person_id, :value => @person.id %>
-    <%= f.hidden_field :film_id, :value => film.id%>
-
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <%= f.submit%>
-    <% f.label :name%>
-      </div>
-     </div>
-  <% end %>
+      <%= form_for :watch do |f| %>
+        <%= f.hidden_field :person_id, value: @person.id %>
+        <%= f.hidden_field :film_id, value: film.id %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= f.submit %>
+      <% end %>
+    </div>
   </div>
 <% end %>
-<% end %>
+</div>
 
-<br><br>
+
+<%== pagy_nav(@pagy) %>
+
+
