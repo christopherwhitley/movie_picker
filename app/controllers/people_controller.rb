@@ -17,6 +17,7 @@ class PeopleController < ApplicationController
 
   def render_unwatched_films
     @attributes = PersonPresenter.new(@person, search_params: params[:search]).attributes
+    @pagy, @films = pagy_array(@attributes[:unwatched_films])
     respond_to do |format|
       format.html { render(:show) }
     end
