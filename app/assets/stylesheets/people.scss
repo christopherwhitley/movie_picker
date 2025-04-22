@@ -1,6 +1,8 @@
 .container {
     margin-bottom: 2rem; /* Ensure enough space at the bottom for pagination */
     overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
   }
 .img-container {
     width: auto;
@@ -93,20 +95,18 @@
     }
 
     .col-md-4.unwatched-films-row {
-      width: 8rem;
-      flex: 0 0 20%;
-      max-width: 10rem;
+      flex: 2;
+      margin-right: 8px;
     }
     
     .unwatched-films-row {
-      width: auto;
       margin-top: 2rem;
       margin-bottom: 2rem;
     }
     .title {
       font-size: 12px;
       height: 40px;
-      padding: 0 15px;
+      padding: 0;
     }
     .film {
       width: 100px;
