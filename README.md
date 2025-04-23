@@ -1,24 +1,7 @@
-# README
+A simple movie picker app that allows users to:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* track a list of movies
+* mark movies as watched
+* view information about the movie
+* create custom lists
+* have a random movie they are tracking chosen for them
