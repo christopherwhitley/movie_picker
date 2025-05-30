@@ -1,28 +1,24 @@
 <header class="nav">
   <div>
     <nav class="nav">
-      <ul>
-        <h1 class="nav_list"><%=link_to "Home", root_path %></h1>
-        <h1 class="nav_list"><%=link_to "Random Film", randomfilm_path %></h1>
-        
-        
-          <% if logged_in? %>
-          <h1 class="nav_list"><%= link_to "Profile", person_path(current_user.id) %></h1>
-            
-          <div class="sign_in_status">
-              <p class="username"><%= current_user.username %></p>
-            
-              <%= button_to "Logout", pages_logout_path, method: :get, form_class: "login-button" %>
-            
-              <% elsif !logged_in?%>
-              <div class="sign_in_status">
-                <%= button_to "Login", pages_login_path, method: :get %>
-                <%= button_to "Register", new_person_path, method: :get %>
-              </div>
-          <% end %>
-         
-        </div>
-        </h1>
+      <ul class="nav_bar <%= logged_in? ? 'nav-logged-in' : 'nav-logged-out' %>">
+        <li class="nav_list"><%= link_to "Home", root_path %></li>
+
+        <% if logged_in? %>
+          <li class="nav_list"><%= link_to "Random Film", randomfilm_path %></li>
+          <li class="nav_list"><%= link_to "Profile", person_path(current_user.id) %></li>
+
+          <li class="sign_in_status <%= logged_in? ? 'sign-in-status-right-align' : 'sign-in-status-center-align' %>">
+            <p class="username"><%= current_user.username %></p>
+            <%= button_to "Logout", pages_logout_path, method: :get, form_class: "login-button" %>
+          </li>
+
+        <% else %>
+          <li class="sign_in_status">
+            <%= button_to "Login", pages_login_path, method: :get %>
+            <%= button_to "Register", new_person_path, method: :get %>
+          </li>
+        <% end %>
       </ul>
     </nav>
   </div>

@@ -37,12 +37,26 @@ input[type=submit], button[type=submit] {
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  padding: 4px 4px; 
 }
 
-.login-button input {
-  margin-top: 0;
+.login-form-button {
+  display: block;
+  max-width: fit-content;
+  margin-top: 8px;
 }
 
+@media screen and (max-width: 599px) {
+
+  form[action="/pages/login"] input[type="text"],
+  form[action="/pages/login"] input[type="password"] {      
+    font-size: 1.2rem;       
+    padding: 10px 12px;      
+    margin-bottom: 15px;     
+    border-radius: 6px;       
+    border: 1px solid #ccc;  
+  }
+}
 /*  global classes */
 
 a:hover {
@@ -93,26 +107,37 @@ Nav bar
 ===============
 */
 
+.nav_bar {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+  list-style: none;
+  margin: 1rem;
+  height: 60px; 
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
 .nav {
   background-color: skyblue;
-  height: 50px;
   width: 100vw;
   margin: -33px 0 0 -33px;
+  height: fit-content;
 }
 .nav_list {
   display: inline-block;
-  margin: 15px 30px 0px 15px;
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 .nav_list a {
   color: white;
 }
 
 .sign_in_status {
-  float: right;
   display: flex;
   gap: 10px;
   align-items: center;
-  flex-wrap: wrap;
+  margin-left: auto; /* pushes to the right */
 }
 
 .username {
@@ -120,21 +145,49 @@ Nav bar
 }
 
 @media screen and (max-width: 599px) {
+
+  .body {
+    margin-right: 5px;
+  }
+  .nav_bar {
+    flex-direction: column;
+    height: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  .nav-logged-in {
+    align-items: baseline; 
+  }
+
+  .nav-logged-out {
+    align-items: center;  
+    flex-direction: initial;
+  }
+
   .nav_list {
     display: inline-block;
-    margin: 15px 10px 0px 0px;
+    margin-right: 0;
   }
   .nav_list a {
-    font-size: 10px;
+    font-size: 14px;
     color: white;
   }
-  .sign_in_status {
-    font-size: 8px;
-    margin-top: 5px;
-    margin-left: 5px;
+
+  .sign-in-status-right-align {
+    align-self: center;
+    margin-top: 10px;
   }
+
+  .sign-in-status-center-align {
+    align-self: center;
+    margin-top: 10px;
+  }
+
   .username {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
   .login-button input {
     font-size: 12px;
@@ -143,7 +196,6 @@ Nav bar
 @media screen and (min-width: 1024px) {
   .nav_list {
     display: inline-block;
-    margin: 15px 10px 0px 0px;
   }
   .nav_list a {
     font-size: 16px;
