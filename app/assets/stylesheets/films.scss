@@ -60,7 +60,31 @@
   margin-bottom: 20px;
   width: 100%;
   text-align: center;
+}
 
+// FILM CONFIRMATION PAGE
+
+.poster_confirmation {
+  float: left;
+  margin: 5px;
+}
+
+.matching_films_wrapper {
+  width: 45%;
+  cursor: pointer;
+  margin: 1em;
+}
+
+.radio_button:checked + .matching_films {
+  border-color: #ffffff;
+  background: #17d420;
+}
+
+.film_grid {
+  display: flex;
+  flex-wrap: wrap;      
+  gap: 2rem;             
+  justify-content: center; 
 }
 
 .matching_films {
@@ -72,15 +96,43 @@
   overflow: hidden;
 }
 
-.radio_button {
-  float: left;
+.release_date, .movie_description {
+  font-size: large;
 }
+
 .movie_title {
-  float: left;
-}
-.poster_confirmation {
-  float: left;
   margin: 5px;
+}
+
+@media (max-width: 425px) {
+  .film_grid {
+    flex-direction: column;
+  }
+
+  .matching_films_wrapper {
+    width: 100%;
+  }
+  .matching_films {
+    text-align: center;  
+    align-items: center;
+  }
+  .poster_confirmation {
+    float: none;
+    max-width: 80%;
+  }
+
+  .release_date {
+    margin: 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .film_grid {
+    flex-direction: column;
+  }
+  .matching_films_wrapper {
+    width: 100%;
+  }
 }
 
 .overlay {
@@ -314,26 +366,6 @@ label {
     bottom: 0;
   }
 }
-
-// NEW WHEEL
-// *{
-//   box-sizing: border-box;
-//   padding: 0;
-//   margin: 0;
-//   outline: none;
-// }
-
-// body{
-//   font-family: "Open Sans";
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   height: 100vh;
-//   overflow: hidden;
-//   background: rgb(60, 60, 242);
-//   background: linear-gradient(90deg, rgba(60, 60, 242, 1) 0%, rgba(98, 245, 230, 1) 52%, rgba(60, 60, 242, 1) 100%);
-//   background-size: cover;
-// }
 
 .arrow{
   position: absolute;
