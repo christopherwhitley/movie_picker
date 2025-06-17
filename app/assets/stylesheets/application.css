@@ -209,11 +209,9 @@ Questions
 ===============
 */
 .questions {
-  /*width: 60%;*/
   align-content: center;
   text-align: center;
   align-self: center;
-  /* margin: auto; */
 }
 
 .title h2 {
@@ -229,7 +227,6 @@ Questions
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius);
   padding: 1.5rem 1.5rem 0 1.5rem;
-  /*width: 50%;*/
 }
 .question-title {
   display: flex;
@@ -274,6 +271,10 @@ Questions
 }
 .show-text .plus-icon {
   display: none;
+}
+
+span.faq-arrow {
+  position: relative;
 }
 .customlistfilmtitle input {
   display: inline;

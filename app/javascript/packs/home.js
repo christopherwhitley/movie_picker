@@ -1,39 +1,4 @@
-window.addEventListener('turbolinks:load', () => {
-  // TURBOLINKS IS ACTIVATING TWICE!!
-  //FAQ
-  const btns = document.querySelectorAll(".question-btn");
-  btns.forEach(function (btn) {
-    btn.addEventListener("mousedown", function (e) {
-      const question = e.currentTarget.parentElement.parentElement
-      question.classList.toggle("show-text")
-      console.log("toggle")
-    });
-  });
-});
 
-window.addEventListener('load', () => {
-  //FAQ
-  const btns = document.querySelectorAll(".question-btn");
-  btns.forEach(function (btn) {
-    btn.addEventListener("mousedown", function (e) {
-      const question = e.currentTarget.parentElement.parentElement
-      question.classList.toggle("show-text")
-      console.log("toggle")
-    });
-  });
-});
-
-window.addEventListener('pageshow', () => {
-  //FAQ
-  const btns = document.querySelectorAll(".question-btn");
-  btns.forEach(function (btn) {
-    btn.addEventListener("mousedown", function (e) {
-      const question = e.currentTarget.parentElement.parentElement
-      question.classList.toggle("show-text")
-      console.log("toggle")
-    });
-  });
-});
 
 window.addEventListener('turbolinks:load', () => {
   //Banner
@@ -44,8 +9,6 @@ window.addEventListener('turbolinks:load', () => {
   const films = document.querySelectorAll('.film');
   const bannerScrollWidth = banner.scrollWidth;
   const homepage = window.location.href;
-
-
 
 
   var refreshIntervalId = setInterval(function () {
