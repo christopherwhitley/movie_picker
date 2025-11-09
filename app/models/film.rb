@@ -1,5 +1,4 @@
 class Film < ApplicationRecord
-  require 'api'
   require 'i18n_data'
 
   has_one :film_id
@@ -74,8 +73,8 @@ class Film < ApplicationRecord
 
   def self.get_film_confirmation(film_name, lang)
     api = ApiCall.new
-    langu = I18nData.language_code(lang)
+    langu = lang == 'Default' ? 'en-GB' : I18nData.language_code(lang)
     response = api.api_call(film_name, langu)
-    response.select { |language| language['original_language'] == langu.downcase }
+    langu == 'en-GB' ? response : response.select { |language| language['original_language'] == langu.downcase }
   end
 end
