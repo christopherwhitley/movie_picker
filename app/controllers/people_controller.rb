@@ -33,7 +33,7 @@ class PeopleController < ApplicationController
     @person.id
     @attributes = PersonPresenter.new(@person).attributes
 
-    @pagy, @films = pagy(@attributes[:unwatched_films], items: 32)
+    @pagy, @films = pagy(@attributes[:unwatched_films].order(created_at: :desc), items: 32)
   end
 
   # GET /people/new
