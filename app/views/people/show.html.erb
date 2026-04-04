@@ -18,7 +18,17 @@
 </div>
 
 <br><br><br>
-<h2>My films to watch</h2>
+<h1>My films to watch</h1>
+
+<div style="display:flex; align-items:center;">
+<h2>Sort by:</h2>
+<div style="margin-left: 1%">
+  <%= link_to "Oldest", person_path(@person.id, filter_value: :asc), class: "search" %>
+  <%= link_to "Newest", person_path(@person.id, filter_value: :desc), class: "search" %>
+  </div>
+</div>
+
+
 
 <div class="container">
 <% @films.each do |film| %>

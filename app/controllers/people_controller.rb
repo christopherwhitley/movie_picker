@@ -32,8 +32,9 @@ class PeopleController < ApplicationController
   def show
     @person.id
     @attributes = PersonPresenter.new(@person).attributes
+    @filter_value = params[:filter_value] || :desc
 
-    @pagy, @films = pagy(@attributes[:unwatched_films].order(created_at: :desc), items: 32)
+    @pagy, @films = pagy(@attributes[:unwatched_films].order(created_at: @filter_value), items: 32)
   end
 
   # GET /people/new
