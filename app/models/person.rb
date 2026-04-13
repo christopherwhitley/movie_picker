@@ -29,7 +29,7 @@ class Person < ApplicationRecord
   end
 
   def get_unwatched_films
-    watched_film_ids = Watch.where(person_id: id).pluck(:film_id)
+    watched_film_ids = Watch.where(person_id: id).select(:film_id)
     Film.where.not(id: watched_film_ids)
   end
 
