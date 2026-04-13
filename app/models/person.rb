@@ -13,8 +13,8 @@ class Person < ApplicationRecord
 
     myfilms.each do |film|
       object = Film.where(title: [film.to_s])
-      id = object.pluck(:id)
-      title = object.pluck(:title)
+      id = object.select(:id)
+      title = object.select(:title)
       title = title.join
     end
   end

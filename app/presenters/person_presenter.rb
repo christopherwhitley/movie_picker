@@ -22,7 +22,7 @@ class PersonPresenter
   def unwatched_films
     return search_results if @search_params.present?
 
-    Film.where.not(id: Watch.pluck(:film_id))
+    Film.where.not(id: Watch.select(:film_id))
   end
 
   def search_results

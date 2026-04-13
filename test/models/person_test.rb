@@ -20,8 +20,4 @@ class PersonTest < ActiveSupport::TestCase
     Person.first.destroy()
     assert_equal 3, Person.count
   end
-
-
-#Rails::logger.debug Person.pluck(:email)
-
 end

@@ -3,7 +3,7 @@ class Watch < ApplicationRecord
 
   def self.film_watched(person_id, film_id)
     watched = Watch.where(:person_id => person_id, :film_id => film_id)
-    watched.pluck(:watches).pop
+    watched.select(:watches).pop
   end
 
   def self.find_watched_film(film_id)

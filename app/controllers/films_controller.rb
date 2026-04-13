@@ -45,7 +45,7 @@ class FilmsController < ApplicationController # rubocop:disable Metrics/ClassLen
   end
 
   def unwatched_films
-    Film.all.where.not(id: Watch.pluck(:film_id))
+    Film.all.where.not(id: Watch.select(:film_id))
   end
 
   # GET /films or /films.json
