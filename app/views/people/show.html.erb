@@ -33,12 +33,14 @@
 <div class="container">
 <% @films.each do |film| %>
     <div class="col-md-4 unwatched-films-row">
-      <%= link_to film do %>
-        <div class="img-container">
-          <%= image_tag('https://image.tmdb.org/t/p/w342' << film.poster_path.to_s, class: "film") %>
-        </div>
+      <% cache film do %>
+        <%= link_to film do %>
+          <div class="img-container">
+            <%= image_tag('https://image.tmdb.org/t/p/w342' << film.poster_path.to_s, class: "film") %>
+          </div>
+        <% end %>
+        <p class="title"><%= film.title %></p> 
       <% end %>
-      <p class="title"><%= film.title %></p> 
       <%= form_for :watch do |f| %>
         <%= f.hidden_field :person_id, value: @person.id %>
         <%= f.hidden_field :film_id, value: film.id %>
