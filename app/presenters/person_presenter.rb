@@ -7,7 +7,6 @@ class PersonPresenter
   def attributes
     {
       watch_count: watch_count,
-      films: films,
       unwatched_films: unwatched_films
     }
   end
@@ -27,9 +26,5 @@ class PersonPresenter
 
   def search_results
     Person.search_unwatched_films(@person, @search_params)
-  end
-
-  def films
-    @person.get_person_films_list
   end
 end
