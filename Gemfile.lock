@@ -80,6 +80,8 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
+    dalli (4.3.3)
+      logger
     date (3.3.3)
     diff-lcs (1.5.0)
     dotenv (3.1.8)
@@ -108,6 +110,7 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.6.3)
+    logger (1.7.0)
     loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -287,6 +290,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  dalli
   dotenv-rails
   factory_bot_rails
   faker
