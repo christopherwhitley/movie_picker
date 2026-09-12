@@ -35,7 +35,7 @@ class Person < ApplicationRecord
   def self.search_unwatched_films(person, search)
     if search
        unwatched_films = person.get_unwatched_films
-       unwatched_films.select { |film| film.title.downcase.include?(search.downcase.rstrip) }
+       unwatched_films.where("title ILIKE ?", "%#{search.rstrip}%")
     else
       @unwatched_films = Person.get_unwatched_films
     end
